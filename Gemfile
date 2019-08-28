@@ -12,7 +12,7 @@ end
 group :production do
   gem "nakayoshi_fork"
 end
-
+gem 'newrelic_rpm'
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -102,6 +102,8 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "prometheus_exporter"
+gem 'letter_opener'
 
 group :development do
   gem "better_errors", "~> 2.5"

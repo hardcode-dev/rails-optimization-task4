@@ -1,0 +1,11 @@
+common: &default_settings
+  license_key: ''
+  app_name: 'personal use_218'
+local_production:
+  <<: *default_settings
+  log_level: info
+development:
+  <<: *default_settings
+  log_level: debug
+  monitor_mode: true
+  developer_mode: true

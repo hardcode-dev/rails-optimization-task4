@@ -4,10 +4,14 @@ def yarn_integrity_enabled?
   ENV.fetch("YARN_INTEGRITY_ENABLED", "true") == "true"
 end
 
+require 'newrelic_rpm'
+
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
-  config.webpacker.check_yarn_integrity = yarn_integrity_enabled?
+config.webpacker.check_yarn_integrity = true
 
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = yarn_integrity_enabled?
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

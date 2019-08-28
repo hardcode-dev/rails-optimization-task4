@@ -1,8 +1,6 @@
-# rubocop:disable Metrics/BlockLength
-
 Rails.application.configure do
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-config.webpacker.check_yarn_integrity = false
+  # config.middleware.use(Rack::RubyProf, :path => 'ruby-prof-results')
+  # config.middleware.use ProfileMiddleware
 
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
@@ -69,14 +67,16 @@ config.webpacker.check_yarn_integrity = false
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :memory_store
+  config.public_file_server.headers = {
+    "Cache-Control" => "public, max-age=172800"
+  }
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = ENV["FASTLY_CDN_URL"]
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -95,7 +95,7 @@ config.webpacker.check_yarn_integrity = false
   end
 
   # Timber.io logger
-  send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "true" # <---- production should send timber logs by default
+  send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "false" # <---- set to false to stop sending dev logs to Timber.io
   log_device = send_logs_to_timber == "true" ? Timber::LogDevices::HTTP.new(ENV["TIMBER"]) : STDOUT
   logger = Timber::Logger.new(log_device)
   logger.level = config.log_level
@@ -104,31 +104,34 @@ config.webpacker.check_yarn_integrity = false
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.cache_store = :dalli_store,
-                       (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                       { username: ENV["MEMCACHIER_USERNAME"],
-                         password: ENV["MEMCACHIER_PASSWORD"],
-                         failover: true,
-                         socket_timeout: 1.5,
-                         socket_failure_delay: 0.2 }
-
-  config.app_domain = "dev.to"
+  config.app_domain = "localhost:3000"
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
-  ActionMailer::Base.smtp_settings = {
-    address: "smtp.sendgrid.net",
+  config.action_mailer.default_url_options = { host: config.app_domain }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
     port: "587",
+    enable_starttls_auto: true,
+    user_name: '<%= ENV["DEVELOPMENT_EMAIL_USERNAME"] %>',
+    password: '<%= ENV["DEVELOPMENT_EMAIL_PASSWORD"] %>',
     authentication: :plain,
-    user_name: ENV["SENDGRID_USERNAME_ACCEL"],
-    password: ENV["SENDGRID_PASSWORD_ACCEL"],
-    domain: "dev.to",
-    enable_starttls_auto: true
+    domain: "localhost:3000"
   }
 
-  config.middleware.use Rack::HostRedirect,
-    "practicaldev.herokuapp.com" => "dev.to"
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 end
 
-# rubocop:enable Metrics/BlockLength
+
+
+
+# config/secrets.yml
+# profile:
+# secret_key_base: pumpum
+
+
+#   # Production depends on precompilation of packs prior to booting for performance.
+#   compile: false
+
+#   # Cache manifest.json for performance
+#   cache_manifest: true

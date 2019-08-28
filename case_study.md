@@ -115,6 +115,8 @@ Percentage of the requests served within a certain time (ms)
 Добавил метрику на http запросы. Вывел главную страницу
 ![si](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/store.png)
 
-## rack mini profiler - жить
+## rack mini profiler и rails panel - жить
 
 ![rmp](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/rmp.png)
+
+![rails_panel](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/rails_panel.png)

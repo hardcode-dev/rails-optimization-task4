@@ -9,10 +9,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+group :development, :local_production do
+  gem 'meta_request'
+end
+
 group :production do
   gem "nakayoshi_fork"
 end
-gem 'newrelic_rpm'
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -45,6 +48,7 @@ gem "fastly", "~> 1.15"
 gem "fastly-rails", "~> 0.8"
 gem "feedjira", "~> 2.2"
 gem "figaro", "~> 1.1"
+gem "flamegraph"
 gem "fog", "~> 1.41"
 gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
@@ -57,14 +61,18 @@ gem "inline_svg", "~> 1.3"
 gem "jbuilder", "~> 2.8"
 gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
+gem "letter_opener"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem "memory_profiler", "~> 0.9"
+gem "newrelic_rpm"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
+gem "prometheus_exporter"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -72,6 +80,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler", require: false
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -102,11 +111,6 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
-gem "prometheus_exporter"
-gem 'letter_opener'
-gem 'rack-mini-profiler', require: false
-gem 'flamegraph'
-gem "memory_profiler", "~> 0.9"
 
 group :development do
   gem "better_errors", "~> 2.5"

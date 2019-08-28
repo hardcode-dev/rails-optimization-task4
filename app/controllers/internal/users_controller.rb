@@ -126,7 +126,7 @@ class Internal::UsersController < Internal::ApplicationController
       mentee = User.find(@new_mentee)
       MentorRelationship.new(mentee_id: mentee.id, mentor_id: @user.id).save!
     end
-    return unless !@new_mentor.blank?
+    return if @new_mentor.blank?
 
     mentor = User.find(@new_mentor)
     MentorRelationship.new(mentee_id: @user.id, mentor_id: mentor.id).save!
@@ -177,18 +177,18 @@ class Internal::UsersController < Internal::ApplicationController
 
   def user_params
     params.require(:user).permit(:seeking_mentorship,
-                                :offering_mentorship,
-                                :quick_match,
-                                :note,
-                                :add_mentor,
-                                :add_mentee,
-                                :ban_from_mentorship,
-                                :ban_user,
-                                :warn_user,
-                                :note_for_mentorship_ban,
-                                :note_for_current_role,
-                                :reason_for_mentorship_ban,
-                                :trusted_user,
-                                :pro_user)
+                                 :offering_mentorship,
+                                 :quick_match,
+                                 :note,
+                                 :add_mentor,
+                                 :add_mentee,
+                                 :ban_from_mentorship,
+                                 :ban_user,
+                                 :warn_user,
+                                 :note_for_mentorship_ban,
+                                 :note_for_current_role,
+                                 :reason_for_mentorship_ban,
+                                 :trusted_user,
+                                 :pro_user)
   end
 end

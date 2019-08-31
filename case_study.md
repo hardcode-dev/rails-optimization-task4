@@ -120,3 +120,14 @@ Percentage of the requests served within a certain time (ms)
 ![rmp](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/rmp.png)
 
 ![rails_panel](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/rails_panel.png)
+
+С помощью stackprof выявил проблемный метод
+StoriesController#handle_base_index
+![stackprof](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/stack.png)
+![stackprof](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/stack2.png)
+
+Запустил на главную страницу `siege -c 10 -t320s http://localhost:3000/`
+
+Собрал отчет из skylight
+
+![skylight](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/skylite.png)

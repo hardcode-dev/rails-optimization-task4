@@ -128,6 +128,65 @@ StoriesController#handle_base_index
 
 Запустил на главную страницу `siege -c 10 -t320s http://localhost:3000/`
 
-Собрал отчет из skylight
+Skylight и rails panel указывают на проблемную зону при рендеринге страницы. Паршл stories/\_main_stories_feed.html.erb
 
 ![skylight](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/skylite.png)
+![rp](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/rails_panel2.png)
+В данном паршиле итерируется истории статьи (articles/single_story). Так же имеется пришлошение на аутентификацию.
+Я добавил кеширование паршола.
+
+#### Результаты ab тестирования
+
+```cassandraql
+Server Software:
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /
+Document Length:        137870 bytes
+
+Concurrency Level:      5
+Time taken for tests:   0.344 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      1384110 bytes
+HTML transferred:       1378700 bytes
+Requests per second:    29.07 [#/sec] (mean)
+Time per request:       171.980 [ms] (mean)
+Time per request:       34.396 [ms] (mean, across all concurrent requests)
+Transfer rate:          3929.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.5      1       1
+Processing:   106  161  46.9    169     221
+Waiting:       98  160  48.0    168     221
+Total:        106  161  46.7    170     221
+ERROR: The median and mean for the initial connection time are more than twice the standard
+       deviation apart. These results are NOT reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%    170
+  66%    192
+  75%    213
+  80%    218
+  90%    221
+  95%    221
+  98%    221
+  99%    221
+ 100%    221 (longest request)
+
+```
+
+Заметен прирост в производительности.
+####Профит
+
+- Кол-во запросов в секунду. Было - 22 Стало -29 запросов в секунду.
+
+| Метрика                    |    Было |    Стало |
+| -------------------------- | ------: | -------: |
+| Кол-во запросов в секунду  |      22 |       29 |
+| Время на обработку запроса | 221.7ms | 171.9 ms |
+
+##ЮХУУ!
+![yhuu](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/yhuu.png)

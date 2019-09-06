@@ -28,3 +28,20 @@ Time per request:       33.459 [ms] (mean, across all concurrent requests)
 Transfer rate:          3981.13 [Kbytes/sec] received
 
 ```
+
+## webpagetest.org
+
+Натравил webpagetest на локальный dev.to. (сайт вытащил в мир иной через ngrok)
+
+Первое что приходит в голову, что инструменты профайлеры это конечно круто, но еще круче уметь их читать...
+Хрустальный шар не понадобился.
+Меленьки ленивец в футере слишком жирный.
+![images](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/big_image.png)
+
+Так как картинка статичная, по садил ее на диету с помощью популярного инструмента всех фронтов squoosh.
+
+В waterflow картинка пропала.
+![images2](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/big_image2.png)
+
+Следующая проблема в запросе со статусом 404 в респонс.
+![404](https://raw.githubusercontent.com/VidgarVii/rails-optimization-2-task4/master/fixtures/404.png)

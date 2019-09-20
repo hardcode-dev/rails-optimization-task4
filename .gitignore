@@ -57,3 +57,4 @@ package-lock.json
 # task 4 staff
 /task4_development.dump
 /config/newrelic.yml
+/config/skylight.yml

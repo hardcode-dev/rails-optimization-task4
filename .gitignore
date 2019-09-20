@@ -53,3 +53,7 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+
+# task 4 staff
+/task4_development.dump
+/config/newrelic.yml

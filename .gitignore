@@ -58,3 +58,4 @@ package-lock.json
 /task4_development.dump
 /config/newrelic.yml
 /config/skylight.yml
+/config/scout_apm.yml

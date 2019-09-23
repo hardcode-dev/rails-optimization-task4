@@ -40,6 +40,7 @@ module PracticalDeveloper
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :not_found
 
     config.skylight.environments += ["development"]
+    config.skylight.environments += ["local_production"]
 
     # After-initialize checker to add routes to reserved words
     config.after_initialize do

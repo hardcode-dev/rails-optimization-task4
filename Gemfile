@@ -110,6 +110,7 @@ gem 'rack-mini-profiler'
 gem 'memory_profiler'
 gem 'flamegraph'
 gem 'stackprof'
+gem 'meta_request'
 
 group :development do
   gem "better_errors", "~> 2.5"

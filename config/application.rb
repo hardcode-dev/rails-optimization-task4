@@ -39,6 +39,9 @@ module PracticalDeveloper
     # Globally handle Pundit::NotAuthorizedError by serving 404
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :not_found
 
+    # Track development env in skylight
+    config.skylight.environments += ["development"]
+
     # After-initialize checker to add routes to reserved words
     config.after_initialize do
       Rails.application.reload_routes!

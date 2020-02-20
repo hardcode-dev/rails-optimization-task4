@@ -12,5 +12,8 @@ end
 
 chdir APP_ROOT do
   puts "== STARTING UP =="
+  puts "== STARTING PROMETHEUS MONITORING =="
+  system! "docker-compose -f docker-compose.yml.monitoring up -d"
+  puts "== STARTING UP MAIN APP =="
   system! "foreman start -f Procfile.dev"
 end

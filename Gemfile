@@ -13,6 +13,9 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+gem 'newrelic_rpm'
+gem 'prometheus_exporter'
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"

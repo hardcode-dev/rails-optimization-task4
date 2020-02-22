@@ -134,6 +134,7 @@ group :development, :test do
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
   gem 'newrelic_rpm'
+  gem 'scout_apm'
 end
 
 group :test do

@@ -133,6 +133,7 @@ group :development, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem 'newrelic_rpm'
 end
 
 group :test do

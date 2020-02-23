@@ -12,8 +12,10 @@ end
 
 chdir APP_ROOT do
   puts "== STARTING UP =="
-  # puts "== Precompiling assets =="
-  # system! "bundle exec rake assets:precompile"
+
+  puts "== Precompiling assets =="
+  system! "bundle exec rake assets:precompile"
+
   puts "== Run server =="
   system! "foreman start -f Procfile.lp"
 end

@@ -55,7 +55,7 @@
     <% if !user_signed_in? && i == 4 %>
       <%= render "stories/sign_in_invitation" %>
     <% end %>
-    <% cache story end %>
+    <% cache story do %>
       <%= render "articles/single_story", story: story %>
     <% end %>
   <% end %>

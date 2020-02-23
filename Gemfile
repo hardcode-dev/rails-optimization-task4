@@ -102,6 +102,9 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem 'newrelic_rpm'
+gem 'scout_apm'
+gem 'prometheus-client'
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -118,6 +121,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rack-mini-profiler', require: false
+  gem 'dotenv'
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -157,3 +162,5 @@ group :test do
   gem "zonebie", "~> 0.6.1"
 end
 # rubocop:enable LineLength
+
+gem "prometheus_exporter", "~> 0.5.0"

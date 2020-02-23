@@ -117,6 +117,8 @@ group :development do
   gem "web-console", "~> 3.7"
   gem 'rack-mini-profiler', require: false
   gem 'meta_request'
+  gem 'newrelic_rpm'
+  gem 'prometheus_exporter'
 end
 
 group :development, :test do

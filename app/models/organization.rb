@@ -11,7 +11,7 @@ class Organization < ApplicationRecord
   has_many :display_ads
   has_many :notifications
 
-  validates :name, :summary, :url, :profile_image, presence: true
+  validates :name, :summary, :url, presence: true
   validates :name,
             length: { maximum: 50 }
   validates :summary,

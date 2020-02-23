@@ -4,7 +4,7 @@ p "1/9 Creating Organizations"
   Organization.create!(
     name: Faker::SiliconValley.company,
     summary: Faker::Company.bs,
-    remote_profile_image_url: logo = Faker::Company.logo,
+    remote_profile_image_url: logo = "http://pigment.github.io/fake-logos/logos/medium/color/2.png",
     nav_image: logo,
     url: Faker::Internet.url,
     slug: "org#{rand(10_000)}",

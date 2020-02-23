@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
+  around_action :label_metrics
+
   include Pundit
   include Instrumentation
 
@@ -77,5 +79,15 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super(payload)
     append_to_honeycomb(request, self.class.name)
+  end
+
+  private
+
+  def label_metrics
+    Thread.current["metrics_labels"] = { controller: params[:controller], action: params[:action] }
+    yield # call the action
+  ensure
+    # reset to nil so nothing else can access it
+    Thread.current["metrics_labels"] = nil
   end
 end

@@ -74,7 +74,7 @@ gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
-gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
+gem "rails-assets-airbrake-js-client", "~> 1.5", source: "http://insecure.rails-assets.org"
 gem "rails-observers", "~> 0.1"
 gem "recaptcha", "~> 4.13", require: "recaptcha/rails"
 gem "redcarpet", "~> 3.4"
@@ -102,8 +102,12 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem 'newrelic_rpm'
+gem 'scout_apm'
+gem 'prometheus-client'
 
 group :development do
+  gem 'meta_request'
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false
@@ -118,6 +122,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rack-mini-profiler', require: false
+  gem 'dotenv'
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -157,3 +163,5 @@ group :test do
   gem "zonebie", "~> 0.6.1"
 end
 # rubocop:enable LineLength
+
+gem "prometheus_exporter", "~> 0.5.0"

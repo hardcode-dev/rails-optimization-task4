@@ -38,6 +38,7 @@ gem "delayed_job_active_record", "~> 4.1"
 gem "delayed_job_web", "~> 1.4"
 gem "devise", "~> 4.6"
 gem "draper", "~> 3.0"
+gem "elastic-apm", "3.5.0"
 gem "email_validator", "~> 1.6"
 gem "emoji_regex", "~> 1.0"
 gem "envied", "~> 0.9"
@@ -59,6 +60,7 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem "newrelic_rpm"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
@@ -102,6 +104,9 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "yabeda"
+gem "yabeda-prometheus"
+gem "yabeda-rails"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -117,15 +122,18 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :test do
+group :development, :test, :local_production do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
   gem "memory_profiler", "~> 0.9"
+  gem "meta_request"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"
+  gem "rack-mini-profiler", require: false
+  gem "rails_panel"
   gem "rspec-rails", "~> 3.8"
   gem "rspec-retry", "~> 0.6"
   gem "rubocop", "~> 0.63", require: false

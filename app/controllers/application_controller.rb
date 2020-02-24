@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
+  before_action :authorize_rack_mini_profiler
+
   include Pundit
   include Instrumentation
 
@@ -77,5 +79,11 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super(payload)
     append_to_honeycomb(request, self.class.name)
+  end
+
+  private
+
+  def authorize_rack_mini_profiler
+    Rack::MiniProfiler.authorize_request if Rails.env.local_production?
   end
 end

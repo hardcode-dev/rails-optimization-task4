@@ -1,0 +1,18 @@
+common: &default_settings
+  license_key: <%= ENV["NEWRELIC_LICENSE_KEY"] %>
+  agent_enabled: <%= ENV["NEWRELIC_AGENT_ENABLED"] == 'true' %>
+  monitor_mode: <%= ENV["NEWRELIC_MONITOR_MODE"] == 'true' %>
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings
+
+local_production:
+  <<: *default_settings
+  app_name: "dev.to (local production)"
+
+production:
+  <<: *default_settings
+  app_name: "dev.to (production)"

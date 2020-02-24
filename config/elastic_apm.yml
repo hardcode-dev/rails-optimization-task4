@@ -1,0 +1,8 @@
+active: <%= ENV["ELASTIC_APM_ACTIVE"] == "true" %>
+server_url: "<%= ENV["ELASTIC_APM_SERVER_URL"] %>"
+api_request_time: "<%= ENV["ELASTIC_APM_API_REQUEST_TIME"] %>"
+environment: "<%= ENV["ELASTIC_APM_ENVIRONMENT"] %>"
+log_level: "<%= ENV["ELASTIC_APM_LOG_LEVEL"] %>"
+log_path: "<%= ENV["ELASTIC_APM_LOG_PATH"] %>"
+service_name: "<%= ENV["ELASTIC_APM_SERVICE_NAME"] %>"
+secret_token: "<%= ENV["ELASTIC_APM_SECRET_TOKEN"] %>"

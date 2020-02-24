@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Instrumentation
 
+  # inside your ApplicationController
+
+  before_action do
+    Rack::MiniProfiler.authorize_request if current_user&.any_admin?
+  end
+
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ApplicationConfig["APP_NAME"] && password == ApplicationConfig["APP_PASSWORD"]

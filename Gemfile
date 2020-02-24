@@ -156,4 +156,11 @@ group :test do
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"
 end
-# rubocop:enable LineLength
+
+
+gem 'newrelic_rpm'
+gem 'scout_apm'
+
+gem 'yabeda-rails'
+gem 'yabeda-prometheus'
+#gem 'yabeda-puma-plugin'

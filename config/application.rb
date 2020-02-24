@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module PracticalDeveloper
   class Application < Rails::Application
+    if Rails.env.development?
+      config.skylight.environments += ["development"]
+    end
+
     config.load_defaults 5.1
 
     # Settings in config/environments/* take precedence over those specified here.

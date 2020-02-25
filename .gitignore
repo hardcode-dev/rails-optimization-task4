@@ -61,3 +61,4 @@ config/newrelic.yml
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+Envfile

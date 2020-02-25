@@ -1,6 +1,6 @@
 class CustomCollector < PrometheusExporter::Server::TypeCollector
   unless defined? Rails
-    require File.expand_path("../config/environment", __DIR__)
+    require File.expand_path("../../config/environment", __FILE__)
   end
 
   def type

@@ -157,3 +157,5 @@ group :test do
   gem "zonebie", "~> 0.6.1"
 end
 # rubocop:enable LineLength
+
+gem 'newrelic_rpm'

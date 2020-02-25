@@ -1,4 +1,4 @@
-FROM ruby:2.6.1
+FROM ruby:2.6.3
 
 # Make nodejs and yarn as dependencies
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -14,7 +14,7 @@ RUN apt-get update -qq && apt-get install -y \
  && rm -rf /var/lib/apt/lists
 
 WORKDIR /usr/src/app
-ENV RAILS_ENV development
+ENV RAILS_ENV profile
 
 # Installing Ruby dependencies
 COPY Gemfile* ./

@@ -60,11 +60,13 @@ gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
 gem "nokogiri", "~> 1.10"
+gem "newrelic_rpm"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
+gem "prometheus_exporter"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -72,6 +74,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler"
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -117,11 +120,14 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
+group :development, :test, :profile do
+  gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
+end
+
 group :development, :test do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
-  gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"

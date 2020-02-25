@@ -32,6 +32,10 @@ development:
   <<: *default_settings
   app_name: LocDev (Development)
 
+localprod:
+  <<: *default_settings
+  app_name: LocDev (Local Production)
+
 test:
   <<: *default_settings
   # It doesn't make sense to report to New Relic from automated test runs.

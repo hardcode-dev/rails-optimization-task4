@@ -34,6 +34,9 @@ module PracticalDeveloper
     config.active_record.observers = :article_observer, :reaction_observer, :comment_observer
     config.active_job.queue_adapter = :delayed_job
 
+    config.skylight.environments += ['development']
+    config.skylight.environments += ['profile']
+
     config.middleware.use Rack::Deflater
 
     # Globally handle Pundit::NotAuthorizedError by serving 404

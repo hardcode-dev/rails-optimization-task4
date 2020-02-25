@@ -9,7 +9,8 @@ services:
     depends_on:
       - db
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: profile
+      RACK_ENV: profile
       DATABASE_URL: postgres://postgres:mysecretpassword@db:5432/postgres
       YARN_INTEGRITY_ENABLED: "false"
     volumes:
@@ -19,10 +20,11 @@ services:
     ports: []
     <<: *rails_base
     command: rails jobs:work
-  webpacker:
-    ports: []
+  prometheus_exporter:
+    ports:
+      - "9394:9394"
     <<: *rails_base
-    command: ./bin/webpack-dev-server
+    command: bundle exec prometheus_exporter -b 0.0.0.0
   db:
     image: postgres
     ports:

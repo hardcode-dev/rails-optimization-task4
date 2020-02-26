@@ -1,3 +1,5 @@
+require "rack-mini-profiler"
+
 Rails.application.configure do
   # config.middleware.use(Rack::RubyProf, :path => 'ruby-prof-results')
   # config.middleware.use ProfileMiddleware

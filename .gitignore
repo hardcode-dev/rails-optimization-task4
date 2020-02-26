@@ -56,3 +56,4 @@ package-lock.json
 
 .rvmrc
 config/newrelic.yml
+ruby-prof-results

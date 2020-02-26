@@ -3,11 +3,13 @@ class StoriesController < ApplicationController
   before_action :set_cache_control_headers, only: %i[index search show]
 
   def index
-    add_param_context(:username, :tag)
-    return handle_user_or_organization_or_podcast_index if params[:username]
-    return handle_tag_index if params[:tag]
+    Rack::MiniProfiler.step("Profile Index action") do
+      add_param_context(:username, :tag)
+      return handle_user_or_organization_or_podcast_index if params[:username]
+      return handle_tag_index if params[:tag]
 
-    handle_base_index
+      handle_base_index
+    end
   end
 
   def search

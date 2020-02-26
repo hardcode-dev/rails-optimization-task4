@@ -14,6 +14,11 @@ chdir APP_ROOT do
   puts "== STARTING UP =="
   puts "== STARTING PROMETHEUS MONITORING =="
   system! "docker-compose -f docker-compose.yml.monitoring up -d"
+  puts "== CLEARING TMP CACHE =="
+  system! "bundle exec rails tmp:cache:clear"
+  puts "== ASSETS PRECOMPILE =="
+  system! "RAILS_ENV=profile bundle exec rails assets:clean"
+  system! "RAILS_ENV=profile bundle exec rails assets:precompile"
   puts "== STARTING UP MAIN APP =="
   system! "foreman start -f Procfile.dev"
 end

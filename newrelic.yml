@@ -16,7 +16,7 @@ common: &default_settings
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: LocDev
+  app_name: dev.to
 
   # To disable the agent regardless of other settings, uncomment the following:
   # agent_enabled: false
@@ -30,20 +30,8 @@ common: &default_settings
 # If your application has other named environments, configure them here.
 development:
   <<: *default_settings
-  app_name: LocDev (Development)
+  app_name: dev.to (Development)
 
 localprod:
   <<: *default_settings
-  app_name: LocDev (Local Production)
-
-test:
-  <<: *default_settings
-  # It doesn't make sense to report to New Relic from automated test runs.
-  monitor_mode: false
-
-staging:
-  <<: *default_settings
-  app_name: LocDev (Staging)
-
-production:
-  <<: *default_settings
+  app_name: dev.to (Local Production)

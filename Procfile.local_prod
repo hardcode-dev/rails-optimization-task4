@@ -1,0 +1,4 @@
+web: LOCAL_PRODUCTION=true bin/rails s -p 3000
+webpacker: ./bin/webpack-dev-server
+job: bin/rake jobs:work
+prometheus: prometheus --config.file=config/prometheus.yml

@@ -6,6 +6,28 @@ module Config
       new.call(config)
     end
 
+    def log_level
+      :debug
+    end
+
+
+    def config_mailer(config)
+
+      config.action_mailer.delivery_method = :smtp
+      config.action_mailer.perform_deliveries = true
+      config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
+      ActionMailer::Base.smtp_settings = {
+          address: "smtp.sendgrid.net",
+          port: "587",
+          authentication: :plain,
+          user_name: ENV["SENDGRID_USERNAME_ACCEL"],
+          password: ENV["SENDGRID_PASSWORD_ACCEL"],
+          domain: "dev.to",
+          enable_starttls_auto: true
+      }
+
+    end
+
     def call(config)
       # Verifies that versions and hashed value of the package contents in the project's package.json
       config.webpacker.check_yarn_integrity = false
@@ -62,7 +84,7 @@ module Config
 
       # Use the lowest log level to ensure availability of diagnostic information
       # when problems arise.
-      config.log_level = :debug
+      config.log_level = log_level
 
       # Prepend all log lines with the following tags.
       config.log_tags = [:request_id]
@@ -117,18 +139,8 @@ module Config
 
       config.app_domain = "dev.to"
 
-      config.action_mailer.delivery_method = :smtp
-      config.action_mailer.perform_deliveries = true
-      config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
-      ActionMailer::Base.smtp_settings = {
-        address: "smtp.sendgrid.net",
-        port: "587",
-        authentication: :plain,
-        user_name: ENV["SENDGRID_USERNAME_ACCEL"],
-        password: ENV["SENDGRID_PASSWORD_ACCEL"],
-        domain: "dev.to",
-        enable_starttls_auto: true
-      }
+
+      config_mailer(config)
 
       config.middleware.use Rack::HostRedirect,
                             "practicaldev.herokuapp.com" => "dev.to"

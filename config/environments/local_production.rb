@@ -1,4 +1,3 @@
-# RAILS_ENV=local_production bin/setup
 # RAILS_ENV=local_production bin/startup
 
 Rails.application.configure do
@@ -13,7 +12,7 @@ Rails.application.configure do
 
   config.read_encrypted_secrets = true
 
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  config.public_file_server.enabled = true
   config.public_file_server.headers = {
     "Cache-Control" => "public, s-maxage=2592000, max-age=86400"
   }
@@ -23,7 +22,6 @@ Rails.application.configure do
   config.assets.compile = true
 
   config.assets.digest = true
-
 
   config.log_level = :debug
 

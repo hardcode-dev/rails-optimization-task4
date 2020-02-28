@@ -1,2 +1,2 @@
-web: bundle exec rails server -p 3000 -e local_production
+web: SKYLIGHT_ENABLED=true bundle exec rails server -p 3000 -e local_production
 worker: bundle exec rake jobs:work

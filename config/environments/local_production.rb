@@ -11,6 +11,9 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  config.assets.debug = false
+  # config.assets.compile = false
+  config.assets.compile = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -69,12 +72,11 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.action_mailer.perform_caching = true
   config.cache_store = :memory_store
   config.public_file_server.headers = {
     "Cache-Control" => "public, max-age=172800"
   }
-
-  config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

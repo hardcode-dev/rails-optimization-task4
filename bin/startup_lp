@@ -13,5 +13,6 @@ end
 chdir APP_ROOT do
   puts "== STARTING UP LocalProduction =="
   system! "bundle exec rake assets:precompile"
+  system! "bundle exec rake webpacker:compile"
   system! "foreman start -f Procfile.lp"
 end

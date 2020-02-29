@@ -50,6 +50,8 @@
     </div>
   <% end %>
 <% else %>
+
+<% cache(@stories) do %>
   <% @stories.each_with_index do |story, i| %>
     <% next if story.id == @featured_story.id %>
     <% if !user_signed_in? && i == 4 %>
@@ -57,6 +59,8 @@
     <% end %>
     <%= render "articles/single_story", story: story %>
   <% end %>
+<% end %>
+
 <% end %>
 <% if @stories.size > 1 %>
   <div class="placeholder-div"></div>

@@ -12,5 +12,5 @@ end
 
 chdir APP_ROOT do
   puts "== STARTING UP =="
-  system! "foreman start -f Procfile.dev"
+  system! "overmind start -f Procfile.dev"
 end

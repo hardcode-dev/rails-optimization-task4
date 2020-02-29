@@ -106,6 +106,7 @@ gem 'newrelic_rpm'
 gem 'rack-mini-profiler'
 
 group :development do
+  gem 'meta_request'
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

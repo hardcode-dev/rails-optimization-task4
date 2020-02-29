@@ -1,0 +1,14 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=IO::^select
+0 12
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/reactor.rb
+fn=Puma/Reactor::run_internal
+139 4
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=IO::^select
+calls=1 126
+126 504965
+

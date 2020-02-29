@@ -1,0 +1,30 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Kernel::sleep
+0 14
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread/Mutex::synchronize
+0 4
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool::trim
+216 3
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread/Mutex::synchronize
+calls=1 216
+216 4
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool/AutoTrim::start!
+253 5
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+cfn=Puma/ThreadPool::trim
+calls=1 253
+253 7
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::sleep
+calls=1 254
+254 448054
+

@@ -115,6 +115,7 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
+  gem 'rack-mini-profiler', require: false
 end
 
 group :development, :test do
@@ -144,16 +145,20 @@ group :test do
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
-  gem "ruby-prof", "~> 0.17", require: false
+  # gem "ruby-prof", "~> 0.17", require: false
   gem "selenium-webdriver", "~> 3.141"
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
-  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"
+end
+
+group :development, :local_production do
+  gem "stackprof", "~> 0.2", platforms: :ruby
+  gem "ruby-prof"
 end
 # rubocop:enable LineLength

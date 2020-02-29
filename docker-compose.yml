@@ -27,3 +27,11 @@ services:
     image: postgres
     ports:
     - "5432:5432"
+  prometheus:
+    image: prom/prometheus:0.18.0
+    volumes:
+        - ./prometheus.yml:/prometheus.yml
+    command:
+        - '-config.file=/prometheus.yml'
+    ports:
+        - '9090:9090'

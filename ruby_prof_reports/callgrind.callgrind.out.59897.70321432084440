@@ -1,0 +1,278 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread/Mutex::sleep
+0 21431
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Integer::<=>
+0 18
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::min
+0 14
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::map
+0 17
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::monotime
+calls=24 89
+89 4
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+fn=Rack/Timeout/Scheduler/RunEvent::cancelled?
+34 16
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::reject!
+0 28
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+cfn=Rack/Timeout/Scheduler/RunEvent::cancelled?
+calls=24 83
+83 16
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread/Mutex::synchronize
+0 149
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::reject!
+calls=12 83
+83 45
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::map
+calls=12 89
+89 21
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::min
+calls=12 89
+89 14
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+cfn=Rack/Timeout/MonotonicTime::fsecs_mono
+calls=23 89
+89 154
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Integer::<=>
+calls=12 89
+89 18
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread/Mutex::sleep
+calls=12 91
+91 11616238
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Enumerable::partition
+calls=11 94
+94 87
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::select
+calls=11 95
+95 36
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::replace
+calls=11 96
+96 11
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Float::+
+0 10
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Hash::values
+0 9
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/core.rb
+fn=Rack/Timeout::^notify_state_change_observers
+192 21
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Hash::values
+calls=12 192
+192 9
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=12 192
+192 2
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::include?
+0 8
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/core.rb
+fn=Rack/Timeout::^_set_state!
+167 48
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::include?
+calls=12 167
+167 8
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/core.rb
+cfn=Rack/Timeout::^notify_state_change_observers
+calls=12 169
+169 32
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=#<Class:0x00007fe9f6600b98>::proc
+0 9
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+fn=Rack/Timeout/Scheduler/RunEvent::run!
+38 102
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::proc
+calls=12 39
+39 9
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+cfn=Rack/Timeout/MonotonicTime::fsecs_mono
+calls=12 112
+112 20
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/core.rb
+cfn=Rack/Timeout::^_set_state!
+calls=12 113
+113 89
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+fn=Rack/Timeout/Scheduler/RepeatEvent::run!
+52 82
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+cfn=Rack/Timeout/Scheduler/RunEvent::run!
+calls=12 52
+52 220
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::monotime
+calls=24 54
+54 4
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+cfn=Rack/Timeout/MonotonicTime::fsecs_mono
+calls=24 54
+54 23
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Float::+
+calls=12 54
+54 10
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Enumerable::sort_by
+0 71
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=12 100
+100 24
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::replace
+0 14
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Kernel::is_a?
+0 12
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::select
+0 29
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::is_a?
+calls=1 95
+95 2
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::is_a?
+calls=11 95
+95 10
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=#<Class:0x00007fe9f6600b98>::monotime
+0 25
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::each
+0 94
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::monotime
+calls=2 94
+94 2
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::monotime
+calls=12 100
+100 7
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+cfn=Rack/Timeout/Scheduler/RepeatEvent::run!
+calls=12 100
+100 339
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=#<Class:0x00007fe9f6600b98>::monotime
+calls=22 94
+94 9
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Enumerable::partition
+0 38
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=1 94
+94 7
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=11 94
+94 53
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Process::^clock_gettime
+0 54
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+fn=Rack/Timeout/MonotonicTime::fsecs_mono
+9 162
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Process::^clock_gettime
+calls=1 9
+9 2
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Process::^clock_gettime
+calls=12 9
+9 9
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Process::^clock_gettime
+calls=24 9
+9 11
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Process::^clock_gettime
+calls=12 9
+9 8
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Process::^clock_gettime
+calls=23 9
+9 25
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/scheduler.rb
+fn=Rack/Timeout/Scheduler::run_loop!
+93 46
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+cfn=Rack/Timeout/MonotonicTime::fsecs_mono
+calls=1 93
+93 6
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Enumerable::partition
+calls=1 94
+94 11
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::select
+calls=1 95
+95 5
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::replace
+calls=1 96
+96 3
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Enumerable::sort_by
+calls=12 100
+100 95
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=12 100
+100 367
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/rack-timeout-0.5.1/lib/rack/timeout/support/monotonic_time.rb
+cfn=Rack/Timeout/MonotonicTime::fsecs_mono
+calls=12 101
+101 13
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread/Mutex::synchronize
+calls=12 82
+82 11616774
+

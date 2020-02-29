@@ -1,0 +1,30 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Kernel::sleep
+0 1794
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread::name=
+0 1
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread::^current
+0 2
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/2.6.0/timeout.rb
+fn=Timeout::^timeout
+84 11
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread::^current
+calls=1 84
+84 2
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread::name=
+calls=1 84
+84 1
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::sleep
+calls=1 86
+86 648880
+

@@ -157,3 +157,12 @@ group :test do
   gem "zonebie", "~> 0.6.1"
 end
 # rubocop:enable LineLength
+
+group :development, :local_production do
+  gem 'rack-mini-profiler', require: false
+  gem 'meta_request'
+
+  gem "ruby-prof-rails", :git => "git@github.com:tleish/ruby-prof-rails.git"
+end
+gem 'newrelic_rpm'
+

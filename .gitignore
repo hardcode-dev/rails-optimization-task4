@@ -53,3 +53,7 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+
+.rvmrc
+config/newrelic.yml
+ruby-prof-results

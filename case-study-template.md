@@ -86,3 +86,13 @@ Rendered articles/_tag_identifier.html.erb (2.7ms)
   Rendered stories/_main_stories_feed.html.erb (366.5ms)
 
 ```
+
+## Тест на local_production
+
+```
+До оптимизации
+Rendered stories/_main_stories_feed.html.erb (316.7ms)
+
+После оптимизации
+Rendered stories/_main_stories_feed.html.erb (55.7ms)
+```

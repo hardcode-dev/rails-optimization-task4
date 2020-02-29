@@ -102,6 +102,7 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -121,15 +122,16 @@ group :development, :test do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
-  gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"
   gem "rspec-rails", "~> 3.8"
   gem "rspec-retry", "~> 0.6"
-  gem "rubocop", "~> 0.63", require: false
+  gem "rubocop", require: false
+  gem "rubocop-performance"
   gem "rubocop-rspec", "~> 1.31"
+  gem "rubocop-faker"
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"

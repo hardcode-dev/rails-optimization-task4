@@ -2,7 +2,7 @@ p "1/9 Creating Organizations"
 
 3.times do
   Organization.create!(
-    name: Faker::SiliconValley.company,
+    name: Faker::TvShows::SiliconValley.company,
     summary: Faker::Company.bs,
     remote_profile_image_url: logo = Faker::Company.logo,
     nav_image: logo,
@@ -25,13 +25,13 @@ User.clear_index!
 10.times do |i|
   user = User.create!(
     name: name = Faker::Name.unique.name,
-    summary: Faker::Lorem.paragraph_by_chars(199, false),
+    summary: Faker::Lorem.paragraph_by_chars(number: 199, supplemental: false),
     profile_image: File.open("#{Rails.root}/app/assets/images/#{rand(1..40)}.png"),
     website_url: Faker::Internet.url,
-    twitter_username: Faker::Internet.username(name),
+    twitter_username: Faker::Internet.username(specifier: name),
     email_comment_notifications: false,
     email_follower_notifications: false,
-    email: Faker::Internet.email(name, "+"),
+    email: Faker::Internet.email(name: name, separators: "+"),
     confirmed_at: Time.current,
     password: "password",
   )
@@ -82,9 +82,9 @@ Article.clear_index!
     tags: #{tags.join(', ')}
     ---
 
-    #{Faker::Hipster.paragraph(2)}
+    #{Faker::Hipster.paragraph(sentence_count: 2)}
     #{Faker::Markdown.random}
-    #{Faker::Hipster.paragraph(2)}
+    #{Faker::Hipster.paragraph(sentence_count: 2)}
   MARKDOWN
 
   Article.create!(
@@ -102,7 +102,7 @@ p "5/9 Creating Comments"
 Comment.clear_index!
 30.times do
   attributes = {
-    body_markdown: Faker::Hipster.paragraph(1),
+    body_markdown: Faker::Hipster.paragraph(sentence_count: 1),
     user_id: User.order("RANDOM()").first.id,
     commentable_id: Article.order("RANDOM()").first.id,
     commentable_type: "Article"

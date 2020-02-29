@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 9910aa58d92c018abab25d491191576fcc1a7707
+  revision: d13a99ffe924936b061bef638885fa2d4e6dedfe
   branch: master
   specs:
-    faker (1.9.1)
-      i18n (>= 0.7)
+    faker (2.10.2)
+      i18n (>= 1.6, < 2)
 
 GIT
   remote: https://github.com/thepracticaldev/acts_as_follower.git
@@ -545,7 +545,7 @@ GEM
       nokogiri (>= 1.6)
     io-like (0.3.0)
     ipaddress (0.8.3)
-    jaro_winkler (1.5.2)
+    jaro_winkler (1.5.4)
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -644,13 +644,12 @@ GEM
       rack
     orm_adapter (0.5.0)
     os (1.0.0)
-    parallel (1.13.0)
+    parallel (1.19.1)
     parallel_tests (2.27.1)
       parallel
-    parser (2.6.0.0)
+    parser (2.7.0.3)
       ast (~> 2.4.0)
     pg (1.1.4)
-    powerpack (0.1.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -746,6 +745,7 @@ GEM
     retriable (3.1.2)
     reverse_markdown (1.1.0)
       nokogiri
+    rexml (3.2.4)
     rolify (5.2.0)
     rouge (3.3.0)
     rspec (3.8.0)
@@ -771,18 +771,22 @@ GEM
     rspec-retry (0.6.1)
       rspec-core (> 3.3)
     rspec-support (3.8.0)
-    rubocop (0.63.1)
+    rubocop (0.80.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.5, != 2.5.1.1)
-      powerpack (~> 0.1)
+      parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
+      rexml
       ruby-progressbar (~> 1.7)
-      unicode-display_width (~> 1.4.0)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-faker (0.2.0)
+      rubocop (>= 0.74)
+    rubocop-performance (1.5.2)
+      rubocop (>= 0.71.0)
     rubocop-rspec (1.31.0)
       rubocop (>= 0.60.0)
     ruby-prof (0.17.0)
-    ruby-progressbar (1.10.0)
+    ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     s3_direct_upload (0.1.7)
@@ -903,7 +907,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.4.1)
+    unicode-display_width (1.6.1)
     uniform_notifier (1.12.1)
     validate_url (1.0.2)
       activemodel (>= 3.0.0)
@@ -1042,7 +1046,9 @@ DEPENDENCIES
   rouge (~> 3.3)
   rspec-rails (~> 3.8)
   rspec-retry (~> 0.6)
-  rubocop (~> 0.63)
+  rubocop
+  rubocop-faker
+  rubocop-performance
   rubocop-rspec (~> 1.31)
   ruby-prof (~> 0.17)
   rubyzip (~> 1.2, >= 1.2.2)

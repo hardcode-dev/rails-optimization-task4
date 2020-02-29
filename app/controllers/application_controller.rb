@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action do
-    Rack::MiniProfiler.authorize_request
-  end
+  # before_action do
+  #   Rack::MiniProfiler.authorize_request
+  # end
 
   protect_from_forgery with: :exception, prepend: true
 

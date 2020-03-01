@@ -164,3 +164,4 @@ Percentage of the requests served within a certain time (ms)
 
 Результат
 Благодаря кэшированию обрабатывается на 10 запросов в секунду больше, рост 25%
+Но вторая точка роста теперь - Redis get

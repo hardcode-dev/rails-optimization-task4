@@ -11,6 +11,9 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
+  puts "== Precompiling assets =="
+  system! "bundle exec rake assets:precompile"
+
   puts "== STARTING UP =="
-  system! "foreman start -f Procfile.dev"
+  system! "foreman start -f Procfile.local_dev"
 end

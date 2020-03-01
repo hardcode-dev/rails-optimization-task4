@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index search show feed new]
+  before_action :find_hottest_tags, only: %i[index]
   before_action :set_cache_control_headers, only: %i[index search show]
 
   def index
@@ -268,5 +269,9 @@ class StoriesController < ApplicationController
       per(num_articles)
     articles = articles.cached_tagged_with(tag) if tag.present? # More efficient than tagged_with
     articles
+  end
+
+  def find_hottest_tags
+    @tag_names = Tag.hottest
   end
 end

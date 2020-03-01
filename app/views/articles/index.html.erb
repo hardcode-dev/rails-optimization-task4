@@ -131,7 +131,7 @@
       </a>
     <% end %>
     <div class="substories" id="substories">
-      <% if @stories.any? %>
+      <% if @stories.size > 1 %>
         <%= render "stories/main_stories_feed" %>
       <% end %>
     </div>

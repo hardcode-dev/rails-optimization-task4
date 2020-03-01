@@ -51,7 +51,7 @@
   <% end %>
 <% else %>
   <div id="sign_in_invitation" style="display: none;"><%= render "stories/sign_in_invitation" %></div>
-  <%= render partial: "articles/single_story", collection: @stories, as: :story, cached: true %>
+  <%= render partial: "articles/single_story", collection: @stories, as: :story %>
 <% end %>
 <% if @stories.size > 1 %>
   <div class="placeholder-div"></div>

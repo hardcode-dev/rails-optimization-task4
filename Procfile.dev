@@ -1,3 +1,3 @@
-web: bin/rails s -p 3000
+web: SKYLIGHT_ENABLED=true  bin/rails s -p 3000
 webpacker: ./bin/webpack-dev-server
 job: bin/rake jobs:work

@@ -87,7 +87,7 @@ class Article < ApplicationRecord
   include CloudinaryHelper
   include ActionView::Helpers
   include AlgoliaSearch
-  include Storext.model
+  # include Storext.model
   include Reactable
 
   acts_as_taggable_on :tags
@@ -130,8 +130,8 @@ class Article < ApplicationRecord
   validates :video_closed_caption_track_url, url: { allow_blank: true, schemes: ["https"] }
   validates :video_source_url, url: { allow_blank: true, schemes: ["https"] }
 
-  before_validation :evaluate_markdown
-  before_validation :create_slug
+  # before_validation :evaluate_markdown
+  # before_validation :create_slug
   before_create     :create_password
   before_save       :set_all_dates
   before_save       :calculate_base_scores
@@ -259,11 +259,11 @@ class Article < ApplicationRecord
     end
   end
 
-  store_attributes :boost_states do
-    boosted_additional_articles Boolean, default: false
-    boosted_dev_digest_email Boolean, default: false
-    boosted_additional_tags String, default: ""
-  end
+  # store_attributes :boost_states do
+  #   boosted_additional_articles Boolean, default: false
+  #   boosted_dev_digest_email Boolean, default: false
+  #   boosted_additional_tags String, default: ""
+  # end
 
   def self.filter_excluded_tags(tag = nil)
     if tag == "hiring"

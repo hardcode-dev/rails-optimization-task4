@@ -28,6 +28,7 @@ gem "autoprefixer-rails", "~> 9.4"
 gem "aws-sdk-lambda", "~> 1.16" # Just Lambda. For more, install aws-sdk gem
 gem "bourbon", "~> 5.1"
 gem "buffer", "~> 0.1"
+gem "bullet", "~> 5.9"
 gem "carrierwave", "~> 1.3"
 gem "carrierwave-bombshelter", "~> 0.2"
 gem "cloudinary", "~> 1.11"
@@ -112,7 +113,6 @@ group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false
-  gem "bullet", "~> 5.9"
   gem "bundler-audit", "~> 0.6"
   gem "derailed_benchmarks", "~> 1.3"
   gem "guard", "~> 2.15", require: false

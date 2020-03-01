@@ -98,8 +98,17 @@
     </div>
 
     <div class="substories" id="substories">
-      <% if @stories.any? %>
-        <%= render "articles/tags/main_feed" %>
+      <% if @stories.size > 1 %>
+        <% @stories.each.with_index do |story, i| %>
+          <% if !user_signed_in? && i == 4 %>
+            <%= render "stories/sign_in_invitation" %>
+          <% end %>
+          <% cache story do %>
+            <%= render "articles/single_story", story: story %>
+          <% end %>
+        <% end %>
+        <div class="placeholder-div"></div>
+        <div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
       <% end %>
     </div>
     <div class="loading-articles" id="loading-articles">

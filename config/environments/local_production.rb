@@ -56,7 +56,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = :error
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -120,6 +120,11 @@ Rails.application.configure do
 
   config.middleware.use Rack::HostRedirect,
     "practicaldev.herokuapp.com" => "dev.to"
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.console = true
+  end
 end
 
 # rubocop:enable Metrics/BlockLength

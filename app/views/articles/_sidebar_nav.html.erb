@@ -12,8 +12,6 @@
         </div>
       </a>
     </div>
-  <% end %>
-  <% if user_signed_in? %>
     <div class="widget sidebar-nav-block">
       <div class="sidebar-nav-element sidebar-nav-readinglist">
         <a class="sidebar-nav-link" href="/readinglist">
@@ -41,7 +39,7 @@
         <% if user_signed_in? %>
           <div class="sidebar-nav-subheader tag-separator" id="tag-separator">Other Popular Tags</div>
         <% end %>
-        <% Tag.where(supported: true).order("hotness_score DESC").limit(30).pluck(:id, :name).each do |tag_array| %>
+        <% @tag_names.each do |tag_array| %>
           <div class="sidebar-nav-element" id="default-sidebar-element-<%= tag_array.second %>">
             <a class="sidebar-nav-link" href="/t/<%= tag_array.second %>">
               <span class="sidebar-nav-tag-text">

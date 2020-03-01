@@ -1,5 +1,5 @@
 ---
 # The authentication token for the application.
 authentication: <%= ENV['SKYLIGHT_AUTHENTICATION'] %>
-local_production:                                 # Rails environment
+production:                                 # Rails environment
   env: <%= 'localproduction' %> # Skylight environment

@@ -36,9 +36,9 @@ services:
       args:
         - REDIS_URL=redis://in_memory_store
         - RAILS_ENV=production
-        - ALGOLIASEARCH_API_KEY=83db4ac15af764b3dc5dea76e8920336
-        - ALGOLIASEARCH_APPLICATION_ID=0RRG35HS6F
-        - ALGOLIASEARCH_SEARCH_ONLY_KEY=68164daa659ce5b8b5e08412bf760dd9
+        - ALGOLIASEARCH_API_KEY=STUB
+        - ALGOLIASEARCH_APPLICATION_ID=STUB
+        - ALGOLIASEARCH_SEARCH_ONLY_KEY=STUB
     command: bundle exec rails server -b 0.0.0.0 -p 5000
     entrypoint: "./docker-entrypoint.sh"
     volumes:

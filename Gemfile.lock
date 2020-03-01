@@ -322,6 +322,7 @@ GEM
       thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
+    flamegraph (0.9.5)
     fog (1.41.0)
       fog-aliyun (>= 0.1.0)
       fog-atmos
@@ -1001,6 +1002,7 @@ DEPENDENCIES
   feedjira (~> 2.2)
   figaro (~> 1.1)
   fix-db-schema-conflicts!
+  flamegraph
   fog (~> 1.41)
   front_matter_parser (~> 0.2)
   gemoji (~> 3.0.0)

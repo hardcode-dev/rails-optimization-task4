@@ -9,3 +9,4 @@
  public/pack/*
 docker-compose*
 /public/packs/*
+/grafana_*

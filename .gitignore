@@ -56,3 +56,5 @@ package-lock.json
 .postcssrc.yml
 .ruby-gemset
 deploy/environments/variables.production.env
+grafana_db/*
+!grafana_db/grafana.db

@@ -132,3 +132,35 @@ Percentage of the requests served within a certain time (ms)
 95% 794
 
 Не выиграно особо много времени
+
+## Итоги
+
+Замеры для local_production ab -n 50 -c 5 http://127.0.0.1:5000/ до проведения модификаций
+Requests per second: 24.75 [#/sec](mean)
+Time per request: 202.033 [ms](mean)
+Time per request: 40.407 [ms] (mean, across all concurrent requests)
+
+Percentage of the requests served within a certain time (ms)
+50% 165
+66% 232
+75% 258
+80% 268
+90% 288
+95% 296
+
+Замеры для local_production ab -n 50 -c 5 http://127.0.0.1:5000/ после проведения модификаций
+
+Requests per second: 33.32 [#/sec](mean)
+Time per request: 150.056 [ms](mean)
+Time per request: 30.011 [ms] (mean, across all concurrent requests)
+
+Percentage of the requests served within a certain time (ms)
+50% 128
+66% 182
+75% 188
+80% 193
+90% 241
+95% 243
+
+Результат
+Благодаря кэшированию обрабатывается на 10 запросов в секунду больше, рост 25%

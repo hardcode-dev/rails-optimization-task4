@@ -1,0 +1,2 @@
+web: bin/rails s -p 5000 -e local_production
+job: bin/rake jobs:work

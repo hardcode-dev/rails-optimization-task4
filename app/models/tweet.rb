@@ -1,3 +1,38 @@
+# == Schema Information
+#
+# Table name: tweets
+#
+#  id                             :integer          not null, primary key
+#  created_at                     :datetime         not null
+#  extended_entities_serialized   :text             default("--- {}\n")
+#  favorite_count                 :integer
+#  full_fetched_object_serialized :text             default("--- {}\n")
+#  hashtags_serialized            :string           default("--- []\n")
+#  in_reply_to_status_id_code     :string
+#  in_reply_to_user_id_code       :string
+#  in_reply_to_username           :string
+#  is_quote_status                :boolean
+#  last_fetched_at                :datetime
+#  media_serialized               :text             default("--- []\n")
+#  mentioned_usernames_serialized :string           default("--- []\n")
+#  primary_external_url           :string
+#  profile_image                  :string
+#  quoted_tweet_id_code           :string
+#  retweet_count                  :integer
+#  source                         :string
+#  text                           :string
+#  tweeted_at                     :datetime
+#  twitter_id_code                :string
+#  twitter_name                   :string
+#  twitter_uid                    :string
+#  twitter_user_followers_count   :integer
+#  twitter_user_following_count   :integer
+#  twitter_username               :string
+#  updated_at                     :datetime         not null
+#  urls_serialized                :text             default("--- []\n")
+#  user_id                        :integer
+#  user_is_verified               :boolean
+#
 class Tweet < ApplicationRecord
   include AlgoliaSearch
 

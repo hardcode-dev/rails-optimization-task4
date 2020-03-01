@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: github_repos
+#
+#  id               :bigint(8)        not null, primary key
+#  additional_note  :string
+#  bytes_size       :integer
+#  created_at       :datetime         not null
+#  description      :string
+#  featured         :boolean          default("false")
+#  fork             :boolean          default("false")
+#  github_id_code   :integer
+#  info_hash        :text             default("--- {}\n")
+#  language         :string
+#  name             :string
+#  priority         :integer          default("0")
+#  stargazers_count :integer
+#  updated_at       :datetime         not null
+#  url              :string
+#  user_id          :integer
+#  watchers_count   :integer
+#
 class GithubRepo < ApplicationRecord
   belongs_to :user
 

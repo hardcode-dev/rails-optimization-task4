@@ -1,3 +1,31 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id                       :integer          not null, primary key
+#  alias_for                :string
+#  bg_color_hex             :string
+#  buffer_profile_id_code   :string
+#  created_at               :datetime
+#  hotness_score            :integer          default("0")
+#  keywords_for_search      :string
+#  name                     :string
+#  pretty_name              :string
+#  profile_image            :string
+#  requires_approval        :boolean          default("false")
+#  rules_html               :text
+#  rules_markdown           :text
+#  short_summary            :string
+#  social_image             :string
+#  submission_rules_headsup :string
+#  submission_template      :text
+#  supported                :boolean          default("false")
+#  taggings_count           :integer          default("0")
+#  text_color_hex           :string
+#  updated_at               :datetime
+#  wiki_body_html           :text
+#  wiki_body_markdown       :text
+#
 class Tag < ActsAsTaggableOn::Tag
   attr_accessor :points
 

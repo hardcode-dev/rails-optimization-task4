@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id               :bigint(8)        not null, primary key
+#  chat_channel_id  :bigint(8)        not null
+#  created_at       :datetime         not null
+#  message_html     :string           not null
+#  message_markdown :string           not null
+#  updated_at       :datetime         not null
+#  user_id          :bigint(8)        not null
+#
+# Foreign Keys
+#
+#  fk_rails_...  (chat_channel_id => chat_channels.id)
+#  fk_rails_...  (user_id => users.id)
+#
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :chat_channel

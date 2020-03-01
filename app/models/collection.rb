@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: collections
+#
+#  id              :integer          not null, primary key
+#  created_at      :datetime         not null
+#  description     :string
+#  main_image      :string
+#  organization_id :integer
+#  published       :boolean          default("false")
+#  slug            :string
+#  social_image    :string
+#  title           :string
+#  updated_at      :datetime         not null
+#  user_id         :integer
+#
 class Collection < ApplicationRecord
   has_many :articles
   belongs_to :user, optional: true

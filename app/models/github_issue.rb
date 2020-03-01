@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: github_issues
+#
+#  id               :integer          not null, primary key
+#  category         :string
+#  created_at       :datetime         not null
+#  issue_serialized :string           default("--- {}\n")
+#  processed_html   :string
+#  updated_at       :datetime         not null
+#  url              :string
+#
 class GithubIssue < ApplicationRecord
   serialize :issue_serialized, Hash
   validates :category, inclusion: { in: %w[issue issue_comment] }

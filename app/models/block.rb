@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: blocks
+#
+#  id                   :integer          not null, primary key
+#  body_html            :text
+#  body_markdown        :text
+#  created_at           :datetime         not null
+#  featured             :boolean
+#  featured_number      :integer
+#  index_position       :integer
+#  input_css            :text
+#  input_html           :text
+#  input_javascript     :text
+#  processed_css        :text
+#  processed_html       :text
+#  processed_javascript :text
+#  published_css        :text
+#  published_html       :text
+#  published_javascript :text
+#  title                :string
+#  updated_at           :datetime         not null
+#  user_id              :integer
+#
 class Block < ApplicationRecord
   attr_accessor :publish_now
 

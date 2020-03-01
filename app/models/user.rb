@@ -1,3 +1,144 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                                    :integer          not null, primary key
+#  articles_count                        :integer          default("0"), not null
+#  available_for                         :string
+#  badge_achievements_count              :integer          default("0"), not null
+#  base_cover_letter                     :text
+#  behance_url                           :string
+#  bg_color_hex                          :string
+#  checked_code_of_conduct               :boolean          default("false")
+#  comments_count                        :integer          default("0"), not null
+#  config_font                           :string           default("default")
+#  config_theme                          :string           default("default")
+#  confirmation_sent_at                  :datetime
+#  confirmation_token                    :string
+#  confirmed_at                          :datetime
+#  contact_consent                       :boolean          default("false")
+#  created_at                            :datetime         not null
+#  current_sign_in_at                    :datetime
+#  current_sign_in_ip                    :inet
+#  currently_hacking_on                  :string
+#  currently_learning                    :string
+#  display_sponsors                      :boolean          default("true")
+#  dribbble_url                          :string
+#  editor_version                        :string           default("v1")
+#  education                             :string
+#  email                                 :string           default(""), not null
+#  email_badge_notifications             :boolean          default("true")
+#  email_comment_notifications           :boolean          default("true")
+#  email_connect_messages                :boolean          default("true")
+#  email_digest_periodic                 :boolean          default("true"), not null
+#  email_follower_notifications          :boolean          default("true")
+#  email_membership_newsletter           :boolean          default("false")
+#  email_mention_notifications           :boolean          default("true")
+#  email_newsletter                      :boolean          default("true")
+#  email_public                          :boolean          default("false")
+#  email_unread_notifications            :boolean          default("true")
+#  employer_name                         :string
+#  employer_url                          :string
+#  employment_title                      :string
+#  encrypted_password                    :string           default(""), not null
+#  experience_level                      :integer
+#  export_requested                      :boolean          default("false")
+#  exported_at                           :datetime
+#  facebook_url                          :string
+#  feed_admin_publish_permission         :boolean          default("true")
+#  feed_fetched_at                       :datetime         default("2017-01-01 05:00:00")
+#  feed_mark_canonical                   :boolean          default("false")
+#  feed_url                              :string
+#  following_orgs_count                  :integer          default("0"), not null
+#  following_tags_count                  :integer          default("0"), not null
+#  following_users_count                 :integer          default("0"), not null
+#  github_created_at                     :datetime
+#  github_repos_updated_at               :datetime         default("2017-01-01 05:00:00")
+#  github_username                       :string
+#  gitlab_url                            :string
+#  inbox_type                            :string           default("private")
+#  language_settings                     :jsonb            not null
+#  last_article_at                       :datetime         default("2017-01-01 05:00:00")
+#  last_comment_at                       :datetime         default("2017-01-01 05:00:00")
+#  last_followed_at                      :datetime
+#  last_moderation_notification          :datetime         default("2017-01-01 05:00:00")
+#  last_notification_activity            :datetime
+#  last_sign_in_at                       :datetime
+#  last_sign_in_ip                       :inet
+#  linkedin_url                          :string
+#  location                              :string
+#  looking_for_work                      :boolean          default("false")
+#  looking_for_work_publicly             :boolean          default("false")
+#  mastodon_url                          :string
+#  medium_url                            :string
+#  membership_started_at                 :datetime
+#  mentee_description                    :text
+#  mentee_form_updated_at                :datetime
+#  mentor_description                    :text
+#  mentor_form_updated_at                :datetime
+#  mobile_comment_notifications          :boolean          default("true")
+#  monthly_dues                          :integer          default("0")
+#  mostly_work_with                      :string
+#  name                                  :string
+#  offering_mentorship                   :boolean
+#  old_old_username                      :string
+#  old_username                          :string
+#  onboarding_package_form_submmitted_at :datetime
+#  onboarding_package_fulfilled          :boolean          default("false")
+#  onboarding_package_requested          :boolean          default("false")
+#  onboarding_package_requested_again    :boolean          default("false")
+#  org_admin                             :boolean          default("false")
+#  organization_id                       :integer
+#  permit_adjacent_sponsors              :boolean          default("true")
+#  personal_data_updated_at              :datetime
+#  profile_image                         :string
+#  profile_updated_at                    :datetime         default("2017-01-01 05:00:00")
+#  rating_votes_count                    :integer          default("0"), not null
+#  reactions_count                       :integer          default("0"), not null
+#  remember_created_at                   :datetime
+#  remember_token                        :string
+#  reputation_modifier                   :float            default("1.0")
+#  reset_password_sent_at                :datetime
+#  reset_password_token                  :string
+#  resume_html                           :text
+#  saw_onboarding                        :boolean          default("true")
+#  score                                 :integer          default("0")
+#  secret                                :string
+#  seeking_mentorship                    :boolean
+#  shipping_address                      :string
+#  shipping_address_line_2               :string
+#  shipping_city                         :string
+#  shipping_company                      :string
+#  shipping_country                      :string
+#  shipping_name                         :string
+#  shipping_postal_code                  :string
+#  shipping_state                        :string
+#  shipping_validated                    :boolean          default("false")
+#  shipping_validated_at                 :datetime
+#  shirt_gender                          :string
+#  shirt_size                            :string
+#  sign_in_count                         :integer          default("0"), not null
+#  signup_cta_variant                    :string
+#  signup_refer_code                     :string
+#  signup_referring_site                 :string
+#  specialty                             :string
+#  stackoverflow_url                     :string
+#  stripe_id_code                        :string
+#  summary                               :text
+#  tabs_or_spaces                        :string
+#  text_color_hex                        :string
+#  text_only_name                        :string
+#  top_languages                         :string
+#  twitter_created_at                    :datetime
+#  twitter_followers_count               :integer
+#  twitter_following_count               :integer
+#  twitter_username                      :string
+#  unconfirmed_email                     :string
+#  updated_at                            :datetime         not null
+#  username                              :string
+#  website_url                           :string
+#  workshop_expiration                   :datetime
+#
 class User < ApplicationRecord
   include CloudinaryHelper
 
@@ -114,10 +255,10 @@ class User < ApplicationRecord
                            message: "%{value} must be either v1 or v2" }
 
   validates :config_theme,
-              inclusion: { in: %w(default night_theme),
+              inclusion: { in: %w[default night_theme],
                            message: "%{value} must be either default or night theme" }
   validates :config_font,
-              inclusion: { in: %w(default sans_serif),
+              inclusion: { in: %w[default sans_serif],
                            message: "%{value} must be either default or sans serif" }
   validates :shipping_country,
               length: { in: 2..2 },
@@ -131,7 +272,7 @@ class User < ApplicationRecord
                 length: { maximum: 500 }
   validates :mentee_description, :mentor_description,
               length: { maximum: 1000 }
-  validates :inbox_type, inclusion: { in: ["open", "private"] }
+  validates :inbox_type, inclusion: { in: %w[open private] }
   validate  :conditionally_validate_summary
   validate  :validate_mastodon_url
   validate  :validate_feed_url

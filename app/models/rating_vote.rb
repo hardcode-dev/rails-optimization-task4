@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: rating_votes
+#
+#  id         :bigint(8)        not null, primary key
+#  article_id :bigint(8)
+#  created_at :datetime         not null
+#  group      :string
+#  rating     :float
+#  updated_at :datetime         not null
+#  user_id    :bigint(8)
+#
 class RatingVote < ApplicationRecord
   belongs_to :article
   belongs_to :user

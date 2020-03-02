@@ -3,6 +3,7 @@ FROM nginx
 LABEL maintainer="Taras Bilous <tbilous@gmail.com>"
 
 VOLUME /etc/letsencrypt
+VOLUME /tmp/letsencrypt
 EXPOSE 8080
 EXPOSE 443
 ARG CONFIG_FILE
@@ -18,21 +19,15 @@ RUN apt update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/lib/letsencrypt/.well-known \
-    && chgrp www-data /var/lib/letsencrypt \
-    && chmod g+s /var/lib/letsencrypt
+RUN mkdir -p /var/lib/letsencrypt
 
 COPY configs/nginx.conf /etc/nginx/nginx.conf
 
-COPY configs/${CONFIG_FILE} /etc/nginx/sites-enabled/${CONFIG_FILE}
-COPY configs/letsencrypt.conf /etc/nginx/snippets/letsencrypt.conf
-COPY configs/default.conf /etc/nginx/snippets/default.conf
-COPY configs/default-no-key.conf /etc/nginx/default-no-key.conf
-COPY configs/http.conf /etc/nginx/snippets/http.conf
-COPY configs/https.conf /etc/nginx/snippets/https.conf
-
-
+COPY configs/sites-enabled/default.conf /etc/nginx/sites-enabled/default.conf
+COPY configs/sites-avalible/default.conf /etc/nginx/sites-avalible/default.conf
+COPY configs/snippets/*.conf /etc/nginx/snippets/
 COPY ./docker-entrypoint.sh /
 RUN chmod +x ./docker-entrypoint.sh
+
 ENTRYPOINT ["./docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

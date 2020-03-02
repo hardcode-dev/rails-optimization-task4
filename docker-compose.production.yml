@@ -4,6 +4,7 @@ volumes:
   redis:
   pgdata:
   letsencrypt:
+  letsencrypt-html:
   assets:
   logs:
 
@@ -52,7 +53,7 @@ services:
       REDIS_URL: "redis://in_memory_store:6379"
       DATABASE_URL: db
       APP_DOMAIN: thinknetica.railsdev.site
-      APP_PROTOCOL: http://
+      APP_PROTOCOL: https://
       DB_PORT: 5432
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
@@ -79,14 +80,15 @@ services:
     volumes:
       - assets:/usr/src/app/public/assets
       - letsencrypt:/etc/letsencrypt
+      - letsencrypt-html:/tmp/letsencrypt
     environment:
       CUSTOM_APP_VHOST: thinknetica.railsdev.site
       CUSTOM_APP_PORT: 5000
       STATIC_PATH: /usr/src/app/public
       CERTBOT_EMAIL: tbilous@gmail.com
-      IS_STAGING: 1
+      IS_STAGING: '0'
     ports:
-      - 80:8080
+      - 80:80
       - 443:443
     depends_on:
       - server_app

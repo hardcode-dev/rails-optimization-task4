@@ -49,7 +49,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
-  config.cache_store = :null_store
+  config.cache_store = :memory_store
 
   config.app_domain = "localhost:3000"
 

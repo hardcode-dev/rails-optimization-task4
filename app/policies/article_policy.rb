@@ -3,7 +3,9 @@ class ArticlePolicy < ApplicationPolicy
     user_is_author? || user_admin? || user_org_admin? || minimal_admin?
   end
 
-  def new?; end
+  def new?
+    true
+  end
 
   def create?
     !user_is_banned?

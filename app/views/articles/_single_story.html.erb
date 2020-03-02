@@ -1,15 +1,11 @@
-<div class="single-article single-article-small-pic">
-  <% if story.video.present? %>
-    <% cache ["story-video", story, story.video].compact do %>
-      <% if story.video_thumbnail_url.present? %>
-        <a class="single-article-video-preview" style="background-image:url(<%= story.cloudinary_video_url %>)" href="<%= story.path %>">
-          <div class="single-article-video-duration">
-            <img src="<%= asset_path("video-camera.svg") %>" /><%= story.video_duration_in_minutes %></div>
-        </a>
-      <% end %>
+<% cache [story, story.comments_count, story.positive_reactions_count, story&.video, story&.organization, story.user].compact do %>
+  <div class="single-article single-article-small-pic">
+    <% if story.video.present? && story.video_thumbnail_url.present? %>
+      <a class="single-article-video-preview" style="background-image:url(<%= story.cloudinary_video_url %>)" href="<%= story.path %>">
+        <div class="single-article-video-duration">
+          <img src="<%= asset_path("video-camera.svg") %>" /><%= story.video_duration_in_minutes %></div>
+      </a>
     <% end %>
-  <% end %>
-  <% cache ["story-user-organization", story, story.user, story&.organization].compact do %>
     <% if story.organization && !@organization_article_index %>
       <div class="article-organization-headline">
         <a href="/<%= story.organization.slug %>" class="article-organization-headline-inner"><img src="<%= story.organization.profile_image_90 %>"><%= story.organization.name %>
@@ -24,25 +20,22 @@
         <% end %>
       </div>
     </a>
-  <% end %>
-  <a href="<%= story.path %>" class="small-pic-link-wrapper index-article-link" data-preload-image="<%= cloud_cover_url(story.main_image) %>" id="article-link-<%= story.id %>">
-    <div class="content">
-      <h3>
-        <%= render "articles/tag_identifier", story: story, tag: @tag %>
-      </h3>
-    </div>
-  </a>
-  <% cache ["story-user-path", story, story.user].compact do %>
+    <a href="<%= story.path %>" class="small-pic-link-wrapper index-article-link" data-preload-image="<%= cloud_cover_url(story.main_image) %>" id="article-link-<%= story.id %>">
+      <div class="content">
+        <h3>
+          <%= render "articles/tag_identifier", story: story, tag: @tag %>
+        </h3>
+      </div>
+    </a>
     <h4>
       <a href="<%= story.user.path %>"><%= story.user.name %>・<%= story.readable_publish_date %><span class="time-ago-indicator-initial-placeholder" data-seconds="<%= story.published_at_int %>"></span></a>
+
     </h4>
-  <% end %>
-  <div class="tags">
-    <% story.cached_tag_list_array.each do |tag| %>
-      <a href="/t/<%= tag %>"><span class="tag">#<%= tag %></span></a>
-    <% end %>
-  </div>
-  <% cache ["story-counters", story.id, story.comments_count, story.positive_reactions_count] do %>
+    <div class="tags">
+      <% story.cached_tag_list_array.each do |tag| %>
+        <a href="/t/<%= tag %>"><span class="tag">#<%= tag %></span></a>
+      <% end %>
+    </div>
     <% if story.comments_count > 0 %>
       <div class="article-engagement-count comments-count">
         <a href="<%= story.path %>#comments">
@@ -57,18 +50,18 @@
           </span>
       </a>
     </div>
-  <% end %>
-  <a
-    href="<%= story.path %>"
-    class="article-reading-time">
-    <%= story.reading_time < 1 ? 1 : story.reading_time %> min read
-  </a>
-  <button
-    class="article-engagement-count bookmark-engage"
-    data-reactable-id="<%= story.id %>"
-    aria-label="Save to reading list"
-    title="Save to reading list">
-    <span class="bm-success">SAVED</span>
-    <span class="bm-initial">SAVE</span>
-  </button>
-</div>
+    <a
+      href="<%= story.path %>"
+      class="article-reading-time">
+      <%= story.reading_time < 1 ? 1 : story.reading_time %> min read
+    </a>
+    <button
+      class="article-engagement-count bookmark-engage"
+      data-reactable-id="<%= story.id %>"
+      aria-label="Save to reading list"
+      title="Save to reading list">
+      <span class="bm-success">SAVED</span>
+      <span class="bm-initial">SAVE</span>
+    </button>
+  </div>
+<% end %>

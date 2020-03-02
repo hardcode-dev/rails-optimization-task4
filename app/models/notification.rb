@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: notifications
-#
-#  id              :integer          not null, primary key
-#  action          :string
-#  created_at      :datetime         not null
-#  json_data       :jsonb
-#  notifiable_id   :integer
-#  notifiable_type :string
-#  notified_at     :datetime
-#  organization_id :bigint(8)
-#  read            :boolean          default("false")
-#  updated_at      :datetime         not null
-#  user_id         :integer
-#
 class Notification < ApplicationRecord
   belongs_to :notifiable, polymorphic: true
   belongs_to :user, optional: true

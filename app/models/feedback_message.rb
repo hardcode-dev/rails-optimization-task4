@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: feedback_messages
-#
-#  id            :bigint(8)        not null, primary key
-#  affected_id   :integer
-#  category      :string
-#  created_at    :datetime
-#  feedback_type :string
-#  message       :text
-#  offender_id   :integer
-#  reported_url  :string
-#  reporter_id   :integer
-#  status        :string           default("Open")
-#  updated_at    :datetime
-#
 class FeedbackMessage < ApplicationRecord
   belongs_to :offender, foreign_key: "offender_id", class_name: "User", optional: true
   belongs_to :reviewer, foreign_key: "reviewer_id", class_name: "User", optional: true

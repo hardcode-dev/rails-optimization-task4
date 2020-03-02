@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: follows
-#
-#  id              :integer          not null, primary key
-#  blocked         :boolean          default("false"), not null
-#  created_at      :datetime
-#  followable_id   :integer          not null
-#  followable_type :string           not null
-#  follower_id     :integer          not null
-#  follower_type   :string           not null
-#  points          :float            default("1.0")
-#  updated_at      :datetime
-#
 class Follow < ApplicationRecord
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes

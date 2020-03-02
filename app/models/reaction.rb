@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: reactions
-#
-#  id             :integer          not null, primary key
-#  category       :string
-#  created_at     :datetime         not null
-#  points         :float            default("1.0")
-#  reactable_id   :integer
-#  reactable_type :string
-#  status         :string           default("valid")
-#  updated_at     :datetime         not null
-#  user_id        :integer
-#
 class Reaction < ApplicationRecord
   CATEGORIES = %w[like readinglist unicorn thinking hands thumbsdown vomit].freeze
 

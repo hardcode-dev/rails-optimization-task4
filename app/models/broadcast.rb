@@ -1,14 +1,3 @@
-# == Schema Information
-#
-# Table name: broadcasts
-#
-#  id             :integer          not null, primary key
-#  body_markdown  :text
-#  processed_html :text
-#  sent           :boolean          default("false")
-#  title          :string
-#  type_of        :string
-#
 class Broadcast < ApplicationRecord
   has_many :notifications, as: :notifiable
 

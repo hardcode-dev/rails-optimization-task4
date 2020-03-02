@@ -1,93 +1,8 @@
-# == Schema Information
-#
-# Table name: articles
-#
-#  id                                   :integer          not null, primary key
-#  abuse_removal_reason                 :string
-#  allow_big_edits                      :boolean          default("true")
-#  allow_small_edits                    :boolean          default("true")
-#  amount_due                           :float            default("0.0")
-#  amount_paid                          :float            default("0.0")
-#  approved                             :boolean          default("false")
-#  automatically_renew                  :boolean          default("false")
-#  body_html                            :text
-#  body_markdown                        :text
-#  boost_states                         :jsonb            not null
-#  cached_tag_list                      :string
-#  cached_user_name                     :string
-#  cached_user_username                 :string
-#  canonical_url                        :string
-#  collection_id                        :integer
-#  collection_position                  :integer
-#  comment_template                     :string
-#  comments_count                       :integer          default("0"), not null
-#  created_at                           :datetime         not null
-#  crossposted_at                       :datetime
-#  description                          :string
-#  edited_at                            :datetime
-#  email_digest_eligible                :boolean          default("true")
-#  experience_level_rating              :float            default("5.0")
-#  experience_level_rating_distribution :float            default("5.0")
-#  facebook_last_buffered               :datetime
-#  featured                             :boolean          default("false")
-#  featured_clickthrough_rate           :float            default("0.0")
-#  featured_impressions                 :integer          default("0")
-#  featured_number                      :integer
-#  feed_source_url                      :string
-#  hotness_score                        :integer          default("0")
-#  ids_for_suggested_articles           :string           default("[]")
-#  job_opportunity_id                   :integer
-#  language                             :string
-#  last_buffered                        :datetime
-#  last_comment_at                      :datetime         default("2017-01-01 05:00:00")
-#  last_experience_level_rating_at      :datetime
-#  last_invoiced_at                     :datetime
-#  lat                                  :decimal(10, 6)
-#  live_now                             :boolean          default("false")
-#  long                                 :decimal(10, 6)
-#  main_image                           :string
-#  main_image_background_hex_color      :string           default("#dddddd")
-#  main_tag_name_for_social             :string
-#  name_within_collection               :string
-#  organization_id                      :integer
-#  page_views_count                     :integer          default("0")
-#  paid                                 :boolean          default("false")
-#  password                             :string
-#  path                                 :string
-#  positive_reactions_count             :integer          default("0"), not null
-#  previous_positive_reactions_count    :integer          default("0")
-#  processed_html                       :text
-#  published                            :boolean          default("false")
-#  published_at                         :datetime
-#  published_from_feed                  :boolean          default("false")
-#  rating_votes_count                   :integer          default("0"), not null
-#  reactions_count                      :integer          default("0"), not null
-#  reading_time                         :integer          default("0")
-#  receive_notifications                :boolean          default("true")
-#  removed_for_abuse                    :boolean          default("false")
-#  score                                :integer          default("0")
-#  second_user_id                       :integer
-#  show_comments                        :boolean          default("true")
-#  slug                                 :text
-#  social_image                         :string
-#  spaminess_rating                     :integer          default("0")
-#  third_user_id                        :integer
-#  title                                :string
-#  updated_at                           :datetime         not null
-#  user_id                              :integer
-#  video                                :string
-#  video_closed_caption_track_url       :string
-#  video_code                           :string
-#  video_duration_in_seconds            :float            default("0.0")
-#  video_source_url                     :string
-#  video_state                          :string
-#  video_thumbnail_url                  :string
-#
 class Article < ApplicationRecord
   include CloudinaryHelper
   include ActionView::Helpers
   include AlgoliaSearch
-  # include Storext.model
+  include Storext.model
   include Reactable
 
   acts_as_taggable_on :tags
@@ -130,8 +45,8 @@ class Article < ApplicationRecord
   validates :video_closed_caption_track_url, url: { allow_blank: true, schemes: ["https"] }
   validates :video_source_url, url: { allow_blank: true, schemes: ["https"] }
 
-  # before_validation :evaluate_markdown
-  # before_validation :create_slug
+  before_validation :evaluate_markdown
+  before_validation :create_slug
   before_create     :create_password
   before_save       :set_all_dates
   before_save       :calculate_base_scores
@@ -259,11 +174,11 @@ class Article < ApplicationRecord
     end
   end
 
-  # store_attributes :boost_states do
-  #   boosted_additional_articles Boolean, default: false
-  #   boosted_dev_digest_email Boolean, default: false
-  #   boosted_additional_tags String, default: ""
-  # end
+  store_attributes :boost_states do
+    boosted_additional_articles Boolean, default: false
+    boosted_dev_digest_email Boolean, default: false
+    boosted_additional_tags String, default: ""
+  end
 
   def self.filter_excluded_tags(tag = nil)
     if tag == "hiring"

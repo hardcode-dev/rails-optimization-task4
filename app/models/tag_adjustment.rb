@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: tag_adjustments
-#
-#  id                    :bigint(8)        not null, primary key
-#  adjustment_type       :string
-#  article_id            :integer
-#  created_at            :datetime         not null
-#  reason_for_adjustment :string
-#  status                :string
-#  tag_id                :integer
-#  tag_name              :string
-#  updated_at            :datetime         not null
-#  user_id               :integer
-#
 class TagAdjustment < ApplicationRecord
   validates :user_id, presence: true
   validates :article_id, presence: true

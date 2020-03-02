@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: html_variants
-#
-#  id           :bigint(8)        not null, primary key
-#  approved     :boolean          default("false")
-#  created_at   :datetime         not null
-#  group        :string
-#  html         :text
-#  name         :string
-#  published    :boolean          default("false")
-#  success_rate :float            default("0.0")
-#  target_tag   :string
-#  updated_at   :datetime         not null
-#  user_id      :integer
-#
 class HtmlVariant < ApplicationRecord
   include CloudinaryHelper
 

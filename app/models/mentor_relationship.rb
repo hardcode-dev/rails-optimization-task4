@@ -1,14 +1,3 @@
-# == Schema Information
-#
-# Table name: mentor_relationships
-#
-#  id         :bigint(8)        not null, primary key
-#  active     :boolean          default("true")
-#  created_at :datetime         not null
-#  mentee_id  :integer          not null
-#  mentor_id  :integer          not null
-#  updated_at :datetime         not null
-#
 class MentorRelationship < ApplicationRecord
   belongs_to :mentor, class_name: "User"
   belongs_to :mentee, class_name: "User"

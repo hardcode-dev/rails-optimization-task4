@@ -1,21 +1,3 @@
-# == Schema Information
-#
-# Table name: display_ads
-#
-#  id                  :bigint(8)        not null, primary key
-#  approved            :boolean          default("false")
-#  body_markdown       :text
-#  clicks_count        :integer          default("0")
-#  cost_per_click      :float            default("0.0")
-#  cost_per_impression :float            default("0.0")
-#  created_at          :datetime         not null
-#  impressions_count   :integer          default("0")
-#  organization_id     :integer
-#  placement_area      :string
-#  processed_html      :text
-#  published           :boolean          default("false")
-#  updated_at          :datetime         not null
-#
 class DisplayAd < ApplicationRecord
   belongs_to :organization
   validates :organization_id, presence: true

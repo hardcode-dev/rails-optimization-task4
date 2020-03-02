@@ -1,33 +1,3 @@
-# == Schema Information
-#
-# Table name: podcast_episodes
-#
-#  id                  :integer          not null, primary key
-#  body                :text
-#  comments_count      :integer          default("0"), not null
-#  created_at          :datetime         not null
-#  deepgram_id_code    :string
-#  duration_in_seconds :integer
-#  featured            :boolean          default("true")
-#  featured_number     :integer
-#  guid                :string
-#  image               :string
-#  itunes_url          :string
-#  media_url           :string
-#  order_key           :string
-#  podcast_id          :integer
-#  processed_html      :text
-#  published_at        :datetime
-#  quote               :text
-#  reactions_count     :integer          default("0"), not null
-#  slug                :string
-#  social_image        :string
-#  subtitle            :string
-#  summary             :text
-#  title               :string
-#  updated_at          :datetime         not null
-#  website_url         :string
-#
 class PodcastEpisode < ApplicationRecord
   include AlgoliaSearch
 

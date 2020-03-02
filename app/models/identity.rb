@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: identities
-#
-#  id             :integer          not null, primary key
-#  auth_data_dump :text
-#  created_at     :datetime         not null
-#  provider       :string
-#  secret         :string
-#  token          :string
-#  uid            :string
-#  updated_at     :datetime         not null
-#  user_id        :integer
-#
 class Identity < ApplicationRecord
   belongs_to :user
   validates_presence_of :uid, :provider

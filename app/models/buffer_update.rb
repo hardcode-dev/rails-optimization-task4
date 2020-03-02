@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: buffer_updates
-#
-#  id                     :bigint(8)        not null, primary key
-#  article_id             :integer          not null
-#  body_text              :text
-#  buffer_id_code         :string
-#  buffer_profile_id_code :string
-#  buffer_response        :text             default("--- {}\n")
-#  created_at             :datetime         not null
-#  social_service_name    :string
-#  tag_id                 :integer
-#  updated_at             :datetime         not null
-#
 class BufferUpdate < ApplicationRecord
   belongs_to :article
 

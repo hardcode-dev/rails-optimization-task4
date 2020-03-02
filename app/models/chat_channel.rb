@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: chat_channels
-#
-#  id              :bigint(8)        not null, primary key
-#  channel_name    :string
-#  channel_type    :string           not null
-#  created_at      :datetime         not null
-#  description     :string
-#  last_message_at :datetime         default("2017-01-01 05:00:00")
-#  slug            :string
-#  status          :string           default("active")
-#  updated_at      :datetime         not null
-#
 class ChatChannel < ApplicationRecord
   include AlgoliaSearch
   attr_accessor :current_user

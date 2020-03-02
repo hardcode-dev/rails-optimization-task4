@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: badges
-#
-#  id          :bigint(8)        not null, primary key
-#  badge_image :string
-#  created_at  :datetime         not null
-#  description :string           not null
-#  slug        :string           not null
-#  title       :string           not null
-#  updated_at  :datetime         not null
-#
 class Badge < ApplicationRecord
   mount_uploader :badge_image, BadgeUploader
 

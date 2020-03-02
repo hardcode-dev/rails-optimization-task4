@@ -1,28 +1,3 @@
-# == Schema Information
-#
-# Table name: comments
-#
-#  id                       :integer          not null, primary key
-#  ancestry                 :string
-#  body_html                :text
-#  body_markdown            :text
-#  commentable_id           :integer
-#  commentable_type         :string
-#  created_at               :datetime         not null
-#  deleted                  :boolean          default("false")
-#  edited                   :boolean          default("false")
-#  edited_at                :datetime
-#  id_code                  :string
-#  markdown_character_count :integer
-#  positive_reactions_count :integer          default("0"), not null
-#  processed_html           :text
-#  reactions_count          :integer          default("0"), not null
-#  receive_notifications    :boolean          default("true")
-#  score                    :integer          default("0")
-#  spaminess_rating         :integer          default("0")
-#  updated_at               :datetime         not null
-#  user_id                  :integer
-#
 class Comment < ApplicationRecord
   has_ancestry
   include AlgoliaSearch

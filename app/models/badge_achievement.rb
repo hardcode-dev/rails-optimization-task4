@@ -1,21 +1,3 @@
-# == Schema Information
-#
-# Table name: badge_achievements
-#
-#  id                                 :bigint(8)        not null, primary key
-#  badge_id                           :bigint(8)        not null
-#  created_at                         :datetime         not null
-#  rewarder_id                        :integer
-#  rewarding_context_message          :text
-#  rewarding_context_message_markdown :text
-#  updated_at                         :datetime         not null
-#  user_id                            :bigint(8)        not null
-#
-# Foreign Keys
-#
-#  fk_rails_...  (badge_id => badges.id)
-#  fk_rails_...  (user_id => users.id)
-#
 class BadgeAchievement < ApplicationRecord
   belongs_to :user
   belongs_to :badge

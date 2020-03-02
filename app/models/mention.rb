@@ -1,14 +1,3 @@
-# == Schema Information
-#
-# Table name: mentions
-#
-#  id               :integer          not null, primary key
-#  created_at       :datetime         not null
-#  mentionable_id   :integer
-#  mentionable_type :string
-#  updated_at       :datetime         not null
-#  user_id          :integer
-#
 class Mention < ApplicationRecord
   belongs_to :user
   belongs_to :mentionable, polymorphic: true

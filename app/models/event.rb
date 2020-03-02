@@ -1,25 +1,3 @@
-# == Schema Information
-#
-# Table name: events
-#
-#  id                   :bigint(8)        not null, primary key
-#  category             :string
-#  cover_image          :string
-#  created_at           :datetime         not null
-#  description_html     :text
-#  description_markdown :text
-#  ends_at              :datetime
-#  host_name            :string
-#  live_now             :boolean          default("false")
-#  location_name        :string
-#  location_url         :string
-#  profile_image        :string
-#  published            :boolean
-#  slug                 :string
-#  starts_at            :datetime
-#  title                :string
-#  updated_at           :datetime         not null
-#
 class Event < ApplicationRecord
   mount_uploader :cover_image, CoverImageUploader
   mount_uploader :profile_image, ProfileImageUploader

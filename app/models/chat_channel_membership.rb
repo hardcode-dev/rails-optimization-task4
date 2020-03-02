@@ -1,23 +1,3 @@
-# == Schema Information
-#
-# Table name: chat_channel_memberships
-#
-#  id                             :bigint(8)        not null, primary key
-#  chat_channel_id                :bigint(8)        not null
-#  created_at                     :datetime         not null
-#  has_unopened_messages          :boolean          default("false")
-#  last_opened_at                 :datetime         default("2017-01-01 05:00:00")
-#  role                           :string           default("member")
-#  show_global_badge_notification :boolean          default("true")
-#  status                         :string           default("active")
-#  updated_at                     :datetime         not null
-#  user_id                        :bigint(8)        not null
-#
-# Foreign Keys
-#
-#  fk_rails_...  (chat_channel_id => chat_channels.id)
-#  fk_rails_...  (user_id => users.id)
-#
 class ChatChannelMembership < ApplicationRecord
   belongs_to :chat_channel
   belongs_to :user

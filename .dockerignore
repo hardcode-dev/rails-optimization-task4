@@ -1,5 +1,12 @@
 .dockerignore
  .git
+ .idea
  logs/
+ log/
  tmp/
  node_modules/
+ public/assets/*
+ public/pack/*
+docker-compose*
+/public/packs/*
+/grafana_*

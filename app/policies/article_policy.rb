@@ -1,26 +1,20 @@
 class ArticlePolicy < ApplicationPolicy
   def update?
     user_is_author? || user_admin? || user_org_admin? || minimal_admin?
-    true
   end
 
-  def new?
-    true
-  end
+  def new?; end
 
   def create?
     !user_is_banned?
-    true
   end
 
   def delete_confirm?
     update?
-    true
   end
 
   def destroy?
     update?
-    true
   end
 
   def preview?

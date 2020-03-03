@@ -1,0 +1,2 @@
+web: RACK_ENV=local_production RAILS_SERVE_STATIC_FILES=true bin/rails s -p 3000 -e local_production
+job: bin/rake jobs:work

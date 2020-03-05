@@ -31,5 +31,5 @@ test:
   <<: *defaults
   monitor: false
 
-local_development:
+local_production:
   <<: *defaults

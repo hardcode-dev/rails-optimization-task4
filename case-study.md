@@ -1,7 +1,10 @@
-Создал окружение local_production (на базе production). Подключил rack-mini-profiler для работы с ним. Интегрировал в приложение связку prometheus + grafana. Подключил мониторинг приложения в newrelic_rpm и scout_apm в триальном режиме.
+#### Описание
 
-Результаты бенчмарка для окружения development:
+Создал окружение `local_production` (на базе `production`). Подключил `rack-mini-profiler` для работы с ним. Интегрировал в приложение связку `prometheus` + `grafana`. Подключил мониторинг приложения в `newrelic_rpm` и `scout_apm` в триальном режиме.
 
+Результаты бенчмарка для окружения `development`:
+
+```bash
 ab -n 1000 -c 5 http://2128506.net:9999/
 This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
@@ -57,9 +60,11 @@ Percentage of the requests served within a certain time (ms)
 98% 7860
 99% 8053
 100% 11636 (longest request)
+```
 
-Результаты бенчмарка для окружения local_production (без оптимизации):
+Результаты бенчмарка для окружения `local_production` (без оптимизации):
 
+```bash
 ab -n 1000 -c 5 http://2128506.net:9999/
 This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
@@ -113,9 +118,11 @@ Percentage of the requests served within a certain time (ms)
 98% 2208
 99% 2374
 100% 3190 (longest request)
+```
 
-Результаты бенчмарка для окружения local_production (с оптимизацией в виде кэширования паршиала _single_story):
+Результаты бенчмарка для окружения `local_production` (с оптимизацией в виде кэширования паршиала `_single_story`):
 
+```bash
 ab -n 1000 -c 5 http://2128506.net:9999/
 This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
@@ -169,9 +176,12 @@ Percentage of the requests served within a certain time (ms)
 98% 1653
 99% 1779
 100% 2486 (longest request)
+```
 
-Вывод: гипотеза о целесообразности кэширования паршиала _single_story верна. По пятидесятому перцентилю время загрузки уменьшилось на 25%.
+#### Вывод
 
-Скриншот из scout_apm (первая группа запросов -- без оптимизации, вторая -- с кэшированием паршиала):
+Гипотеза о целесообразности кэширования паршиала `_single_story` верна. По пятидесятому перцентилю время загрузки уменьшилось на 25%.
+
+Скриншот из `scout_apm` (первая группа запросов -- без оптимизации, вторая -- с кэшированием паршиала):
 
 ![scout_apm](public/scout_apm.png)

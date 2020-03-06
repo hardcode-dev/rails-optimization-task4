@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  protect_from_forgery prepend: true, with: :exception
   before_action :set_no_cache_header
   after_action :verify_authorized, except: [:signout_confirm]
 

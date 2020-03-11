@@ -4,13 +4,15 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
+    tty: true
+    stdin_open: true
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
       RAILS_ENV: development
-      DATABASE_URL: postgres://postgres:mysecretpassword@db:5432/postgres
+      DATABASE_URL: postgres://rails:password@db:5432/postgres
       YARN_INTEGRITY_ENABLED: "false"
     volumes:
       - .:/usr/src/app
@@ -26,4 +28,7 @@ services:
   db:
     image: postgres
     ports:
-    - "5432:5432"
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: password

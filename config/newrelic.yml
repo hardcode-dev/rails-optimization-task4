@@ -33,6 +33,11 @@ development:
   app_name: task4 (Development)
   monitor_mode: true
 
+local_production:
+  <<: *default_settings
+  app_name: task4 (local prod)
+  monitor_mode: true
+
 test:
   <<: *default_settings
   # It doesn't make sense to report to New Relic from automated test runs.

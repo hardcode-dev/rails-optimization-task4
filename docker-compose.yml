@@ -11,7 +11,9 @@ services:
     depends_on:
       - db
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: local_production
+#      RAILS_ENV: development
+      SEND_LOGS_TO_TIMBER: "false"
       DATABASE_URL: postgres://rails:password@db:5432/postgres
       YARN_INTEGRITY_ENABLED: "false"
     volumes:
@@ -22,6 +24,8 @@ services:
     <<: *rails_base
     command: rails jobs:work
   webpacker:
+    tty: true
+    stdin_open: true
     ports: []
     <<: *rails_base
     command: ./bin/webpack-dev-server

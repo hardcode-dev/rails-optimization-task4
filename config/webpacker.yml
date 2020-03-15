@@ -29,7 +29,7 @@ default: &default
     - .jpeg
     - .jpg
 
-development:
+development: &dev
   <<: *default
   compile: true
 
@@ -38,6 +38,9 @@ development:
     port: 3035
     hmr: false
     https: false
+
+local_production:
+  <<: *dev
 
 test:
   <<: *default

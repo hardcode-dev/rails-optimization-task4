@@ -114,6 +114,13 @@ gem 'rack-mini-profiler', require: false
 gem 'flamegraph'
 
 gem "prometheus_exporter"
+gem "yabeda"
+gem "yabeda-prometheus"
+gem "yabeda-rails"
+gem 'yabeda-puma-plugin'
+
+gem "rails_panel"
+
 
 group :development do
   gem "better_errors", "~> 2.5"

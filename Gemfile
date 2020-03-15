@@ -106,6 +106,15 @@ gem "webpush", "~> 0.3"
 gem "newrelic_rpm"
 gem "dotenv-rails"
 
+
+gem 'rack-mini-profiler', require: false
+# For memory profiling
+
+# For call-stack profiling flamegraphs
+gem 'flamegraph'
+
+gem "prometheus_exporter"
+
 group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
@@ -120,7 +129,7 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :test do
+group :development, :test, :local_production do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false

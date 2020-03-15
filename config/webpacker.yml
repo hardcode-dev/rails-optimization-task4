@@ -41,6 +41,9 @@ development: &dev
 
 local_production:
   <<: *dev
+  compile: false
+  # Cache manifest.json for performance
+  cache_manifest: true
 
 test:
   <<: *default

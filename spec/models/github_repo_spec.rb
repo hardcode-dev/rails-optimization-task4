@@ -43,6 +43,7 @@ RSpec.describe GithubRepo, type: :model do
 
     before do
       repo.save
+      create(:identity, user_id: user.id)
       allow(Octokit::Client).to receive(:new).and_return(my_ocktokit_client)
       allow(my_ocktokit_client).to receive(:repo) { stubbed_github_repo }
     end

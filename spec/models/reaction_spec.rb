@@ -2,9 +2,9 @@
 require "rails_helper"
 
 RSpec.describe Reaction, type: :model do
-  let(:user) { create(:user) }
-  let(:article) { create(:article, featured: true) }
-  let(:comment) { create(:comment, user: user, commentable: article) }
+  let_it_be(:user, reload: true) { create(:user) }
+  let_it_be(:article, reload: true) { create(:article, featured: true) }
+  let_it_be(:comment) { create(:comment, user: user, commentable: article) }
   let(:reaction) { build(:reaction, reactable: comment) }
 
   describe "actual validation" do

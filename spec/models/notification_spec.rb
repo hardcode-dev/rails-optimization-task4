@@ -1,12 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Notification, type: :model do
-  let(:user)            { create(:user) }
-  let(:user2)           { create(:user) }
-  let(:user3)           { create(:user) }
-  let(:organization)    { create(:organization) }
-  let(:article)         { create(:article, user_id: user.id, page_views_count: 4000, positive_reactions_count: 70) }
-  let(:follow_instance) { user.follow(user2) }
+  let_it_be(:user, reload: true)    { create(:user) }
+  let_it_be(:user2)                 { create(:user) }
+  let_it_be(:user3)                 { create(:user) }
+  let_it_be(:organization)          { create(:organization) }
+  let_it_be(:article, reload: true) { create(:article, user_id: user.id, page_views_count: 4000, positive_reactions_count: 70) }
+  let_it_be(:follow_instance)       { user.follow(user2) }
 
   describe "when trying to #send_new_follower_notification after following a tag" do
     let(:tag) { create(:tag) }

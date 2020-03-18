@@ -4,15 +4,15 @@ FactoryBot.define do
   sequence(:twitter_username) { |n| "twitter#{n}" }
   sequence(:github_username) { |n| "github#{n}" }
 
-  image = Rack::Test::UploadedFile.new(
-    File.join(Rails.root, "spec", "support", "fixtures", "images", "image1.jpeg"), "image/jpeg"
-  )
+  # image = Rack::Test::UploadedFile.new(
+  #   File.join(Rails.root, "spec", "support", "fixtures", "images", "image1.jpeg"), "image/jpeg"
+  # )
 
   factory :user do
     name               { Faker::Name.name }
     email              { generate :email }
     username           { generate :username }
-    profile_image      { image }
+    # profile_image      { image }
     twitter_username   { generate :twitter_username }
     github_username    { generate :github_username }
     summary            { Faker::Lorem.paragraph[0..rand(190)] }
@@ -61,9 +61,9 @@ FactoryBot.define do
       end
     end
 
-    after(:create) do |user|
-      create(:identity, user_id: user.id)
-    end
+    # after(:create) do |user|
+    #   create(:identity, user_id: user.id)
+    # end
 
     trait :two_identities do
       after(:create) { |user| create(:identity, user_id: user.id, provider: "twitter") }

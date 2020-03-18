@@ -5,6 +5,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.ignore_localhost = true
+  config.allow_http_connections_when_no_cassette = true
 
   # Removes all private data (Basic Auth, Set-Cookie headers...)
   config.before_record do |i|

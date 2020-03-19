@@ -40,6 +40,9 @@ latest.dump
 /public/packs-test
 /node_modules
 config/database.yml
+config/skylight.yml
+config/newrelic.yml
+.env
 
 # Ignore storybook static site generation
 storybook-static/
@@ -53,3 +56,4 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+

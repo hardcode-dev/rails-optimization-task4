@@ -92,40 +92,47 @@ Rails.application.configure do
   end
 
   # Timber.io logger
-  send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "true" # <---- production should send timber logs by default
-  log_device = send_logs_to_timber == "true" ? Timber::LogDevices::HTTP.new(ENV["TIMBER"]) : STDOUT
-  logger = Timber::Logger.new(log_device)
-  logger.level = config.log_level
-  config.logger = ActiveSupport::TaggedLogging.new(logger)
+  unless ENV["LOCAL_PRODUCTION"].present?
+    send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "true" # <---- production should send timber logs by default
+    log_device = send_logs_to_timber == "true" ? Timber::LogDevices::HTTP.new(ENV["TIMBER"]) : STDOUT
+    logger = Timber::Logger.new(log_device)
+    logger.level = config.log_level
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.cache_store = :dalli_store,
+  if ENV["LOCAL_PRODUCTION"].present?
+    config.cache_store = :memory_store
+  else
+    config.cache_store = :dalli_store,
                        (ENV["MEMCACHIER_SERVERS"] || "").split(","),
                        { username: ENV["MEMCACHIER_USERNAME"],
                          password: ENV["MEMCACHIER_PASSWORD"],
                          failover: true,
                          socket_timeout: 1.5,
                          socket_failure_delay: 0.2 }
-
+  end
   config.app_domain = "dev.to"
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
-  ActionMailer::Base.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: "587",
-    authentication: :plain,
-    user_name: ENV["SENDGRID_USERNAME_ACCEL"],
-    password: ENV["SENDGRID_PASSWORD_ACCEL"],
-    domain: "dev.to",
-    enable_starttls_auto: true
-  }
+  unless ENV["LOCAL_PRODUCTION"].present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
+    ActionMailer::Base.smtp_settings = {
+      address: "smtp.sendgrid.net",
+      port: "587",
+      authentication: :plain,
+      user_name: ENV["SENDGRID_USERNAME_ACCEL"],
+      password: ENV["SENDGRID_PASSWORD_ACCEL"],
+      domain: "dev.to",
+      enable_starttls_auto: true
+    }
+    config.middleware.use Rack::HostRedirect,
+                          "practicaldev.herokuapp.com" => "dev.to"
+    end
 
-  config.middleware.use Rack::HostRedirect,
-    "practicaldev.herokuapp.com" => "dev.to"
 end
 
 # rubocop:enable Metrics/BlockLength

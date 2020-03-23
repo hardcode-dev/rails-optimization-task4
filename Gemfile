@@ -13,6 +13,7 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+gem 'dotenv-rails'
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -20,7 +21,7 @@ gem "acts_as_follower", github: "thepracticaldev/acts_as_follower", branch: "mas
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
-gem "airbrake", "~> 8.1"
+# gem "airbrake", "~> 8.1"
 gem "algoliasearch-rails", "~> 1.21"
 gem "algorithmia", "~> 1.0"
 gem "ancestry", "~> 3.0"
@@ -103,7 +104,15 @@ gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
+gem 'newrelic_rpm'
+gem 'prometheus-client'
+gem 'prometheus_exporter'
+gem 'foreman'
+
+
 group :development do
+  gem "rack-mini-profiler"
+  gem "meta_request"
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

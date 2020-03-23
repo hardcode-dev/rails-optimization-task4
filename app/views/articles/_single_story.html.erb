@@ -1,3 +1,4 @@
+<% cache story do %>
 <div class="single-article single-article-small-pic">
   <% if story.video.present? && story.video_thumbnail_url.present? %>
     <a class="single-article-video-preview" style="background-image:url(<%= story.cloudinary_video_url %>)" href="<%= story.path %>">
@@ -63,3 +64,4 @@
     <span class="bm-initial">SAVE</span>
   </button>
 </div>
+<% end %>

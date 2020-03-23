@@ -111,6 +111,8 @@ gem 'foreman'
 
 
 group :development do
+  gem "rack-mini-profiler"
+  gem "meta_request"
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

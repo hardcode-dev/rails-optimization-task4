@@ -104,7 +104,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   if ENV["LOCAL_PRODUCTION"].present?
-    config.cache_store = :mem_cache_store
+    config.cache_store = :memory_store
   else
     config.cache_store = :dalli_store,
                        (ENV["MEMCACHIER_SERVERS"] || "").split(","),

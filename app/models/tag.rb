@@ -51,6 +51,12 @@ class Tag < ActsAsTaggableOn::Tag
     end
   end
 
+  def self.hotness_30
+    Rails.cache.fetch("hotness_30_tags", expires_in: 5.minutes) do
+      where(supported: true).order("hotness_score DESC").limit(30).pluck(:id, :name)
+    end
+  end
+
   private
 
   def evaluate_markdown

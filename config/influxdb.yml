@@ -1,0 +1,8 @@
+development:
+  host: influxdb
+production:
+  host: influxdb
+local_production:
+  host: influxdb
+test:
+  host: influxdb

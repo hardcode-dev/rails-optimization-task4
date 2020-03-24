@@ -137,6 +137,8 @@ group :development do
 end
 
 group :development, :test, :local_production do
+  gem 'tty'
+  gem "influxer", "~>0.3.0"
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -157,7 +159,7 @@ end
 group :test do
   gem "approvals", "~> 0.0"
   gem "chromedriver-helper", "~> 2.1"
-  gem "database_cleaner", "~> 1.7"
+  gem "database_cleaner", git: "https://github.com/DatabaseCleaner/database_cleaner", ref: "c0013de1ee7afb4e25a0581940e22408f73273f9"
   gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
   gem "launchy", "~> 2.4"

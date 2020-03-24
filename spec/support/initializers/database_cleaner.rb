@@ -3,7 +3,11 @@ require "database_cleaner"
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
+  DatabaseCleaner.allow_remote_database_url = true
+
   config.before(:suite) do
+    # DatabaseCleaner.url_whitelist = %w('postgres://rails:password@db:5432')
+
     if config.use_transactional_fixtures?
       raise(<<-MSG)
         Delete line `config.use_transactional_fixtures = true` from rails_helper.rb

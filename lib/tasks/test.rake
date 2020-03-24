@@ -8,7 +8,8 @@ namespace :test do
 
     start = Time.now
     begin
-      command.run("SAMPLE=10 rspec")
+      # command.run("SAMPLE=10 rspec")
+      command.run("rspec ./spec/controllers/internal_users_controller_spec.rb")
     rescue
       puts "TEST FAILD SAFELY"
     end

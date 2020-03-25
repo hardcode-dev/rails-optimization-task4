@@ -103,6 +103,25 @@ gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
+gem "newrelic_rpm"
+gem "dotenv-rails"
+
+
+gem 'rack-mini-profiler', require: false
+# For memory profiling
+
+# For call-stack profiling flamegraphs
+gem 'flamegraph'
+
+gem "prometheus_exporter"
+gem "yabeda"
+gem "yabeda-prometheus"
+gem "yabeda-rails"
+gem 'yabeda-puma-plugin'
+
+gem "rails_panel"
+
+
 group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
@@ -117,7 +136,9 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :test do
+group :development, :test, :local_production do
+  gem 'tty'
+  gem "influxer", "~>0.3.0"
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -133,12 +154,13 @@ group :development, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem 'bootsnap', require: false
 end
 
 group :test do
   gem "approvals", "~> 0.0"
   gem "chromedriver-helper", "~> 2.1"
-  gem "database_cleaner", "~> 1.7"
+  gem "database_cleaner", git: "https://github.com/DatabaseCleaner/database_cleaner", ref: "c0013de1ee7afb4e25a0581940e22408f73273f9"
   gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
   gem "launchy", "~> 2.4"

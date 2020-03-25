@@ -1,4 +1,4 @@
-FROM ruby:2.6.1
+FROM ruby:2.6.3
 
 # Make nodejs and yarn as dependencies
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -14,7 +14,8 @@ RUN apt-get update -qq && apt-get install -y \
  && rm -rf /var/lib/apt/lists
 
 WORKDIR /usr/src/app
-ENV RAILS_ENV development
+ENV RAILS_ENV local_production
+#ENV RAILS_ENV development
 
 # Installing Ruby dependencies
 COPY Gemfile* ./
@@ -25,6 +26,8 @@ RUN bundle install --jobs 20 --retry 5
 COPY yarn.lock ./
 ENV YARN_INTEGRITY_ENABLED "false"
 RUN yarn install && yarn check --integrity
+
+#RUN bundle exec skylight setup BWeWBQdnwOJz
 
 ENTRYPOINT ["bundle", "exec"]
 

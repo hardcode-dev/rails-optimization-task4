@@ -1,0 +1,13 @@
+---
+# The authentication token for the application.
+authentication: <%= ENV['SKYLIGHT_AUTHENTICATION'] %>
+localproduction:
+  env: "localproduction"
+#  SKYLIGHT_ENV: "localproduction"
+  SKYLIGHT_ENABLED: "true"
+deploy:
+  # Set an id and/or a sha. If no id is provided, the sha will be used.
+#  id: <%#= Time.now %>
+  git_sha: "6a64706d6f17b3090058bb4e37fb863d37e88a4b"
+  # The deploy description is optional.
+  description: 'dsfdsfdsf'

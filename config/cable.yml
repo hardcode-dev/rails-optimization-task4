@@ -1,6 +1,9 @@
 development:
   adapter: async
 
+local_production:
+  adapter: async
+
 test:
   adapter: async
 

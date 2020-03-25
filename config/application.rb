@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
-
+require 'dotenv-rails'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -30,11 +30,13 @@ module PracticalDeveloper
     config.autoload_paths += Dir["#{config.root}/app/black_box/"]
     config.autoload_paths += Dir["#{config.root}/app/sanitizers"]
     config.autoload_paths += Dir["#{config.root}/lib/"]
+    config.autoload_paths += Dir["#{config.root}/metrics/"]
 
     config.active_record.observers = :article_observer, :reaction_observer, :comment_observer
     config.active_job.queue_adapter = :delayed_job
 
     config.middleware.use Rack::Deflater
+    config.middleware.use Yabeda::Prometheus::Exporter
 
     # Globally handle Pundit::NotAuthorizedError by serving 404
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :not_found
@@ -53,5 +55,6 @@ module PracticalDeveloper
       end
       ReservedWords.all = [ReservedWords::BASE_WORDS + top_routes].flatten.compact.uniq
     end
+    config.skylight.environments += ["local_production"]
   end
 end

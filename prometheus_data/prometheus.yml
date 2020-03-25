@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'task4'
+scrape_configs:
+  - job_name: 'prometheus'
+    target_groups:
+      - targets: ['localhost:9090']
+  - job_name: 'dev'
+    target_groups:
+      - targets: ['prometheus:9394']

@@ -8,6 +8,14 @@ class StoriesController < ApplicationController
     return handle_tag_index if params[:tag]
 
     handle_base_index
+
+    Rack::MiniProfiler.step("Profile Index action") do
+      add_param_context(:username, :tag)
+      return handle_user_or_organization_or_podcast_index if params[:username]
+      return handle_tag_index if params[:tag]
+
+      handle_base_index
+    end
   end
 
   def search

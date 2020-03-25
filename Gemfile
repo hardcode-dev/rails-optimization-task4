@@ -154,6 +154,7 @@ group :development, :test, :local_production do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem 'bootsnap', require: false
 end
 
 group :test do

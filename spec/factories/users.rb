@@ -23,7 +23,9 @@ FactoryBot.define do
     email_digest_periodic { false }
 
     trait :super_admin do
-      after(:build) { |user| user.add_role(:super_admin) }
+      after(:build) do |user|
+        user.add_role(:super_admin)
+      end
     end
 
     trait :admin do
@@ -61,9 +63,9 @@ FactoryBot.define do
       end
     end
 
-    after(:create) do |user|
-      create(:identity, user_id: user.id)
-    end
+    # after(:create) do |user|
+    #   create(:identity, user_id: user.id)
+    # end
 
     trait :two_identities do
       after(:create) { |user| create(:identity, user_id: user.id, provider: "twitter") }

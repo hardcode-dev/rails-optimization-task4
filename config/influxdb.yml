@@ -1,0 +1,11 @@
+# database name
+database: 'db'
+# influxdb api endpoint
+host: 'localhost'
+port: 8083
+
+# influxdb user name and password (plain)
+# Please, beware of using root user as API user in production
+development:
+  username: root
+  password: root

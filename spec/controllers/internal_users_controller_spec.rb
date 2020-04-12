@@ -1,18 +1,15 @@
 require "rails_helper"
 
 RSpec.describe "internal/users", type: :request do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user) }
-  let(:user3) { create(:user) }
-  let(:super_admin) { create(:user, :super_admin) }
-  let(:article) { create(:article, user: user) }
-  let(:article2) { create(:article, user: user2) }
+  let_it_be(:user) { create(:user) }
+  let_it_be(:user2) { create(:user) }
+  let_it_be(:user3) { create(:user) }
+  let_it_be(:super_admin) { create(:user, :super_admin) }
+  let_it_be(:article) { create(:article, user: user) }
+  let_it_be(:article2) { create(:article, user: user2) }
 
   before do
     sign_in super_admin
-    user
-    user2
-    Delayed::Worker.new(quiet: true).work_off
     dependents_for_offending_user_article
     offender_activity_on_other_content
   end
@@ -28,7 +25,6 @@ RSpec.describe "internal/users", type: :request do
     create(:reaction, reactable: comment2, reactable_type: "Comment", user: user2)
     # create user3 reaction to offending article
     create(:reaction, reactable: article, reactable_type: "Article", user: user3, category: "like")
-    Delayed::Worker.new(quiet: true).work_off
   end
 
   def offender_activity_on_other_content
@@ -38,7 +34,6 @@ RSpec.describe "internal/users", type: :request do
     comment = create(:comment, commentable_type: "Article", commentable: article2, user: user)
     # user3 reacts to offender comment
     create(:reaction, reactable: comment, reactable_type: "Comment", user: user3)
-    Delayed::Worker.new(quiet: true).work_off
   end
 
   context "when deleting user" do
@@ -54,15 +49,13 @@ RSpec.describe "internal/users", type: :request do
 
     def create_mutual_follows
       user.follow(user3)
-      follow = user3.follow(user)
-      Notification.send_new_follower_notification_without_delay(follow)
+      user3.follow(user)
     end
 
     before do
       create_mutual_follows
       create_mention
       create(:badge_achievement, rewarder_id: 1, rewarding_context_message: "yay", user_id: user.id)
-      Delayed::Worker.new(quiet: true).work_off
     end
 
     it "raises a 'record not found' error after deletion" do
@@ -90,7 +83,6 @@ RSpec.describe "internal/users", type: :request do
   context "when banishing user" do
     def banish_user
       post "/internal/users/#{user.id}/banish"
-      Delayed::Worker.new(quiet: true).work_off
       user.reload
     end
 

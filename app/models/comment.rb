@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   has_ancestry
   include AlgoliaSearch
   include Reactable
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, touch: true
   counter_culture :commentable
   belongs_to :user
   counter_culture :user

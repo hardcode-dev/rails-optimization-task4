@@ -9,13 +9,14 @@
 
 ## Подготовка
 
-- Завести `dev.to` локально (прямо в этом репозитории, не нужно клонировать `dev.to` от них, иначе будут отличаться версии)
-- Настроить свой `NewRelic` для мониторинга локального `dev.to`
-- Настроить свой `Skylight` / `Scout` / `Datadog` для мониторинга локального dev.to
+-+ Завести `dev.to` локально (прямо в этом репозитории, не нужно клонировать `dev.to` от них, иначе будут отличаться версии)
+-+ Настроить свой `NewRelic` для мониторинга локального `dev.to`
+
+- - Настроить свой `Skylight` / `Scout` / `Datadog` для мониторинга локального dev.to
 - Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
-- Настроить `rack-mini-profiler`
-- Настроить `rails-panel`
-- Сделать возможность запуска проекта в `local_production`
+  -+ Настроить `rack-mini-profiler`
+  -+ Настроить `rails-panel`
+  -+ Сделать возможность запуска проекта в `local_production`
 
 ### local_production
 
@@ -32,9 +33,14 @@
 - `assets_debug: false`
 - `assets_compile: false`
 
-Для работы потребуется прекомпиляция ассетов `rake assets:precompile`
+Для работы потребуется прекомпиляция ассетов `bundle exec rake assets:precompile`
+`RAILS_ENV=local_production bin/startup`
 
 ## Оптимизация
+
+ab -n 30 http://127.0.0.1:3000/
+
+siege -c 10 -t20s -f siege_config.txt
 
 Все инструменты мониторинга показывают, что самой горячей точкой является главная страница, `StoriesController#index`.
 
@@ -47,7 +53,9 @@
 - Сделайте оптимизацию
 - Перезапустите `benchmark`
 
-Если вы посчитаете, что применить кэширование здесь целесообразно, оформите обоснованный `PR` с этим предложением. Напишите в описании `PR`, какая была гипотеза, откуда она взялась, как вы проверяли гипотезу, какие результаты получили. Приложите скриншоты графиков мониторинга, если на них виден эффект оптимизации.
+Если вы посчитаете, что применить кэширование здесь целесообразно, оформите обоснованный `PR` с этим предложением. Напишите в описании `PR`,
+какая была гипотеза, откуда она взялась, как вы проверяли гипотезу, какие результаты получили.
+Приложите скриншоты графиков мониторинга, если на них виден эффект оптимизации.
 
 ## Bonus
 
@@ -219,10 +227,12 @@ This section provides a high-level requirement & quick start guide. For detailed
     - Create `config/database.yml` by copying from the provided template (i.e. `cp config/database.yml.sample config/database.yml`)
     - Update the `config/database.yml` file if needed.
 1.  Set up your environment variables/secrets
-    - Take a look at `Envfile`. This file lists all the `ENV` variables we use and provides a fake default for any missing keys. You'll need to get your own free [Algolia credentials](http://docs.dev.to/get-api-keys-dev-env/#algolia) to get your development environment running.
+    - Take a look at `Envfile`. This file lists all the `ENV` variables we use and provides a fake default for any missing keys.
+      You'll need to get your own free [Algolia credentials](http://docs.dev.to/get-api-keys-dev-env/#algolia) to get your development environment running.
     - This [guide](http://docs.dev.to/get-api-keys-dev-env/) will show you how to get free API keys for additional services that may be required to run certain parts of the app.
     - For any key that you wish to enter/replace:
-      1.  Create `config/application.yml` by copying from the provided template (ie. with bash: `cp config/sample_application.yml config/application.yml`). This is a personal file that is ignored in git.
+      1.  Create `config/application.yml` by copying from the provided template (ie. with bash: `cp config/sample_application.yml config/application.yml`).
+          This is a personal file that is ignored in git.
       2.  Obtain the development variable and apply the key you wish to enter/replace. ie:
       ```
       GITHUB_KEY: "SOME_REAL_SECURE_KEY_HERE"

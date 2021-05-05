@@ -99,6 +99,8 @@ Rails.application.configure do
     Bullet.enable = true
     Bullet.console = true
   end
+
+  config.skylight.environments << "development"
 end
 
 # rubocop:enable Metrics/BlockLength

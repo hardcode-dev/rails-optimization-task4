@@ -3,7 +3,7 @@
 - [x] 1 - Завести dev.to локально (прямо в этом репозитории, не нужно
       клонировать dev.to от них, иначе будут отличаться версии)
 - [x] 2 - Настроить свой NewRelic для мониторинга локального dev.to
-- [ ] 3 - Настроить свой Skylight / Scout / Datadog для мониторинга
+- [x] 3 - Настроить свой Skylight / Scout / Datadog для мониторинга
       локального dev.to
 - [ ] 4 - Настроить свой Prometheus + Grafana для мониторинга локального dev.to
 - [ ] 5 - Настроить rack-mini-profiler
@@ -57,3 +57,10 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
 
 Без приключений. Метрики снимаются.
 Добавился `config/newrelic.yml`, ему сделан example, сам он внесен в gitignore.
+
+## 3. Настроить свой Skylight / Scout / Datadog
+
+Выбрал из перечисленных SkyLight, ранее не использовал, интересно попробовать.
+
+Временно (пока нет `local_production`), включил Skylight для `development`-окружения
+прямо в `development.rb`.

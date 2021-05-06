@@ -7,7 +7,7 @@
       локального dev.to
 - [x] 4 - Настроить свой Prometheus + Grafana для мониторинга локального dev.to
 - [x] 5 - Настроить rack-mini-profiler
-- [ ] 6 - Настроить rails-panel
+- [x] 6 - Настроить rails-panel
 - [ ] 7 - Сделать возможность запуска проекта в local_production
 
 ## 1. Завести dev.to локально
@@ -75,3 +75,7 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
 ## 5. Настроить rack-mini-profiler
 
 Все штатно. Подключение через инициализатор в development-окружении.
+
+## 6. Настроить rails-panel
+
+Все штатно.

@@ -75,6 +75,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler", require: ["enable_rails_patches"]
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -136,6 +137,7 @@ group :development, :test do
   gem "rubocop-rspec", "~> 1.31"
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
+  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "vcr", "~> 4.0"
 end
 
@@ -153,7 +155,6 @@ group :test do
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
-  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"

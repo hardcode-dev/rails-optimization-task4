@@ -79,3 +79,10 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
 ## 6. Настроить rails-panel
 
 Все штатно.
+
+## 7 - Сделать возможность запуска проекта в local_production
+
+Сделал на основе development-окружения. Включение задается переменной окружения
+`LOCAL_PRODUCTION`. Вся обработка идет в `development.rb`, не стал рефакторить
+конфигурацию приложения, хотя можно было бы сделать класс, конфигурирующий
+все окружения. Но на результат это никак не повлияло бы.

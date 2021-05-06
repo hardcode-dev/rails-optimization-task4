@@ -4,6 +4,15 @@ def yarn_integrity_enabled?
   ENV.fetch("YARN_INTEGRITY_ENABLED", "true") == "true"
 end
 
+def local_production?
+  @local_production ||= begin
+    puts "*" * 78
+    puts "#{'*' * 30} LOCAL PRODUCTION #{'*' * 30}"
+    puts "*" * 78
+    ENV["LOCAL_PRODUCTION"].present? && !%w[0 false].include?(ENV["LOCAL_PRODUCTION"])
+  end
+end
+
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = yarn_integrity_enabled?
@@ -13,16 +22,16 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.cache_classes = local_production?
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = local_production?
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join("tmp/caching-dev.txt").exist? || local_production?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
@@ -47,7 +56,9 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = false
+  config.assets.debug = local_production?
+
+  config.assets.compile = local_production?
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -63,9 +74,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.app_domain = "localhost:3000"
+  config.app_domain = "dev2.lvh.me:3000"
 
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.default_url_options = { host: "dev2.lvh.me:3000" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: config.app_domain }
@@ -76,7 +87,7 @@ Rails.application.configure do
     user_name: '<%= ENV["DEVELOPMENT_EMAIL_USERNAME"] %>',
     password: '<%= ENV["DEVELOPMENT_EMAIL_PASSWORD"] %>',
     authentication: :plain,
-    domain: "localhost:3000"
+    domain: "dev2.lvh.me:3000"
   }
 
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"

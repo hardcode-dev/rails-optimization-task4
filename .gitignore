@@ -54,3 +54,7 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+
+#profining stuff
+/report/*
+!/report/.keep

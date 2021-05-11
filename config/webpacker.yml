@@ -39,7 +39,7 @@ development:
     hmr: false
     https: false
 
-local_production:
+localproduction:
   <<: *default
   compile: false
   cache_manifest: true

@@ -36,7 +36,7 @@ development:
   app_name: dev_to (Development)
   monitor_mode: true
 
-local_production:
+localproduction:
   <<: *default_settings
   app_name: dev_to (Local prod)
   monitor_mode: true

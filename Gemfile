@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production, :local_production do
+group :production, :localproduction do
   gem "nakayoshi_fork"
 end
 
@@ -119,7 +119,7 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :local_production do
+group :development, :localproduction do
   gem 'rack-mini-profiler'
   gem 'meta_request'
 end

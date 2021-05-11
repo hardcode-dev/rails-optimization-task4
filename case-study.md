@@ -12,7 +12,7 @@
 - [x] Завести `dev.to` локально (прямо в этом репозитории, не нужно клонировать `dev.to` от них, иначе будут отличаться версии)
 - [x] Настроить свой `Skylight` или `Scout` или `Datadog` для мониторинга локального dev.to
 - [x] Настроить свой `NewRelic` для мониторинга локального `dev.to`
-- [ ] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
+- [x] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
 - [ ] Настроить `rack-mini-profiler`
 - [ ] Настроить `rails-panel`
 - [ ] Сделать возможность запуска проекта в `local_production`
@@ -58,6 +58,8 @@
 - `SKYLIGHT` https://www.skylight.io
 - `New Relic` https://newrelic.com
   Важно, нам нужно только [Install the New Relic Ruby agent](https://docs.newrelic.com/docs/agents/ruby-agent/installation/install-new-relic-ruby-agent/).
+- `Prometheus` + `Grafana` https://prometheus.io ; https://grafana.com
+  Установил через докерконтейнеры. Настроил приложение `dev.to`. Что-то показывает. Чтобы добавить собственные метрики для их мониторинга, надо научиться работать с этими инструментами по документации. Поскольку увидел эти инструменты в первый раз, в рамках ДЗ на изучение доков нет времени.
 
 #### Этап №3
 
@@ -69,3 +71,6 @@
 
 - `New Relic`:
   ![newrelic_before_1.4](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/newrelic_before_1.4.jpg)
+
+- `Prometheus`
+  ![skylight_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/prometheus_before_1.1.jpg)

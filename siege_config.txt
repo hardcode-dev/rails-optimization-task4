@@ -1,0 +1,23 @@
+# Urls to siege
+http://localhost:3000
+http://localhost:3000/t/python
+http://localhost:3000/t/security
+http://localhost:3000/t/webdev
+http://localhost:3000/t/java
+http://localhost:3000/t/career
+http://localhost:3000/t/go
+http://localhost:3000/t/git
+http://localhost:3000/t/productivity
+http://localhost:3000/t/computerscience/top/infinity
+http://localhost:3000/raymundo_olson_dr/-the-golden-apples-of-the-sun-29am
+http://localhost:3000/larsondale/-a-swiftly-tilting-planet-2ajb
+http://localhost:3000/keebler_merrill_dr/-jesting-pilate-17ih
+http://localhost:3000/kuvalis_kiara/-by-grand-central-station-i-sat-down-and-wept-51aa
+http://localhost:3000/keebler_merrill_dr/-of-human-bondage-1n2
+http://localhost:3000/cesarrodriguez/-waiting-for-the-barbarians-beg
+http://localhost:3000/t/python/top/month
+http://localhost:3000/terms
+http://localhost:3000/about
+http://localhost:3000/contact
+http://localhost:3000/code-of-conduct
+http://localhost:3000/jenkins_adriana_ii

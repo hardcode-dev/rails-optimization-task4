@@ -13,7 +13,7 @@
 - [x] Настроить свой `Skylight` или `Scout` или `Datadog` для мониторинга локального dev.to
 - [x] Настроить свой `NewRelic` для мониторинга локального `dev.to`
 - [x] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
-- [ ] Настроить `rack-mini-profiler`
+- [x] Настроить `rack-mini-profiler`
 - [ ] Настроить `rails-panel`
 - [ ] Сделать возможность запуска проекта в `local_production`
 
@@ -61,6 +61,9 @@
 - `Prometheus` + `Grafana` https://prometheus.io ; https://grafana.com
   Установил через докерконтейнеры. Настроил приложение `dev.to`. Что-то показывает. Чтобы добавить собственные метрики для их мониторинга, надо научиться работать с этими инструментами по документации. Поскольку увидел эти инструменты в первый раз, в рамках ДЗ на изучение доков нет времени.
 
+- `rack-mini-profiler`
+  Чтобы разгрузить приложение, отключим всё, что связано с prometheus_exporter из предыдущего профилировщика.
+
 #### Этап №3
 
 Сняты показания по точкам роста:
@@ -74,3 +77,9 @@
 
 - `Prometheus`
   ![skylight_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/prometheus_before_1.1.jpg)
+
+- `rack-mini-profiler`
+  ![skylight_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/mini_profiler_before_1.1.jpg)
+  ![skylight_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/mini_profiler_before_1.2.jpg)
+
+Полный отчет профилировщика `rack-mini-profiler` лежит в `reports_mini_profiler/_ (3076.8 ms) - Profiling Results.html`

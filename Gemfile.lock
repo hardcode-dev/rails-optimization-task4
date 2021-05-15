@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/forem/acts_as_follower.git
-  revision: 06393d3693a1a3d4b390aec4976c8b8f3a81cf01
-  branch: master
-  specs:
-    acts_as_follower (0.2.1)
-      activerecord (>= 4.0)
-
-GIT
   remote: https://github.com/jakeonrails/fix-db-schema-conflicts.git
   revision: 18f653251f49a50702dce076f0ecfaab5e928417
   branch: master
@@ -21,6 +13,14 @@ GIT
   specs:
     faker (1.9.1)
       i18n (>= 0.7)
+
+GIT
+  remote: https://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -623,8 +623,8 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     oauth (0.5.4)
-    oauth2 (1.4.1)
-      faraday (>= 0.8, < 0.16.0)
+    oauth2 (1.4.7)
+      faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
@@ -634,15 +634,15 @@ GEM
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
-    omniauth-github (1.3.0)
+    omniauth-github (1.4.0)
       omniauth (~> 1.5)
       omniauth-oauth2 (>= 1.4.0, < 2.0)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
-    omniauth-oauth2 (1.6.0)
-      oauth2 (~> 1.1)
-      omniauth (~> 1.9)
+    omniauth-oauth2 (1.7.1)
+      oauth2 (~> 1.4)
+      omniauth (>= 1.9, < 3)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -1029,7 +1029,7 @@ DEPENDENCIES
   nokogiri (~> 1.10)
   octokit (~> 4.13)
   omniauth (~> 1.9)
-  omniauth-github (~> 1.3)
+  omniauth-github (~> 1.4)
   omniauth-twitter (~> 1.4)
   parallel_tests (~> 2.27)
   pg (~> 1.1)

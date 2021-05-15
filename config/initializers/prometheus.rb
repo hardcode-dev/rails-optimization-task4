@@ -1,4 +1,4 @@
-if Rails.env == "local_development"
+if Rails.env == "localproduction"
   require 'prometheus_exporter/middleware'
 
   # This reports stats per request like HTTP status and timings

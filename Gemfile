@@ -16,7 +16,7 @@ end
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
-gem "acts_as_follower", github: "forem/acts_as_follower", branch: "master"
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
@@ -63,7 +63,7 @@ gem 'newrelic_rpm'
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
-gem "omniauth-github", "~> 1.3"
+gem "omniauth-github", "~> 1.4"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
 gem 'prometheus_exporter'

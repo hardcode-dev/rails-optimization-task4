@@ -4,8 +4,8 @@
 
 - [x] Познакомиться с интересным живым `Rails` `open-source` проектом
 - [x] Попрактиковаться в настройке мониторинга
-- [ ] Попрактиковаться в поиске возможностей для оптимизации
-- [ ] Попрактиковаться в проверке гипотез и обосновании предложений по оптимизации
+- [x] Попрактиковаться в поиске возможностей для оптимизации
+- [x] Попрактиковаться в проверке гипотез и обосновании предложений по оптимизации
 
 ## Подготовка
 
@@ -43,9 +43,6 @@
 Рассмотрите гипотезу о том, что можно закешировать `<%= render "articles/single_story", story: story %>` в `_main_stories_feed.html.erb` и это даст заметный эффект.
 
 - Не забудьте включить локальное кэширование (`touch tmp/caching-dev.txt`)
-- Сделайте `benchmark` с помощью `ab`
-- Сделайте оптимизацию
-- Перезапустите `benchmark`
 
 #### Этап №1
 
@@ -80,7 +77,7 @@
   ![newrelic_before_1.4](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/newrelic_before_1.4.jpg)
 
 - `Prometheus`
-  ![skylight_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/prometheus_before_1.1.jpg)
+  ![prometheus_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/prometheus_before_1.1.jpg)
 
 - `rack-mini-profiler`
   ![mini_profiler_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/mini_profiler_before_1.1.jpg)
@@ -92,3 +89,31 @@
   Из первого рисунка видно, что в качестве точки роста выделяется rendering
   ![rails_panel_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/rails_panel_before_1.1.jpg)
   ![rails_panel_before_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/rails_panel_before_1.2.jpg)
+
+#### Этап №4
+
+- Модифицировано приложение по точке роста — rending `StoriesController#index`
+  1. [Caching with Rails: An Overview](https://guides.rubyonrails.org/caching_with_rails.html)
+  2. [Caching in Ruby on Rails 5.2](https://medium.com/rubyinside/https-medium-com-wintermeyer-caching-in-ruby-on-rails-5-2-d72e1ddf848c)
+
+Включили кэширование в `environment` `development`
+
+#### Этап №5
+
+- Сняты показания по точкам роста
+- `SKYLIGHT`:
+  ![skylight_after_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/skylight_after_1.1.jpg)
+  ![skylight_after_1.2](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/skylight_after_1.2.jpg)
+
+- `New Relic`:
+  ![newrelic_after_1.4](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/newrelic_after_1.4.jpg)
+
+- `rack-mini-profiler`
+  ![mini_profiler_after_1.1](https://github.com/rubygitflow/rails-optimization-task4/raw/profiler4/statistics_report/mini_profiler_after_1.1.jpg)
+
+#### Этап №6
+
+- Выводы:
+
+1. Оптимизация рендеринга главной страницы приложения выполнена за счёт кэширования `partial`-ов `_single_story.html.erb`.
+2. Наилучшим профилировщиком для выборки точки роста при рендеринге оказался `SKYLIGHT`

@@ -1,6 +1,6 @@
 class OrganizationObserver < ActiveRecord::Observer
   def after_create(organization)
-    return if Rails.env.development?
+    return if %w[development local_production].include?(Rails.env)
 
     SlackBot.delay.ping(
       "New Org Created: #{organization.name}\nhttps://dev.to/#{organization.username}",

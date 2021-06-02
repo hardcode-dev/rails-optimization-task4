@@ -9,14 +9,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production do
+group :production, :local_production do
   gem "nakayoshi_fork"
 end
 
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
-gem "acts_as_follower", github: "thepracticaldev/acts_as_follower", branch: "master"
+gem "acts_as_follower", github: "forem/acts_as_follower", branch: "master"
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
@@ -60,6 +60,7 @@ gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
 gem "nokogiri", "~> 1.10"
+gem "newrelic_rpm"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
@@ -72,6 +73,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem 'rack-mini-profiler'
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -122,7 +124,7 @@ group :development, :test do
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
-  gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
+  gem "fix-db-schema-conflicts", github: "jakeonrails/fix-db-schema-conflicts", branch: "master"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"

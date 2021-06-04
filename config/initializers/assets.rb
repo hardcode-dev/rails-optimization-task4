@@ -22,6 +22,10 @@ Rails.application.config.assets.precompile += %w[favicon.ico]
 # Rails.application.config.assets.paths << Rails.root.join("client", "assets", "fonts")
 # Rails.application.config.assets.precompile += %w( generated/server-bundle.js )
 
+Rails.application.config.assets.precompile += %w[scaffolds.css]
+Rails.application.config.assets.precompile += %w[articles.css]
+Rails.application.config.assets.precompile += %w[top-bar.css]
+
 Rails.application.config.assets.precompile += %w[minimal.css]
 Rails.application.config.assets.precompile += %w[s3_direct_upload.css]
 Rails.application.config.assets.precompile += %w[base.js]

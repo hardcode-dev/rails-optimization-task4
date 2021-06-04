@@ -105,6 +105,8 @@ gem "webpush", "~> 0.3"
 
 gem 'newrelic_rpm'
 gem 'scout_apm'
+gem "anyway_config", "~> 2.0"
+gem 'tty-command'
 
 group :development do
   gem "better_errors", "~> 2.5"

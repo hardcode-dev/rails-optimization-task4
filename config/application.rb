@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module PracticalDeveloper
   class Application < Rails::Application
+    # Configure the path for configuration classes that should be used before initialization
+    # NOTE: path should be relative to the project root (Rails.root)
+    # config.anyway_config.autoload_static_config_path = "config/configs"
+    #
     config.skylight.environments << "development"
 
     config.load_defaults 5.1

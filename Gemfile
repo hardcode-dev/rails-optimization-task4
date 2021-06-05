@@ -113,6 +113,7 @@ gem 'tty-command'
 #gem 'yabeda-prometheus'
 
 gem 'prometheus_exporter'
+gem 'rack-mini-profiler', require: false
 
 group :development do
   gem "better_errors", "~> 2.5"

@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   include Pundit
   include Instrumentation
+  if Rails.env.production?
+    before_action do
+      Rack::MiniProfiler.authorize_request if params["enable_profiler"].present?
+    end
+  end
 
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|

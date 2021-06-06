@@ -264,4 +264,6 @@ Devise.setup do |config|
   config.omniauth :github,
   ApplicationConfig["GITHUB_KEY"], ApplicationConfig["GITHUB_SECRET"], scope: "user:email"
   config.omniauth :twitter, ApplicationConfig["TWITTER_KEY"], ApplicationConfig["TWITTER_SECRET"]
+
+  config.secret_key = 'ab2c49164427c6b1eaf26bf1e33eb713cc1f0fb458ee30883c003d55dde59454c95318d5d07bc3d2ca56c2eb4a4eaee755812153c70c79ec8db9819d59678fc4'
 end

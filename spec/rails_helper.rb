@@ -32,7 +32,7 @@ Dir[Rails.root.join("spec/models/shared_examples/**/*.rb")].each { |f| require f
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+ActiveRecord::Migration[5.1].maintain_test_schema!
 
 # Disable internet connection with Webmock
 WebMock.disable_net_connect!(allow_localhost: true)

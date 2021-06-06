@@ -1,4 +1,4 @@
-class CreateBroadcasts < ActiveRecord::Migration
+class CreateBroadcasts < ActiveRecord::Migration[5.1]
   def change
     create_table :broadcasts do |t|
       t.string :title

@@ -7,20 +7,12 @@ GIT
       i18n (>= 0.7)
 
 GIT
-  remote: https://github.com/thepracticaldev/acts_as_follower.git
-  revision: 288690cd99bc470eaee493fce5bfa9fe23157692
+  remote: https://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
   branch: master
   specs:
     acts_as_follower (0.2.1)
       activerecord (>= 4.0)
-
-GIT
-  remote: https://github.com/thepracticaldev/fix-db-schema-conflicts.git
-  revision: 4172392392e1a8d907f7ab673cb5ddd9a4a31940
-  branch: master
-  specs:
-    fix-db-schema-conflicts (3.0.2)
-      rubocop (>= 0.38.0)
 
 GEM
   remote: https://rubygems.org/
@@ -97,10 +89,6 @@ GEM
       nokogiri
       railties
       safely_block (>= 0.1.1)
-    airbrake (8.1.4)
-      airbrake-ruby (~> 3.2)
-    airbrake-ruby (3.2.5)
-      rbtree3 (~> 0.5)
     algoliasearch (1.26.0)
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 1.5.1)
@@ -322,6 +310,8 @@ GEM
       thor (~> 0.14)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
+    fix-db-schema-conflicts (3.0.3)
+      rubocop (>= 0.38.0)
     fog (1.41.0)
       fog-aliyun (>= 0.1.0)
       fog-atmos
@@ -612,6 +602,7 @@ GEM
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
     netrc (0.11.0)
+    newrelic_rpm (7.1.0)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -677,6 +668,8 @@ GEM
     rack (2.0.6)
     rack-host-redirect (1.3.0)
       rack
+    rack-mini-profiler (2.3.2)
+      rack (>= 1.2.0)
     rack-protection (2.0.4)
       rack
     rack-proxy (0.6.5)
@@ -719,7 +712,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rbtree3 (0.5.0)
     rbvmomi (1.11.6)
       builder (~> 3.0)
       json (>= 1.8)
@@ -952,7 +944,6 @@ DEPENDENCIES
   addressable (~> 2.5, >= 2.5.2)
   administrate (~> 0.11)
   ahoy_email (~> 0.5)
-  airbrake (~> 8.1)
   algoliasearch-rails (~> 1.21)
   algorithmia (~> 1.0)
   ancestry (~> 3.0)
@@ -992,7 +983,7 @@ DEPENDENCIES
   fastly-rails (~> 0.8)
   feedjira (~> 2.2)
   figaro (~> 1.1)
-  fix-db-schema-conflicts!
+  fix-db-schema-conflicts
   fog (~> 1.41)
   front_matter_parser (~> 0.2)
   gemoji (~> 3.0.0)
@@ -1013,6 +1004,7 @@ DEPENDENCIES
   liquid (~> 4.0)
   memory_profiler (~> 0.9)
   nakayoshi_fork
+  newrelic_rpm
   nokogiri (~> 1.10)
   octokit (~> 4.13)
   omniauth (~> 1.9)
@@ -1029,6 +1021,7 @@ DEPENDENCIES
   pusher (~> 1.3)
   pusher-push-notifications (~> 1.0)
   rack-host-redirect (~> 1.3)
+  rack-mini-profiler
   rack-timeout (~> 0.5)
   rails (~> 5.1.6)
   rails-assets-airbrake-js-client (~> 1.5)!

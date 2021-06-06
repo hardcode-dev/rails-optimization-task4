@@ -13,14 +13,17 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+group :development do
+  gem "web-console", "~> 3.7"
+end
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
-gem "acts_as_follower", github: "thepracticaldev/acts_as_follower", branch: "master"
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
-gem "airbrake", "~> 8.1"
 gem "algoliasearch-rails", "~> 1.21"
 gem "algorithmia", "~> 1.0"
 gem "ancestry", "~> 3.0"
@@ -103,7 +106,7 @@ gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
-group :development do
+group :development, :local_production do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false
@@ -114,15 +117,16 @@ group :development do
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
-  gem "web-console", "~> 3.7"
+  gem 'newrelic_rpm'
+  gem 'rack-mini-profiler'
 end
 
-group :development, :test do
+group :development, :test, :local_production do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
-  gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
+  gem 'fix-db-schema-conflicts'
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"

@@ -41,7 +41,7 @@ end
 
 def assets_precompile!
   puts "== ASSETS COMPILE =="
-  system! "rake assets:precompile" || abort("\n== Command assets:precompile failed ==")
+  system_with_production_env_simple! "rake assets:precompile" || abort("\n== Command assets:precompile failed ==")
 end
 
 chdir APP_ROOT do

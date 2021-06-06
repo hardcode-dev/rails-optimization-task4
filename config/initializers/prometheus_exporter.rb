@@ -1,4 +1,5 @@
 unless Rails.env == "test"
+  return if Rake.try(:application)
   require 'prometheus_exporter/middleware'
 
   # This reports stats per request like HTTP status and timings

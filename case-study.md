@@ -59,8 +59,9 @@ local_production
 
 [скриншоты]
 
-Bullet и Scout указывают на проблему N+1 в этом контроллере
+Bullet и Scout указывают на проблему N+1 в этом stories#index
 <img width="1412" alt="image" src="https://user-images.githubusercontent.com/2257408/120966773-46ff6b00-c799-11eb-8e11-7fc98939ae1c.png">
+<img width="361" alt="image" src="https://user-images.githubusercontent.com/2257408/120967720-6ea30300-c79a-11eb-9e8c-50bc93ef20cc.png">
 
 [скриншот]
 И большинство указывают на проблему с рендерингом шаблона \_single_story

@@ -141,11 +141,13 @@ class StoriesController < ApplicationController
       end
       @featured_story = @stories.where.not(main_image: nil).first&.decorate || Article.new
     end
+    @stories = @stories.preload(:user, :organization)
     @stories = @stories.decorate
     assign_podcasts
     @article_index = true
     set_surrogate_key_header "main_app_home_page"
     response.headers["Surrogate-Control"] = "max-age=600, stale-while-revalidate=30, stale-if-error=86400"
+
     render template: "articles/index"
   end
 

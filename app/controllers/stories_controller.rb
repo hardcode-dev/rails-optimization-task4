@@ -141,7 +141,7 @@ class StoriesController < ApplicationController
       end
       @featured_story = @stories.where.not(main_image: nil).first&.decorate || Article.new
     end
-    @stories = @stories.preload(:user, :organization)
+    @stories = @stories
     @stories = @stories.decorate
     assign_podcasts
     @article_index = true

@@ -29,7 +29,6 @@ siege -c 5 -t 360s -p http://localhost:3000/
 Запуск ab на 100 запросов показал **3.28 запроса в секунду**
 По прометею продолжительность запроса к stories#index на старте – **1.52 секунд**, после прогрева плато – **0.33 sec**
 
-[скриншоты]
 
 ### В local_production окружении
   <img width="1347" alt="Pasted Graphic 28" src="https://user-images.githubusercontent.com/2257408/120965935-166b0180-c798-11eb-9ef5-715239322e5f.png">
@@ -40,7 +39,6 @@ siege -c 5 -t 360s -p http://localhost:3000/
 Запуск ab на 100 запросов показал **7.34 запроса в секунду**
 По прометею продолжительность запроса к stories#index на старте – **5.19 секунд**, после прогрева плато – **0.76 sec**
 
-[скирншоты]
 
 ## Сравнение development vs local_production
 
@@ -58,21 +56,14 @@ local_production
 Все системы мониторинга указывают на проблему в controller Stories#index
 <img width="1289" alt="image" src="https://user-images.githubusercontent.com/2257408/120966735-3bac3f80-c799-11eb-9fe6-3f79e4d1ffe3.png">
 
-Bullet и Scout указывают на проблему N+1 в этом stories#index
-<img width="1412" alt="image" src="https://user-images.githubusercontent.com/2257408/120966773-46ff6b00-c799-11eb-8e11-7fc98939ae1c.png">
-<img width="361" alt="image" src="https://user-images.githubusercontent.com/2257408/120967720-6ea30300-c79a-11eb-9e8c-50bc93ef20cc.png">
-
-И большинство указывают на проблему с рендерингом шаблона \_single_story
+Конретнее, указывают на проблему с рендерингом шаблона \_single_story
 <img width="703" alt="image" src="https://user-images.githubusercontent.com/2257408/120966977-87f77f80-c799-11eb-9a6e-100e7afb2360.png">
 
-Для проведения оптимизации я выбрал инструмент ab, которым формирую 10 запросов к stories#index
-ab -n 100 -c 5 http://localhost:3000/
+Для проведения оптимизации я выбрал инструмент ab, которым формирую 500 запросов к stories#index
+ab -n 500 -c 5 http://localhost:3000/
 Метрика, которую оптимизирую Request per Seconds. Перед началом оптимизаций ее значение было – 11.81rps
-Requests per second: 11.81 [#/sec](mean)
-Time per request: 423.453 [ms](mean)
-Time per request: 84.691 [ms] (mean, across all concurrent requests)
 
-Бюджет – ??? 100ms время ответа страницы в 99 персентиле
+Бюджет – убрать агонию в контроллере stories#index, и добиться среднего времени ответа < 100ms
 
 Фидбек луп
 
@@ -89,9 +80,6 @@ Time per request: 84.691 [ms] (mean, across all concurrent requests)
 - добавляю cache: true в рендер каждой single_story
   `<%= render "articles/single_story", story: story, cached: true %>`
 - Метрика не изменилась 11.81rps -> 11.53rps
-  Requests per second: 11.53 [#/sec](mean)
-  Time per request: 433.585 [ms](mean)
-  Time per request: 86.717 [ms] (mean, across all concurrent requests)
 
 ### Оптимизация 2
 
@@ -111,6 +99,9 @@ Time per request: 84.691 [ms] (mean, across all concurrent requests)
 ```
 
 - Метрика улучшилась радикально 11.53rps -> 25.06
-  Requests per second: 25.06 [#/sec](mean)
-  Time per request: 199.494 [ms](mean)
-  Time per request: 39.899 [ms] (mean, across all concurrent requests)
+
+## Результат
+
+По данным Skylight типичный запрос к оптимизируемому эндпоинту теперь занимает 78ms, а значит, удалось уложиться в бюджет
+<img width="1227" alt="image" src="https://user-images.githubusercontent.com/2257408/121464374-5a534600-c9e6-11eb-945c-7e7f8613a3d5.png">
+

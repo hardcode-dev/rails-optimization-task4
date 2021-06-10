@@ -12,13 +12,15 @@
   'ENVIRONMENT_ASSETS_DIGEST' => 'true'
 ```
 
-В development окружении показатели систем мониторинга при запуске на 10 минут
+Для запуска приложение в окружении local_production достаточно запустить скрипт bin/startup_local_production
+
+## Показатели приложения под нагрузкой в 5 конкурентных запрос в течении 10 минут
 
 ```
 siege -c 5 -t 360s -p http://localhost:3000/
 ```
 
-- development env
+### В development окружении
   <img width="1300" alt="Pasted Graphic 18" src="https://user-images.githubusercontent.com/2257408/120965835-f9cec980-c797-11eb-9455-60050af90448.png">
   <img width="1440" alt="Pasted Graphic 19" src="https://user-images.githubusercontent.com/2257408/120965866-00f5d780-c798-11eb-8d17-b58d76057ad8.png">
   <img width="815" alt="Throuthput" src="https://user-images.githubusercontent.com/2257408/120965894-094e1280-c798-11eb-832e-ef5f610d8681.png">
@@ -29,7 +31,7 @@ siege -c 5 -t 360s -p http://localhost:3000/
 
 [скриншоты]
 
-- local_production
+### В local_production окружении
   <img width="1347" alt="Pasted Graphic 28" src="https://user-images.githubusercontent.com/2257408/120965935-166b0180-c798-11eb-9ef5-715239322e5f.png">
   <img width="1440" alt="Pasted Graphic 29" src="https://user-images.githubusercontent.com/2257408/120965945-19fe8880-c798-11eb-996c-25d99d93b8ad.png">
   <img width="821" alt="Web transactions time" src="https://user-images.githubusercontent.com/2257408/120965957-1d920f80-c798-11eb-8e7e-3e6ce6b72be0.png">
@@ -40,7 +42,7 @@ siege -c 5 -t 360s -p http://localhost:3000/
 
 [скирншоты]
 
-Сравнению development vs local_production
+## Сравнение development vs local_production
 
 <img width="1429" alt="Pasted Graphic 37" src="https://user-images.githubusercontent.com/2257408/120966240-8e392c00-c798-11eb-9591-cec7cad9fc29.png">
 

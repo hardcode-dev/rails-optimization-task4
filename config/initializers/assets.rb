@@ -25,6 +25,7 @@ Rails.application.config.assets.precompile += %w[favicon.ico]
 Rails.application.config.assets.precompile += %w[scaffolds.css]
 Rails.application.config.assets.precompile += %w[articles.css]
 Rails.application.config.assets.precompile += %w[top-bar.css]
+#Rails.application.config.assets.precompile += %w[github.css]
 
 Rails.application.config.assets.precompile += %w[minimal.css]
 Rails.application.config.assets.precompile += %w[s3_direct_upload.css]
@@ -36,3 +37,5 @@ Rails.application.config.assets.precompile += %w[lib/pulltorefresh.js]
 Rails.application.config.assets.precompile += %w[internal.js]
 Rails.application.config.assets.precompile += %w[lib/js-yaml.js]
 Rails.application.config.assets.precompile += %w[serviceworker.js manifest.json]
+
+Rails.application.config.assets.precompile += %w[pghero/favicon.png]

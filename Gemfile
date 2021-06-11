@@ -115,6 +115,8 @@ gem 'tty-command'
 gem 'prometheus_exporter'
 gem 'rack-mini-profiler', require: false
 
+gem 'pghero'
+
 group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"

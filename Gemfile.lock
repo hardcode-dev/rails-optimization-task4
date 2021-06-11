@@ -658,6 +658,8 @@ GEM
     pastel (0.8.0)
       tty-color (~> 0.5)
     pg (1.1.4)
+    pghero (2.8.1)
+      activerecord (>= 5)
     powerpack (0.1.2)
     prometheus_exporter (0.7.0)
       webrick
@@ -1044,6 +1046,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.4)
   parallel_tests (~> 2.27)
   pg (~> 1.1)
+  pghero
   prometheus_exporter
   pry (~> 0.12)
   pry-byebug (~> 3.7)

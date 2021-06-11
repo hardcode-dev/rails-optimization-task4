@@ -21,6 +21,7 @@ siege -c 5 -t 360s -p http://localhost:3000/
 ```
 
 ### В development окружении
+
   <img width="1300" alt="Pasted Graphic 18" src="https://user-images.githubusercontent.com/2257408/120965835-f9cec980-c797-11eb-9455-60050af90448.png">
   <img width="1440" alt="Pasted Graphic 19" src="https://user-images.githubusercontent.com/2257408/120965866-00f5d780-c798-11eb-8d17-b58d76057ad8.png">
   <img width="815" alt="Throuthput" src="https://user-images.githubusercontent.com/2257408/120965894-094e1280-c798-11eb-832e-ef5f610d8681.png">
@@ -29,8 +30,8 @@ siege -c 5 -t 360s -p http://localhost:3000/
 Запуск ab на 100 запросов показал **3.28 запроса в секунду**
 По прометею продолжительность запроса к stories#index на старте – **1.52 секунд**, после прогрева плато – **0.33 sec**
 
-
 ### В local_production окружении
+
   <img width="1347" alt="Pasted Graphic 28" src="https://user-images.githubusercontent.com/2257408/120965935-166b0180-c798-11eb-9ef5-715239322e5f.png">
   <img width="1440" alt="Pasted Graphic 29" src="https://user-images.githubusercontent.com/2257408/120965945-19fe8880-c798-11eb-996c-25d99d93b8ad.png">
   <img width="821" alt="Web transactions time" src="https://user-images.githubusercontent.com/2257408/120965957-1d920f80-c798-11eb-8e7e-3e6ce6b72be0.png">
@@ -38,7 +39,6 @@ siege -c 5 -t 360s -p http://localhost:3000/
 
 Запуск ab на 100 запросов показал **7.34 запроса в секунду**
 По прометею продолжительность запроса к stories#index на старте – **5.19 секунд**, после прогрева плато – **0.76 sec**
-
 
 ## Сравнение development vs local_production
 
@@ -98,10 +98,15 @@ ab -n 500 -c 5 http://localhost:3000/
   <% end %>
 ```
 
+- Метрика улучшилась радикально 11.53rps -> 25.06
+
 ## Рефакторинг
 
 Так как внутри single_story есть счетчики комментариев, я переделал кеширование на более гибкое. Чтобы кеш этого фрагмента инвалидировался при изменении счетчиков story.comments_count
+
+```
 cache("unsigned_stories", expires_in: 1.minutes) -> cache(@stories)
+```
 
 Насколько я понял, так как мы используем counter_culture, нам не нужно добавлять :touch в модели, так как comments_count является полем таблицы articles и при его изменении кеш будет инвалидирован (поправьте, если я не прав)
 
@@ -109,10 +114,7 @@ cache("unsigned_stories", expires_in: 1.minutes) -> cache(@stories)
 
 Вот почему не нужен touch, потому что есть counter_culture и он является уже аттрибутом модели который поменяется
 
-- Метрика улучшилась радикально 11.53rps -> 25.06
-
 ## Результат
 
 По данным Skylight типичный запрос к оптимизируемому эндпоинту теперь занимает 78ms, а значит, удалось уложиться в бюджет
 <img width="1227" alt="image" src="https://user-images.githubusercontent.com/2257408/121464374-5a534600-c9e6-11eb-945c-7e7f8613a3d5.png">
-

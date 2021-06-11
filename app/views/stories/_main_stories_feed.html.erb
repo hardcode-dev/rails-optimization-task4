@@ -50,13 +50,14 @@
     </div>
   <% end %>
 <% else %>
-  <% cache("unsigned_stories", expires_in: 1.minutes) do %>
+
+  <% cache(@stories) do %>
     <% @stories.each_with_index do |story, i| %>
       <% next if story.id == @featured_story.id %>
       <% if !user_signed_in? && i == 4 %>
         <%= render "stories/sign_in_invitation" %>
       <% end %>
-      <%= render "articles/single_story", story: story, cached: true %>
+      <%= render "articles/single_story", story: story %>
     <% end %>
   <% end %>
 <% end %>

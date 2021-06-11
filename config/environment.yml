@@ -1,0 +1,19 @@
+default: &default
+#  cache_classes: ""
+
+development:
+  <<: *default
+  app_domain: 'localhost:3000'  
+  cache_classes: false
+  eager_load: false
+  perform_caching: false
+  assets_compile: true
+  assets_debug: true
+  assets_digest: false
+test:
+  <<: *default
+  eager_load: false
+  perform_caching: false
+
+production:
+  <<: *default

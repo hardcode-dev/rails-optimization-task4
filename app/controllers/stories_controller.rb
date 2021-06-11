@@ -2,7 +2,22 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!, except: %i[index search show feed new]
   before_action :set_cache_control_headers, only: %i[index search show]
 
+  require "prometheus_exporter/client"
+
+  def prometheus_client
+    @prometheus_client ||= PrometheusExporter::Client.default
+  end
+
+  def gauge
+    @gauge ||= prometheus_client.register(:gauge, "diy_memory", "amount of diy_memory")
+  end
+
+  def get_mem
+    (`ps -o rss= -p #{Process.pid}`.to_i / 1024)
+  end
+
   def index
+    gauge.observe(get_mem, process: Process.pid)
     add_param_context(:username, :tag)
     return handle_user_or_organization_or_podcast_index if params[:username]
     return handle_tag_index if params[:tag]
@@ -126,11 +141,13 @@ class StoriesController < ApplicationController
       end
       @featured_story = @stories.where.not(main_image: nil).first&.decorate || Article.new
     end
+    @stories = @stories
     @stories = @stories.decorate
     assign_podcasts
     @article_index = true
     set_surrogate_key_header "main_app_home_page"
     response.headers["Surrogate-Control"] = "max-age=600, stale-while-revalidate=30, stale-if-error=86400"
+
     render template: "articles/index"
   end
 

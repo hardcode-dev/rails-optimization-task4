@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+require "pathname"
+require "fileutils"
+include FileUtils
+require 'tty-command'
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path("..", __dir__)
+
+
+PROD_ENV_VARS = {
+  'LOCAL_PRODUCTION' => 'true',
+  'RAILS_ENV' => 'development',
+  
+  'ENVIRONMENT_APP_DOMAIN' => 'local_production:3000',
+  'ENVIRONMENT_CACHE_CLASSES' => 'true',
+  'ENVIRONMENT_EAGER_LOAD' => 'true',
+  'ENVIRONMENT_PERFORM_CACHING' => 'true',
+
+  'ENVIRONMENT_ASSETS_DEBUG' => 'false',
+  'ENVIRONMENT_ASSETS_COMPILE' => 'false',
+  'ENVIRONMENT_ASSETS_DIGEST' => 'true'
+}
+
+def vars_to_s
+  command = ""
+  PROD_ENV_VARS.each do | k,v |
+    command += "#{k}=#{v} "
+  end
+  command
+end
+
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+def system_with_production_env_simple!(args)
+  var = "RAILS_ENV=development"
+  system! "#{vars_to_s} #{args}" || abort("\n== Command #{args} failed ==")
+end
+
+def assets_precompile!
+  puts "== ASSETS COMPILE =="
+  system_with_production_env_simple! "rake assets:precompile" || abort("\n== Command assets:precompile failed ==")
+end
+
+chdir APP_ROOT do
+  puts "== STARTING UP =="
+  assets_precompile!
+  system_with_production_env_simple! "foreman start -f Procfile.dev"
+end

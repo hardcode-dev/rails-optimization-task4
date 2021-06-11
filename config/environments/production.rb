@@ -1,23 +1,32 @@
 # rubocop:disable Metrics/BlockLength
 
 Rails.application.configure do
+  EnvironmentConfigurator.call
+end
+
+Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
 
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  # MOVED TO CONFIGURATOR
+  # config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
+  
+  # MOVED TO CONFIGURATOR
+  # config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  #config.consider_all_requests_local       = 
+  
+  # MOVED TO CONFIGURATOR
+  # config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
@@ -35,14 +44,17 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = Uglifier.new(harmony: true)
-  # config.assets.css_compressor = :sass
+  #config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  # MOVED TO CONFIGURATOR
+  # config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
-  config.assets.digest = true
+  
+  # MOVED TO CONFIGURATOR
+  #config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version`
   # have moved to config/initializers/assets.rb
@@ -109,7 +121,8 @@ Rails.application.configure do
                          socket_timeout: 1.5,
                          socket_failure_delay: 0.2 }
 
-  config.app_domain = "dev.to"
+  # MOVED TO CONFIGURATOR
+  # config.app_domain = "dev.to"
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true

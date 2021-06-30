@@ -1,18 +1,21 @@
 require "rails_helper"
 
 RSpec.describe "internal/users", type: :request do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user) }
-  let(:user3) { create(:user) }
-  let(:super_admin) { create(:user, :super_admin) }
-  let(:article) { create(:article, user: user) }
-  let(:article2) { create(:article, user: user2) }
+  let_it_be(:user) { create(:user) }
+  let_it_be(:user2) { create(:user) }
+  let_it_be(:user3) { create(:user) }
+  let_it_be(:super_admin) { create(:user, :super_admin) }
+  let_it_be(:article) { create(:article, user: user) }
+  let_it_be(:article2) { create(:article, user: user2) }
 
   before do
     sign_in super_admin
-    user
-    user2
+    # user
+    # user2
     # Delayed::Worker.new(quiet: true).work_off
+  end
+
+  before_all do
     dependents_for_offending_user_article
     offender_activity_on_other_content
   end

@@ -12,7 +12,7 @@ RSpec.describe "internal/users", type: :request do
     sign_in super_admin
     user
     user2
-    Delayed::Worker.new(quiet: true).work_off
+    # Delayed::Worker.new(quiet: true).work_off
     dependents_for_offending_user_article
     offender_activity_on_other_content
   end
@@ -28,7 +28,7 @@ RSpec.describe "internal/users", type: :request do
     create(:reaction, reactable: comment2, reactable_type: "Comment", user: user2)
     # create user3 reaction to offending article
     create(:reaction, reactable: article, reactable_type: "Article", user: user3, category: "like")
-    Delayed::Worker.new(quiet: true).work_off
+    # Delayed::Worker.new(quiet: true).work_off
   end
 
   def offender_activity_on_other_content
@@ -38,7 +38,7 @@ RSpec.describe "internal/users", type: :request do
     comment = create(:comment, commentable_type: "Article", commentable: article2, user: user)
     # user3 reacts to offender comment
     create(:reaction, reactable: comment, reactable_type: "Comment", user: user3)
-    Delayed::Worker.new(quiet: true).work_off
+    # Delayed::Worker.new(quiet: true).work_off
   end
 
   context "when deleting user" do
@@ -62,7 +62,7 @@ RSpec.describe "internal/users", type: :request do
       create_mutual_follows
       create_mention
       create(:badge_achievement, rewarder_id: 1, rewarding_context_message: "yay", user_id: user.id)
-      Delayed::Worker.new(quiet: true).work_off
+      # Delayed::Worker.new(quiet: true).work_off
     end
 
     it "raises a 'record not found' error after deletion" do
@@ -90,7 +90,7 @@ RSpec.describe "internal/users", type: :request do
   context "when banishing user" do
     def banish_user
       post "/internal/users/#{user.id}/banish"
-      Delayed::Worker.new(quiet: true).work_off
+      # Delayed::Worker.new(quiet: true).work_off
       user.reload
     end
 

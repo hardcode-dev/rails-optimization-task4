@@ -145,6 +145,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
+  gem "influxer", "~> 1.2"
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
@@ -157,6 +158,7 @@ group :test do
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"
+  gem 'tty'
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"
 end

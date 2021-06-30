@@ -5,7 +5,8 @@ namespace :test do
 
     command = TTY::Command.new(printer: :quiet, color: true)
     # cmd = "rspec"
-    cmd = "bundle exec rake 'parallel:spec[3]'"
+    # cmd = "bundle exec rake 'parallel:spec[3]'"
+    cmd = "rspec ./spec/controllers/internal_users_controller_spec.rb"
     puts "Running rspec via `#{cmd}`"
 
     start = Time.now

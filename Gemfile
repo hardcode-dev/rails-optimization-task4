@@ -13,6 +13,10 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+group :production, :development do
+  gem "honeycomb-rails"
+end
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -50,7 +54,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"

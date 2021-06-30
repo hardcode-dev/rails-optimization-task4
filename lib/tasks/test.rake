@@ -4,12 +4,13 @@ namespace :test do
     abort "InfluxDB not running!" unless influx_running?
 
     command = TTY::Command.new(printer: :quiet, color: true)
-    puts "Running rspec via `rspec`"
+    # cmd = "rspec"
+    cmd = "bundle exec rake 'parallel:spec[3]'"
+    puts "Running rspec via `#{cmd}`"
 
     start = Time.now
     begin
-      command.run("rspec")
-      # command.run("bundle exec rake 'parallel:spec[3]'")
+      command.run(cmd)
     rescue TTY::Command::ExitError
       puts "TEST FAILED SAFELY"
     end

@@ -1,0 +1,4 @@
+development:
+  database: 'db'
+  username: root
+  password: root

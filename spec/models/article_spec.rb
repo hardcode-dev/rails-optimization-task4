@@ -40,7 +40,7 @@ RSpec.describe Article, type: :model do
   end
 
   it "reject future dates" do
-    expect(build(:article, with_date: true, date: "01/01/2020").valid?).to be(false)
+    expect(build(:article, with_date: true, date: "01/01/2022").valid?).to be(false)
   end
 
   it "has proper username" do

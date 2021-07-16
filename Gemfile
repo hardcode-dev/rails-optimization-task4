@@ -1,6 +1,6 @@
 # rubocop:disable LineLength
 source "https://rubygems.org"
-ruby "2.6.3"
+ruby "2.7.3"
 
 # Enforce git to transmitted via https.
 # workaround until bundler 2.0 is released.
@@ -16,7 +16,7 @@ end
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
-gem "acts_as_follower", github: "thepracticaldev/acts_as_follower", branch: "master"
+gem "acts_as_follower", github: "tcocca/acts_as_follower", branch: "master"
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
@@ -62,7 +62,7 @@ gem "liquid", "~> 4.0"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
-gem "omniauth-github", "~> 1.3"
+gem "omniauth-github", "~> 1.4"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
 gem "pry", "~> 0.12"
@@ -122,7 +122,8 @@ group :development, :test do
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
-  gem "fix-db-schema-conflicts", github: "thepracticaldev/fix-db-schema-conflicts", branch: "master"
+  gem "fix-db-schema-conflicts", github: "jakeonrails/fix-db-schema-conflicts", branch: "master"
+  gem "influxer"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"
@@ -144,14 +145,14 @@ group :test do
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
-  gem "ruby-prof", "~> 0.17", require: false
+  gem "ruby-prof", require: false
   gem "selenium-webdriver", "~> 3.141"
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
   gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
-  gem "test-prof", "~> 0.7"
+  gem "test-prof"
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"

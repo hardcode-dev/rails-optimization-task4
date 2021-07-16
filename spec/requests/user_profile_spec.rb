@@ -30,10 +30,14 @@ RSpec.describe "UserProfiles", type: :request do
       expect(response.body).to include CGI.escapeHTML(organization.name)
     end
 
-    it "renders organization users on sidebar" do
-      user.update(organization_id: organization.id)
-      get organization.path
-      expect(response.body).to include user.profile_image_url
+    context "User with profile image" do
+      let(:user) { create(:user, :with_profile_image) }
+
+      it "renders organization users on sidebar" do
+        user.update(organization_id: organization.id)
+        get organization.path
+        expect(response.body).to include user.profile_image_url
+      end
     end
   end
 

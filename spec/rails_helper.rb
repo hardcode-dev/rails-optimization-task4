@@ -12,6 +12,7 @@ require "pundit/matchers"
 require "pundit/rspec"
 require "webmock/rspec"
 require "test_prof/recipes/rspec/before_all"
+require "test_prof/recipes/rspec/let_it_be"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -37,6 +38,39 @@ ActiveRecord::Migration.maintain_test_schema!
 # Disable internet connection with Webmock
 WebMock.disable_net_connect!(allow_localhost: true)
 
+################################################################################
+# Отправка метрики в InfluxDB
+#
+# Набросок на стадии концепта, нуждается в более правильной компоновке.
+#
+
+INFLUXDB_USER = "me".freeze
+
+def with_metric?
+  # Для того, чтобы не создавать не относящийся к задаче код,
+  # я не стал добавлять проверку на то, что прогоняется весь сьют, ее можно
+  # реализовать, пересчитав кодичество файлов в путях, указанных в
+  # Rspec.configuration в #default_path и #pattern, и сравнив их со списком
+  # прогоняемых файлов, который также есть в конфигурации в #files_to_run.
+
+  # Включить отправку метрик можно с помощью переменной окружения
+  ENV["WITH_METRIC"].present? && %w[0 false].exclude?(ENV["WITH_METRIC"].downcase)
+end
+
+def start_metric
+  @@metric_started_at = Time.current
+end
+
+def send_metric
+  value = (Time.current - @@metric_started_at).to_i
+  puts "[METRIC] Suite execution time: #{value} s"
+  puts "[METRIC] Sending to Influxdb..."
+  result = TestDurationMetric.write(user: INFLUXDB_USER, run_time: value)
+  puts "[METRIC] #{result ? 'Success' : 'Error'}"
+end
+
+################################################################################
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -59,6 +93,11 @@ RSpec.configure do |config|
     else
       VCR.turned_off { ex.run }
     end
+  end
+
+  if with_metric?
+    config.before(:suite) { start_metric }
+    config.after(:suite) { send_metric }
   end
 
   # Allow testing with Stripe's test server. BECAREFUL
@@ -89,8 +128,5 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  # Filter lines from Rails gems in backtraces.
-  config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  config.example_status_persistence_file_path = "tmp/examples.txt"
 end

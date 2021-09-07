@@ -28,6 +28,9 @@ variable :DEPLOYMENT_SIGNATURE, :String, default: "Optional"
 # It's best if you have the following configured
 # for more development experience
 
+#NewRelic for analyze and optimize
+variable :NEWRELIC_LICENSE_KEY, :String, default: "Optional"
+
 # Github for github related access
 variable :GITHUB_KEY, :String, default: "Optional"
 variable :GITHUB_SECRET, :String, default: "Optional"

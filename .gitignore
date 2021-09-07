@@ -61,3 +61,6 @@ package-lock.json
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+#urls for siege
+siege_conf.txt

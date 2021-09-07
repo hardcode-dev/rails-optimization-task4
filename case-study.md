@@ -7,5 +7,5 @@
 - [x] Настроить свой `Skylight` для мониторинга локального `dev.to`
 - [x] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
 - [ ] Настроить `rack-mini-profiler`
-- [ ] Настроить `rails-panel`
+- [x] Настроить `rails-panel`
 - [ ] Сделать возможность запуска проекта в `local_production`

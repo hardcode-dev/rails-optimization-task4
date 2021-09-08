@@ -44,5 +44,9 @@ staging:
   <<: *default_settings
   app_name: devto (Staging)
 
+local_production:
+  <<: *default_settings
+  app_name: devto (LocalProduction)
+
 production:
   <<: *default_settings

@@ -28,10 +28,10 @@ variable :DEPLOYMENT_SIGNATURE, :String, default: "Optional"
 # It's best if you have the following configured
 # for more development experience
 
-#NewRelic for analyze and optimize
+# NewRelic for analyze and optimize
 variable :NEWRELIC_LICENSE_KEY, :String, default: "Optional"
 
-#Skylight profiler
+# Skylight profiler
 variable :SKYLIGHT_AUTHENTICATION, :String, default: "Optional"
 
 # Github for github related access

@@ -8,4 +8,4 @@
 - [x] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
 - [ ] Настроить `rack-mini-profiler`
 - [x] Настроить `rails-panel`
-- [ ] Сделать возможность запуска проекта в `local_production`
+- [x] Сделать возможность запуска проекта в `local_production`

@@ -6,6 +6,6 @@
 - [x] Настроить свой `NewRelic` для мониторинга локального `dev.to`
 - [x] Настроить свой `Skylight` для мониторинга локального `dev.to`
 - [x] Настроить свой `Prometheus` + `Grafana` для мониторинга локального `dev.to`
-- [ ] Настроить `rack-mini-profiler`
+- [x] Настроить `rack-mini-profiler`
 - [x] Настроить `rails-panel`
 - [x] Сделать возможность запуска проекта в `local_production`

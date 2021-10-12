@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Instrumentation
 
+  before_action do
+    if Rails.env.local_production?
+      # с кукой ковыряться как-то лень было, решил воспользоваться обычным СУПЕРСЕКРЕТНЫМУЛЬТРАПАРАМЕТРОМ
+      Rack::MiniProfiler.authorize_request if params[:super_ultra_secret_param]
+    end
+  end
+
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ApplicationConfig["APP_NAME"] && password == ApplicationConfig["APP_PASSWORD"]

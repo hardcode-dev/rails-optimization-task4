@@ -1,32 +1,15 @@
-#
-# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
-# .NET, PHP, Python, Node, and Go applications with deep visibility and low
-# overhead.  For more information, visit www.newrelic.com.
-
-# Generated October 10, 2021, for version 8.0.0
-#
-# For full documentation of agent configuration options, please refer to
-# https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
 
 common: &default_settings
-  # Required license key associated with your New Relic account.
-  license_key: NRAK-15W2WNRPWCACXD6ZGY1ZSKQF1F7
-
-  # Your application name. Renaming here affects where data displays in New
-  # Relic. For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: dev.to
-
-  # To disable the agent regardless of other settings, uncomment the following:
-  # agent_enabled: false
-
-  # Logging level for log/newrelic_agent.log; options are error, warn, info, or
-  # debug.
+  license_key: <%=  ENV["NEW_RELIC_KEY"] %>
+  app_name: dev_to
+  distributed_tracing:
+    enabled: true
   log_level: info
 
 
 development:
   <<: *default_settings
-  app_name: dev.to (Development)
+  app_name: dev_to (Development)
 
 test:
   <<: *default_settings
@@ -35,7 +18,12 @@ test:
 
 staging:
   <<: *default_settings
-  app_name: dev.to (Staging)
+  app_name: dev_to (Staging)
 
 production:
   <<: *default_settings
+
+local_production:
+  <<: *default_settings
+  app_name: dev_to (LP)
+  monitor_mode: true

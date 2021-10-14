@@ -13,6 +13,10 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+group :production, :development do
+  gem "honeycomb-rails"
+end
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -50,7 +54,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"
@@ -59,12 +62,14 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem "newrelic_rpm"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
-gem "omniauth-github", "~> 1.3"
+gem "omniauth-github", "~> 1.4"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
+gem "prometheus_exporter"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -72,6 +77,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler"
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -113,6 +119,7 @@ group :development do
   gem "guard", "~> 2.15", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", "~> 4.7", require: false
+  gem "meta_request"
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
 end
@@ -141,6 +148,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
+  gem "influxer", "~> 1.2"
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
@@ -153,6 +161,7 @@ group :test do
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"
+  gem 'tty'
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"
 end

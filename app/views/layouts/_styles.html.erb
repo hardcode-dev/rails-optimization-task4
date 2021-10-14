@@ -1,7 +1,7 @@
 <% cache "base_inline_styles_#{@story_show}_#{@article_index}_#{@home_page}_#{@article_show}_#{view_class}_#{@notifications_index}_#{core_pages?}_#{@tags_index}_#{ApplicationConfig['DEPLOYMENT_SIGNATURE']}x_xs__", expires_in: 8.hours do %>
   <% if @story_show %>
     <style>
-      <% Rails.application.config.assets.compile = true %>
+      <%# Rails.application.config.assets.compile = true %>
       <%= Rails.application.assets["scaffolds.css"].to_s.html_safe %>
       <%= Rails.application.assets["top-bar.css"].to_s.html_safe %>
       <% if @article_show %>
@@ -20,10 +20,9 @@
     </style>
   <% elsif @article_index %>
     <style>
-      <% Rails.application.config.assets.compile = true %>
-      <%= Rails.application.assets["scaffolds.css"].to_s.html_safe %>
-      <%= Rails.application.assets["articles.css"].to_s.html_safe %>
-      <%= Rails.application.assets["top-bar.css"].to_s.html_safe %>
+      <%= stylesheet_link_tag "scaffolds.css" %>
+      <%= stylesheet_link_tag "articles.css" %>
+      <%= stylesheet_link_tag "top-bar.css" %>
       <% unless @home_page %>
       <%= Rails.application.assets["user-profile-header.css"].to_s.html_safe %>
       <%= Rails.application.assets["sidebar-data.scss"].to_s.html_safe %>

@@ -1,6 +1,9 @@
 # rubocop:disable Metrics/BlockLength
 
 Rails.application.routes.draw do
+
+  mount PgHero::Engine, at: "pghero"
+  
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
     session: "sessions",
@@ -320,6 +323,8 @@ Rails.application.routes.draw do
   get "/:username" => "stories#index"
 
   root "stories#index"
+
+  
 end
 
 # rubocop:enable Metrics/BlockLength

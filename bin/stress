@@ -1,0 +1,4 @@
+#curl  --cookie "remember_user_token=W1sxMV0sIlVTa1V5YnNUVUJDZ1JSM0F1OUFIIiwiMTYyMjk0OTcxNC41MDI0NDQiXQ%3D%3D--6460d2bb2bfd699ec37cfc46dad2d978619de34c" http://localhost:3000/ 
+#siege -c 2 -t 300s -p http://localhost:3000/
+#ab -n 1000 -c 10 -H "Cookie: remember_user_token=W1sxMV0sIlVTa1V5YnNUVUJDZ1JSM0F1OUFIIiwiMTYyMjk0OTcxNC41MDI0NDQiXQ%3D%3D--6460d2bb2bfd699ec37cfc46dad2d978619de34c" http://localhost:3000/ 
+ab -n 100 -c 2 http://localhost:3000/

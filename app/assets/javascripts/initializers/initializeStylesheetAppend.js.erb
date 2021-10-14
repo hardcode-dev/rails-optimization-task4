@@ -4,7 +4,7 @@ function initializeStylesheetAppend() {
         link.type = 'text/css'
         link.id = "main-head-stylesheet"
         link.rel = 'stylesheet'
-        link.href = '<%= stylesheet_url 'minimal' %>';
+        link.href = '<%= asset_path 'minimal' %>';
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 }

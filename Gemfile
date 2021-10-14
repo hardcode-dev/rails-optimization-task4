@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production do
+group :production, :local_production do
   gem "nakayoshi_fork"
 end
 
@@ -62,7 +62,7 @@ gem "liquid", "~> 4.0"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
-gem "omniauth-github", "~> 1.3"
+gem "omniauth-github", "~> 1.4"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
 gem "pry", "~> 0.12"
@@ -89,7 +89,7 @@ gem "sdoc", "~> 1.0", group: :doc
 gem "serviceworker-rails", "~> 0.5"
 gem "share_meow_client", "~> 0.1"
 gem "sitemap_generator", "~> 6.0"
-gem "skylight", "~> 3.1"
+gem "skylight"
 gem "slack-notifier", "~> 2.3"
 gem "sprockets", "~> 3.7"
 gem "staccato", "~> 0.5"
@@ -102,8 +102,13 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem 'newrelic_rpm'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'prometheus_exporter'
+gem 'rack-mini-profiler'
 
 group :development do
+  gem 'meta_request'
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

@@ -44,5 +44,9 @@ staging:
   <<: *default_settings
   app_name: Rails_Opti (Staging)
 
+local_production:
+  <<: *default_settings
+  app_name: Rails_Opti (Local production)
+
 production:
   <<: *default_settings

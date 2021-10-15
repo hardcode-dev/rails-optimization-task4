@@ -8,3 +8,4 @@
    - `New Relic => Monitoring => Transaction`: показал что точка роста `StoriesController#index`
 3. Подключил `Skylight`
 4. Подключил `Prometheus`+`Grafana`
+5. Добавил `rack-mini-profiler` и настроил `RailsPanel`

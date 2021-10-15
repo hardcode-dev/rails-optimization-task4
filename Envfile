@@ -126,6 +126,9 @@ variable :RECAPTCHA_SITE, :String, default: "Optional"
 variable :SHARE_MEOW_BASE_URL, :String, default: "Optional"
 variable :SHARE_MEOW_SECRET_KEY, :String, default: "Optional"
 
+# Skylight
+variable :SKYLIGHT_AUTHENTICATION, :String, default: "Optional"
+
 # Slack for customer alerts
 variable :SLACK_CHANNEL, :String, default: "Optional"
 variable :SLACK_WEBHOOK_URL, :String, default: "Optional"

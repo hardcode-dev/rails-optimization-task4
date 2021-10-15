@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Instrumentation
 
+  before_action do
+    Rack::MiniProfiler.authorize_request if Rails.env.local_production?
+  end
+
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ApplicationConfig["APP_NAME"] && password == ApplicationConfig["APP_PASSWORD"]

@@ -57,3 +57,4 @@ package-lock.json
 # Protect secret keys
 Envfile
 /config/newrelic.yml
+/config/skylight.yml

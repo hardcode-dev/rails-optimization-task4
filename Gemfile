@@ -13,6 +13,7 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+gem "prometheus_exporter"
 gem "newrelic_rpm"
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"

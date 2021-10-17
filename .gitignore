@@ -54,5 +54,6 @@ package-lock.json
 #sitemap
 /public/sitemap.xml.gz
 
-# Protect API keys
+# Protect secret keys
 Envfile
+/config/newrelic.yml

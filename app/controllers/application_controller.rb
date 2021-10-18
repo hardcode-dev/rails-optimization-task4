@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
+  before_action :authorize_rmp
 
   include Pundit
   include Instrumentation
@@ -77,5 +78,9 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super(payload)
     append_to_honeycomb(request, self.class.name)
+  end
+
+  def authorize_rmp
+    Rack::MiniProfiler.authorize_request if session[:rmp]
   end
 end

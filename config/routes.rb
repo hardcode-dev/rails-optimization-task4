@@ -133,6 +133,8 @@ Rails.application.routes.draw do
   resources :rating_votes, only: [:create]
   resources :page_views, only: %i[create update]
 
+  get "/profilers/rmp" => "profilers#rmp"
+
   get "/notifications/:filter" => "notifications#index"
   get "/notifications/:filter/:org_id" => "notifications#index"
   patch "/onboarding_update" => "users#onboarding_update"

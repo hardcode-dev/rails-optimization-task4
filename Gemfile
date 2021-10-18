@@ -102,6 +102,7 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "newrelic_rpm"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -133,6 +134,12 @@ group :development, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+
+  gem 'meta_request'
+  gem 'rack-mini-profiler'
+  # For memory profiling
+  # For call-stack profiling flamegraphs
+  gem 'flamegraph'
 end
 
 group :test do

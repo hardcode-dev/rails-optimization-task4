@@ -31,6 +31,10 @@ module PracticalDeveloper
     config.autoload_paths += Dir["#{config.root}/app/sanitizers"]
     config.autoload_paths += Dir["#{config.root}/lib/"]
 
+    # config.skylight.environments += ["staging"]
+    config.skylight.environments += ["development"]
+    config.skylight.environments += ["localproduction"]
+
     config.active_record.observers = :article_observer, :reaction_observer, :comment_observer
     config.active_job.queue_adapter = :delayed_job
 

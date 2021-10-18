@@ -39,6 +39,21 @@ development:
     hmr: false
     https: false
 
+
+localproduction:
+  <<: *default
+  # Production depends on precompilation of packs prior to booting for performance.
+  compile: false
+
+  # Cache manifest.json for performance
+  cache_manifest: true
+
+  dev_server:
+    host: localhost
+    port: 3035
+    hmr: false
+    https: false
+
 test:
   <<: *default
   compile: true

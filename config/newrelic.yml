@@ -1,0 +1,36 @@
+#
+# This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
+# .NET, PHP, Python, Node, and Go applications with deep visibility and low
+# overhead.  For more information, visit www.newrelic.com.
+
+# Generated October 18, 2021, for version 8.0.0
+#
+# For full documentation of agent configuration options, please refer to
+# https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
+
+common: &default_settings
+  # Required license key associated with your New Relic account.
+  license_key: <%= ENV['NEW_RELIC_KEY'] %>
+  app_name: Dev.to Test
+  log_level: info
+
+development:
+  <<: *default_settings
+  app_name: Dev.to Test (Development)
+
+local_production:
+  <<: *default_settings
+  app_name: Dev.to Test (LP)
+  monitor_mode: true
+
+test:
+  <<: *default_settings
+  # It doesn't make sense to report to New Relic from automated test runs.
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  app_name: Dev.to Test (Staging)
+
+production:
+  <<: *default_settings

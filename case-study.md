@@ -79,3 +79,51 @@ Percentage of the requests served within a certain time (ms)
 99%    151
 100%    152 (longest request)
 ```
+
+При кэшировании `render partial: "articles/single_story", locals: { story: story }`. Предварительно произвел прогрев,
+дабы все что нужно закэшировалось.
+
+```
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /
+Document Length:        142356 bytes
+
+Concurrency Level:      1
+Time taken for tests:   9.312 seconds
+Complete requests:      200
+Failed requests:        0
+Total transferred:      28555800 bytes
+HTML transferred:       28471200 bytes
+Requests per second:    21.48 [#/sec] (mean)
+Time per request:       46.559 [ms] (mean)
+Time per request:       46.559 [ms] (mean, across all concurrent requests)
+Transfer rate:          2994.73 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    29   46  23.7     37     151
+Waiting:       29   46  23.2     37     151
+Total:         29   47  23.7     37     152
+
+Percentage of the requests served within a certain time (ms)
+  50%     37
+  66%     41
+  75%     53
+  80%     55
+  90%     84
+  95%    104
+  98%    132
+  99%    139
+ 100%    152 (longest request)
+```
+
+Выводы:
+
+- `local_production` в сревнении с `development` показывает прирост производительности на главной странице в ~4.5 раза;
+- гипотеза о том, что кэширование `articles/single_story` позволит увеличить производительность, оказалась верна,
+  уменьшив среднее время ответа на ~35%;
+- 95 персентиль немного увеличился, полагаю можно списать это на погрешность.
+  Он занимает ~3.2x среднего времени ответа эндпоинта (46.5 мс), что является допустимым по правилам Nate Berkopec.

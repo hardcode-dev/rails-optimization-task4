@@ -53,3 +53,7 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+
+# Protect secret keys
+/config/newrelic.yml
+/config/skylight.yml

@@ -9,10 +9,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production do
+group :production, :local_production do
   gem "nakayoshi_fork"
 end
 
+gem "rack-mini-profiler"
+gem "prometheus_exporter"
+gem "newrelic_rpm"
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -104,6 +107,7 @@ gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
 group :development do
+  gem "meta_request"
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

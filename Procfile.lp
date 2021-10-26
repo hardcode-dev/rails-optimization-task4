@@ -1,4 +1,3 @@
-web: bin/rails s -p 3000
-webpacker: ./bin/webpack-dev-server
+web: bin/rails s -e local_production -p 3000
 job: bin/rake jobs:work
 prometheus_exporter: bundle exec prometheus_exporter

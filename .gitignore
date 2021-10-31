@@ -53,3 +53,7 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+
+#monitorung
+/config/newrelic.yml
+/config/skylight.yml

@@ -6,15 +6,21 @@ services:
       context: .
     ports:
       - "3000:3000"
+      - "9394:9394"
     depends_on:
       - db
     environment:
-      RAILS_ENV: development
-      DATABASE_URL: postgres://postgres:mysecretpassword@db:5432/postgres
+      RAILS_ENV: ${RAILS_ENV:-development}
+      DATABASE_URL: postgres://postgres:password@db:5432/postgres
       YARN_INTEGRITY_ENABLED: "false"
     volumes:
       - .:/usr/src/app
-    command: bundle exec rails server -b 0.0.0.0 -p 3000
+    command: /bin/bash -c "
+        [ "$RAILS_ENV" == "local_production" ] && bundle exec rake assets:precompile;
+        rm -f /tmp/server.pid
+        && bundle exec prometheus_exporter -b 0.0.0.0
+        & bundle exec rails server -b 0.0.0.0 -P /tmp/server.pid
+      "
   jobs:
     ports: []
     <<: *rails_base
@@ -24,6 +30,10 @@ services:
     <<: *rails_base
     command: ./bin/webpack-dev-server
   db:
-    image: postgres
+    image: postgres:9.6-alpine
     ports:
     - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+    - ./tmp/postgres_data:/var/lib/postgresql/data

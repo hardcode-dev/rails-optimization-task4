@@ -66,7 +66,7 @@ gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
-gem 'prometheus_exporter'
+gem "prometheus_exporter"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -74,6 +74,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler", require: false
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -117,6 +118,7 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
+  gem "meta_request"
 end
 
 group :development, :test do

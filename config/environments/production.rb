@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockLength`
 
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
@@ -113,7 +113,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: ENV["APP_PROTOCOL"] + ENV["APP_DOMAIN"] }
+  config.action_mailer.default_url_options = { host: "#{ENV["APP_PROTOCOL"]}#{ENV["APP_DOMAIN"]}" }
   ActionMailer::Base.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: "587",
@@ -126,6 +126,16 @@ Rails.application.configure do
 
   config.middleware.use Rack::HostRedirect,
     "practicaldev.herokuapp.com" => "dev.to"
+
+  if ENV.fetch("LOCAL_PRODUCTION", "true") == "true"
+    config.consider_all_requests_local = true
+    config.public_file_server.enabled = true
+    config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+    config.cache_store = :memory_store
+    config.assets.debug = false
+    config.app_domain = "localhost:3000"
+    config.action_mailer.default_url_options = { host: "localhost:3000" }
+  end
 end
 
 # rubocop:enable Metrics/BlockLength

@@ -11,6 +11,7 @@ end
 
 group :production do
   gem "nakayoshi_fork"
+  gem "faker", git: "https://github.com/stympy/faker.git", branch: "master", require: false
 end
 
 gem "actionpack-action_caching", "~> 1.2"

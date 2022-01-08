@@ -138,6 +138,8 @@ group :development, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem "ruby-prof", "~> 0.17"
+  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
 end
 
 group :test do
@@ -149,12 +151,10 @@ group :test do
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
-  gem "ruby-prof", "~> 0.17", require: false
   gem "selenium-webdriver", "~> 3.141"
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
-  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"

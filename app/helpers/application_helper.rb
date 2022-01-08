@@ -101,7 +101,7 @@ module ApplicationHelper
   def cloud_cover_url(url)
     return if url.blank?
     return asset_path("triple-unicorn") if Rails.env.test?
-    return url if Rails.env.development?
+    return url if Rails.env.development? || ENV.fetch("LOCAL_PRODUCTION", "true") == "true"
 
     width = 1000
     height = 420

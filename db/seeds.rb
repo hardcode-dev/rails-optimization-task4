@@ -1,3 +1,5 @@
+require 'faker'
+
 p "1/9 Creating Organizations"
 
 3.times do

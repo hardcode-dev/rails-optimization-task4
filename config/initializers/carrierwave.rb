@@ -3,7 +3,7 @@ require "carrierwave/storage/file"
 require "carrierwave/storage/fog"
 
 CarrierWave.configure do |config|
-  if Rails.env.development? || Rails.env.test?
+  if Rails.env.development? || Rails.env.test? || ENV.fetch("LOCAL_PRODUCTION", "true") == "true"
     config.storage = :file
   else
     # config.fog_provider = 'fog-aws'

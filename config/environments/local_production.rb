@@ -13,11 +13,12 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.cache_classes = true
 
   # Do not eager load code on boot.
-  config.eager_load = false
-
+  config.eager_load = true
+  config.assets.debug = false
+  config.assets.compile = true
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
 
@@ -94,11 +95,6 @@ Rails.application.configure do
   logger = Timber::Logger.new(log_device)
   logger.level = config.log_level
   config.logger = ActiveSupport::TaggedLogging.new(logger)
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.console = true
-  end
 end
 
 # rubocop:enable Metrics/BlockLength

@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-group :production do
+group :production, :localproduction do
   gem "nakayoshi_fork"
 end
 
@@ -102,6 +102,11 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+
+gem "meta_request"
+gem "newrelic_rpm"
+gem "prometheus_exporter"
+gem "rack-mini-profiler"
 
 group :development do
   gem "better_errors", "~> 2.5"

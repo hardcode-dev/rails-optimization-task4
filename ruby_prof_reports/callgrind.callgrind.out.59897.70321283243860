@@ -1,0 +1,102 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Kernel::sleep
+0 131
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=IO::write
+0 32
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=IO::<<
+0 6
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=IO::write
+calls=2 298
+298 108
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Integer::to_s
+0 6
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=NilClass::===
+0 4
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activesupport-5.1.6.2/lib/active_support/core_ext/numeric/conversions.rb
+fn=ActiveSupport/NumericWithFormat::to_s
+103 13
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=NilClass::===
+calls=8 103
+103 4
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Integer::to_s
+calls=8 105
+105 6
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool::pool_capacity
+77 5
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+fn=Puma/Server::pool_capacity
+180 23
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+cfn=Puma/ThreadPool::pool_capacity
+calls=2 180
+180 5
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+fn=Puma/Server::running
+168 5
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread/Mutex::synchronize
+0 7
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool::backlog
+73 4
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread/Mutex::synchronize
+calls=2 73
+73 7
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+fn=Puma/Server::backlog
+164 7
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+cfn=Puma/ThreadPool::backlog
+calls=2 164
+164 11
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/cluster.rb
+fn=Puma/Cluster::worker
+293 33
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+cfn=Puma/Server::backlog
+calls=2 293
+293 18
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+cfn=Puma/Server::running
+calls=2 294
+294 5
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/server.rb
+cfn=Puma/Server::pool_capacity
+calls=2 295
+295 28
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activesupport-5.1.6.2/lib/active_support/core_ext/numeric/conversions.rb
+cfn=ActiveSupport/NumericWithFormat::to_s
+calls=8 297
+297 22
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=IO::<<
+calls=2 298
+298 114
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::sleep
+calls=2 291
+291 7510049
+

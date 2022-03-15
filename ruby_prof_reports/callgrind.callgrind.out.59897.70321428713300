@@ -1,0 +1,70 @@
+events: wall_time
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Kernel::sleep
+0 831
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::include?
+0 21
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::delete_if
+0 49
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::include?
+calls=65 236
+236 21
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::each
+0 10
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread::alive?
+0 35
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Array::reject
+0 47
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread::alive?
+calls=65 228
+228 35
+
+fl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+fn=Thread/Mutex::synchronize
+0 68
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::reject
+calls=13 228
+228 82
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::each
+calls=13 230
+230 10
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Array::delete_if
+calls=13 235
+235 71
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool::reap
+227 38
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Thread/Mutex::synchronize
+calls=13 227
+227 231
+
+fl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+fn=Puma/ThreadPool/Reaper::start!
+282 113
+cfl=/Users/ruslan/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/puma-3.12.0/lib/puma/thread_pool.rb
+cfn=Puma/ThreadPool::reap
+calls=13 282
+282 268
+cfl=/Users/ruslan/thinknetica/rails-optimization-task4/ruby_runtime
+cfn=Kernel::sleep
+calls=13 283
+283 12240737
+

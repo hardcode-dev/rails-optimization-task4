@@ -52,4 +52,8 @@ package-lock.json
 .idea/
 
 #sitemap
-/public/sitemap.xml.gz
+/public/sitemap.xml.gz/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

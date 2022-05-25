@@ -1,3 +1,7 @@
+<% if !user_signed_in? && defined?(story_counter) && story_counter == 3 %>
+  <%= render "stories/sign_in_invitation" %>
+<% end %>
+
 <div class="single-article single-article-small-pic">
   <% if story.video.present? && story.video_thumbnail_url.present? %>
     <a class="single-article-video-preview" style="background-image:url(<%= story.cloudinary_video_url %>)" href="<%= story.path %>">

@@ -103,7 +103,7 @@ gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
-group :development do
+group :development, :local_production do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false
@@ -113,8 +113,9 @@ group :development do
   gem "guard", "~> 2.15", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", "~> 4.7", require: false
+  gem "newrelic_rpm"
+  gem "rack-mini-profiler"
   gem "rb-fsevent", "~> 0.10", require: false
-  gem "web-console", "~> 3.7"
 end
 
 group :development, :test do
@@ -133,6 +134,7 @@ group :development, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem "web-console", "~> 3.7"
 end
 
 group :test do

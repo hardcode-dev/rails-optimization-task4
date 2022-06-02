@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
+  before_action do
+    Rack::MiniProfiler.authorize_request if cookies[:rack_mini_prof] == ApplicationConfig["RACK_MINI_PROF_KEY"]
+  end
+
   include Pundit
   include Instrumentation
 

@@ -59,6 +59,7 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem 'newrelic_rpm', '~> 8.7.0'
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
@@ -71,6 +72,7 @@ gem "puma", "~> 3.12"
 gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
+gem 'rack-mini-profiler', '~> 3.0.0', require: false
 gem "rack-host-redirect", "~> 1.3"
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
@@ -89,7 +91,7 @@ gem "sdoc", "~> 1.0", group: :doc
 gem "serviceworker-rails", "~> 0.5"
 gem "share_meow_client", "~> 0.1"
 gem "sitemap_generator", "~> 6.0"
-gem "skylight", "~> 3.1"
+gem "skylight", '~> 4.3.2'
 gem "slack-notifier", "~> 2.3"
 gem "sprockets", "~> 3.7"
 gem "staccato", "~> 0.5"
@@ -104,6 +106,7 @@ gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
 group :development do
+  gem 'meta_request'
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false

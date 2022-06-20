@@ -114,10 +114,10 @@ class User < ApplicationRecord
                            message: "%{value} must be either v1 or v2" }
 
   validates :config_theme,
-              inclusion: { in: %w(default night_theme),
+              inclusion: { in: %w[default night_theme],
                            message: "%{value} must be either default or night theme" }
   validates :config_font,
-              inclusion: { in: %w(default sans_serif),
+              inclusion: { in: %w[default sans_serif],
                            message: "%{value} must be either default or sans serif" }
   validates :shipping_country,
               length: { in: 2..2 },
@@ -131,7 +131,7 @@ class User < ApplicationRecord
                 length: { maximum: 500 }
   validates :mentee_description, :mentor_description,
               length: { maximum: 1000 }
-  validates :inbox_type, inclusion: { in: ["open", "private"] }
+  validates :inbox_type, inclusion: { in: %w[open private] }
   validate  :conditionally_validate_summary
   validate  :validate_mastodon_url
   validate  :validate_feed_url
@@ -406,6 +406,14 @@ class User < ApplicationRecord
 
   def unsubscribe_from_newsletters
     MailchimpBot.new(self).unsubscribe_all_newsletters
+  end
+
+  # redefine method from acts_as_follower because it raises "undefined method `create_or_find_by!'"
+  def follow(followable)
+    return unless self != followable
+
+    params = { followable_id: followable.id, followable_type: parent_class_name(followable) }
+    follows.find_or_create_by!(params)
   end
 
   private

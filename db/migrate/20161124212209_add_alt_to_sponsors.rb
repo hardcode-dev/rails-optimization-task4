@@ -1,4 +1,4 @@
-class AddAltToSponsors < ActiveRecord::Migration
+class AddAltToSponsors < ActiveRecord::Migration[5.1]
   def change
     add_column :sponsors, :alt_subheadline, :string
     add_column :articles, :alt_description, :text

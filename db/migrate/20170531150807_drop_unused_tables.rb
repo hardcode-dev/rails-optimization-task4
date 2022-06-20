@@ -1,4 +1,4 @@
-class DropUnusedTables < ActiveRecord::Migration
+class DropUnusedTables < ActiveRecord::Migration[5.1]
   def change
     drop_table :pulse_subscriptions
     drop_table :pulses

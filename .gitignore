@@ -55,3 +55,4 @@ package-lock.json
 #sitemap
 /public/sitemap.xml.gz
 siege_conf.txt
+config/scout_apm.yml

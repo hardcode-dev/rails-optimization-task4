@@ -35,6 +35,7 @@ module PracticalDeveloper
     config.active_job.queue_adapter = :delayed_job
 
     config.middleware.use Rack::Deflater
+    config.skylight.environments += %w[development staging production]
 
     # Globally handle Pundit::NotAuthorizedError by serving 404
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :not_found

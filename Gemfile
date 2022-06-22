@@ -105,6 +105,7 @@ gem "webpush", "~> 0.3"
 gem 'newrelic_rpm'
 gem 'scout_apm'
 gem 'prometheus_exporter'
+gem 'rack-mini-profiler', require: false
 
 group :development do
   gem "better_errors", "~> 2.5"

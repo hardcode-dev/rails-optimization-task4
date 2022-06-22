@@ -36,6 +36,7 @@ latest.dump
 
 # Ignore application configuration
 /config/application.yml
+/config/newrelic.yml
 /public/packs
 /public/packs-test
 /node_modules
@@ -53,3 +54,5 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+siege_conf.txt
+config/scout_apm.yml

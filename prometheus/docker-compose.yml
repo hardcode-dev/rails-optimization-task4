@@ -1,0 +1,16 @@
+version: '2'
+services:
+  dockerhost:
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    mem_limit: 8M
+    restart: on-failure
+  prometheus:
+    depends_on: [ dockerhost ]
+    image: prom/prometheus:0.18.0
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '-config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'

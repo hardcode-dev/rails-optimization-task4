@@ -1,4 +1,4 @@
-class AddOldUsernamesToUsers < ActiveRecord::Migration[5.1]
+class AddOldUsernamesToUsers < ActiveRecord::Migration
   def change
     add_column :users,    :old_username, :string
     add_column :users,    :old_old_username, :string

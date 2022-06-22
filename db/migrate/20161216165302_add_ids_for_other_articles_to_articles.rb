@@ -1,4 +1,4 @@
-class AddIdsForOtherArticlesToArticles < ActiveRecord::Migration[5.1]
+class AddIdsForOtherArticlesToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :ids_for_suggested_articles, :string, default: "[]"
   end

@@ -1,4 +1,4 @@
-class AddMarkdownCharacterCountToComments < ActiveRecord::Migration[5.1]
+class AddMarkdownCharacterCountToComments < ActiveRecord::Migration
   def change
     add_column :comments, :markdown_character_count, :integer
   end

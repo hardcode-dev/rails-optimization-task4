@@ -1,4 +1,4 @@
-class AddVideoToArticles < ActiveRecord::Migration[5.1]
+class AddVideoToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :video, :string
     add_column :articles, :video_code, :string

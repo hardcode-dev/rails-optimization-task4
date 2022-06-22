@@ -1,4 +1,4 @@
-class AddMainImageToArticles < ActiveRecord::Migration[5.1]
+class AddMainImageToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :main_image, :string
   end

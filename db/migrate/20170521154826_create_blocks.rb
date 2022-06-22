@@ -1,4 +1,4 @@
-class CreateBlocks < ActiveRecord::Migration[5.1]
+class CreateBlocks < ActiveRecord::Migration
   def change
     create_table :blocks do |t|
       t.integer   :user_id

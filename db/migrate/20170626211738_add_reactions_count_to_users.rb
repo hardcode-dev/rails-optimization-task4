@@ -1,4 +1,4 @@
-class AddReactionsCountToUsers < ActiveRecord::Migration[5.1]
+class AddReactionsCountToUsers < ActiveRecord::Migration
   def change
     add_column :users, :reactions_count, :integer, null: false, default: 0
   end

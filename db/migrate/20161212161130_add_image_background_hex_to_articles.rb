@@ -1,4 +1,4 @@
-class AddImageBackgroundHexToArticles < ActiveRecord::Migration[5.1]
+class AddImageBackgroundHexToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :main_image_background_hex_color, :string, default: "#dddddd"
   end

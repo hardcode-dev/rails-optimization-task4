@@ -1,4 +1,4 @@
-class AddAltUrlToSponsors < ActiveRecord::Migration[5.1]
+class AddAltUrlToSponsors < ActiveRecord::Migration
   def change
     add_column :sponsors, :alt_url, :string
   end

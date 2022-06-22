@@ -1,4 +1,4 @@
-class CreateReactions < ActiveRecord::Migration[5.1]
+class CreateReactions < ActiveRecord::Migration
   def change
     create_table :reactions do |t|
       t.integer :user_id

@@ -1,4 +1,4 @@
-class CreateAdvertisements < ActiveRecord::Migration[5.1]
+class CreateAdvertisements < ActiveRecord::Migration
   def change
     create_table :advertisements do |t|
       t.string :name

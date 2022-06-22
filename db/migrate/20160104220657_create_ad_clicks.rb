@@ -1,4 +1,4 @@
-class CreateAdClicks < ActiveRecord::Migration[5.1]
+class CreateAdClicks < ActiveRecord::Migration
   def change
     create_table :ad_clicks do |t|
       t.integer :article_id

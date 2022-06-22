@@ -1,4 +1,4 @@
-class AddOrgAdminToUsers < ActiveRecord::Migration[5.1]
+class AddOrgAdminToUsers < ActiveRecord::Migration
   def change
     add_column :users, :org_admin, :boolean, default: false
   end

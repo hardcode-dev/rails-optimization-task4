@@ -1,4 +1,4 @@
-class AddGithubPathToArticles < ActiveRecord::Migration[5.1]
+class AddGithubPathToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :github_path, :string
   end

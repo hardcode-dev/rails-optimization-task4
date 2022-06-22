@@ -1,4 +1,4 @@
-class AddOrderKeyToPodcastEpisodes < ActiveRecord::Migration[5.1]
+class AddOrderKeyToPodcastEpisodes < ActiveRecord::Migration
   def change
     add_column :podcast_episodes, :order_key, :string
   end

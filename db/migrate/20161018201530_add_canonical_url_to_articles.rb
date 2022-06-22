@@ -1,4 +1,4 @@
-class AddCanonicalUrlToArticles < ActiveRecord::Migration[5.1]
+class AddCanonicalUrlToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :canonical_url, :string
   end

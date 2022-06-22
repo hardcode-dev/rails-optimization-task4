@@ -1,4 +1,4 @@
-class AddSummaryToUsers < ActiveRecord::Migration[5.1]
+class AddSummaryToUsers < ActiveRecord::Migration
   def change
     add_column :users, :summary, :text
     add_column :users, :website_url, :string

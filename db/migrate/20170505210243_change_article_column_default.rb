@@ -1,4 +1,4 @@
-class ChangeArticleColumnDefault < ActiveRecord::Migration[5.1]
+class ChangeArticleColumnDefault < ActiveRecord::Migration
   def change
     change_column_default(:articles, :show_comments, true)
   end

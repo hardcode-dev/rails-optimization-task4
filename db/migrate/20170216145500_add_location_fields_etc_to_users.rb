@@ -1,4 +1,4 @@
-class AddLocationFieldsEtcToUsers < ActiveRecord::Migration[5.1]
+class AddLocationFieldsEtcToUsers < ActiveRecord::Migration
   def change
     add_column :users, :top_languages, :string
     add_column :users, :experience_level, :integer

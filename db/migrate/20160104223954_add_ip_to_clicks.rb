@@ -1,4 +1,4 @@
-class AddIpToClicks < ActiveRecord::Migration[5.1]
+class AddIpToClicks < ActiveRecord::Migration
   def change
     add_column :ad_clicks, :ip, :string
   end

@@ -1,4 +1,4 @@
-class AddSecretToUsers < ActiveRecord::Migration[5.1]
+class AddSecretToUsers < ActiveRecord::Migration
   def change
     add_column :users, :secret, :string
   end

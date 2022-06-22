@@ -1,4 +1,4 @@
-class AddDescriptionToJobs < ActiveRecord::Migration[5.1]
+class AddDescriptionToJobs < ActiveRecord::Migration
   def change
     add_column :job_listings, :description, :string
   end

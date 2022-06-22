@@ -1,4 +1,4 @@
-class CreateMentions < ActiveRecord::Migration[5.1]
+class CreateMentions < ActiveRecord::Migration
   def change
     create_table :mentions do |t|
       t.integer :mentionable_id

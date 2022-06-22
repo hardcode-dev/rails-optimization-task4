@@ -1,4 +1,4 @@
-class AddShippingValidatedAtToUsers < ActiveRecord::Migration[5.1]
+class AddShippingValidatedAtToUsers < ActiveRecord::Migration
   def change
     add_column :users, :shipping_validated_at, :datetime
   end

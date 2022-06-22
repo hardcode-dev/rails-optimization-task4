@@ -1,4 +1,4 @@
-class AddPublishedDateToArticles < ActiveRecord::Migration[5.1]
+class AddPublishedDateToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :published_at, :datetime
   end

@@ -1,4 +1,4 @@
-class AddMoreAttributesToPodcasts < ActiveRecord::Migration[5.1]
+class AddMoreAttributesToPodcasts < ActiveRecord::Migration
   def change
     add_column :podcasts, :overcast_url, :string
     add_column :podcasts, :android_url, :string

@@ -1,4 +1,4 @@
-class AddQuoteToPodcastEpisodes < ActiveRecord::Migration[5.1]
+class AddQuoteToPodcastEpisodes < ActiveRecord::Migration
   def change
     add_column :podcast_episodes, :quote, :text
   end

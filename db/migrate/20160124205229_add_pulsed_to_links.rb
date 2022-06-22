@@ -1,4 +1,4 @@
-class AddPulsedToLinks < ActiveRecord::Migration[5.1]
+class AddPulsedToLinks < ActiveRecord::Migration
   def change
     add_column :links, :pulsed, :boolean, default: false
     add_column :links, :ids_for_pulse_subscriptions_hit, :text, default: [].to_yaml

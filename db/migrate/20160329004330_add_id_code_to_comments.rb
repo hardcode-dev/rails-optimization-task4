@@ -1,4 +1,4 @@
-class AddIdCodeToComments < ActiveRecord::Migration[5.1]
+class AddIdCodeToComments < ActiveRecord::Migration
   def change
     add_column :comments, :id_code, :string
   end

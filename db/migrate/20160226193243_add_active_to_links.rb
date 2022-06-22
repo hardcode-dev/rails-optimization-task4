@@ -1,4 +1,4 @@
-class AddActiveToLinks < ActiveRecord::Migration[5.1]
+class AddActiveToLinks < ActiveRecord::Migration
   def change
     add_column :links, :active, :boolean, default: true
   end

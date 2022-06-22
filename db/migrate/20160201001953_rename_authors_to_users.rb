@@ -1,4 +1,4 @@
-class RenameAuthorsToUsers < ActiveRecord::Migration[5.1]
+class RenameAuthorsToUsers < ActiveRecord::Migration
   def change
     rename_table :authors, :users
   end

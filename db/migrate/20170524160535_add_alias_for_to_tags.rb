@@ -1,4 +1,4 @@
-class AddAliasForToTags < ActiveRecord::Migration[5.1]
+class AddAliasForToTags < ActiveRecord::Migration
   def change
     add_column :tags, :alias_for, :string
   end

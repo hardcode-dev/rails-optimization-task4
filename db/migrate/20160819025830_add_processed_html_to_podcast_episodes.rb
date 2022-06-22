@@ -1,4 +1,4 @@
-class AddProcessedHtmlToPodcastEpisodes < ActiveRecord::Migration[5.1]
+class AddProcessedHtmlToPodcastEpisodes < ActiveRecord::Migration
   def change
     add_column :podcast_episodes, :processed_html, :text
   end

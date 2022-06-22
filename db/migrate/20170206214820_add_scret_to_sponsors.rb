@@ -1,4 +1,4 @@
-class AddScretToSponsors < ActiveRecord::Migration[5.1]
+class AddScretToSponsors < ActiveRecord::Migration
   def change
     add_column :sponsors, :url_secret, :string
   end

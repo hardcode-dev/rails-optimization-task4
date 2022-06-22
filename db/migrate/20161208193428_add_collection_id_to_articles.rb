@@ -1,4 +1,4 @@
-class AddCollectionIdToArticles < ActiveRecord::Migration[5.1]
+class AddCollectionIdToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :collection_id, :integer
     add_column :articles, :collection_position, :integer

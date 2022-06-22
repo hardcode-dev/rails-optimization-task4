@@ -1,4 +1,4 @@
-class CreateGithubIssues < ActiveRecord::Migration[5.1]
+class CreateGithubIssues < ActiveRecord::Migration
   def change
     create_table :github_issues do |t|
       t.string :url

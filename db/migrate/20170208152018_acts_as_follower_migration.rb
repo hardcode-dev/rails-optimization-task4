@@ -1,4 +1,4 @@
-class ActsAsFollowerMigration < ActiveRecord::Migration[5.1]
+class ActsAsFollowerMigration < ActiveRecord::Migration
   def self.up
     create_table :follows, :force => true do |t|
       t.references :followable, :polymorphic => true, :null => false

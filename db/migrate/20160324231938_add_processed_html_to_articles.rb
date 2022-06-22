@@ -1,4 +1,4 @@
-class AddProcessedHtmlToArticles < ActiveRecord::Migration[5.1]
+class AddProcessedHtmlToArticles < ActiveRecord::Migration
   def change
     add_column :articles, :processed_html, :text
   end

@@ -1,4 +1,4 @@
-class AddSocialImageToTags < ActiveRecord::Migration[5.1]
+class AddSocialImageToTags < ActiveRecord::Migration
   def change
     add_column :tags, :social_image, :string
   end

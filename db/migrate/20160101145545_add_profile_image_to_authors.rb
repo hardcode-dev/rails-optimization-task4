@@ -1,4 +1,4 @@
-class AddProfileImageToAuthors < ActiveRecord::Migration[5.1]
+class AddProfileImageToAuthors < ActiveRecord::Migration
   def change
     add_column :authors, :profile_image, :string
   end

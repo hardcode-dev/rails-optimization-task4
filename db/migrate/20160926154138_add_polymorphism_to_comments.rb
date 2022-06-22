@@ -1,4 +1,4 @@
-class AddPolymorphismToComments < ActiveRecord::Migration[5.1]
+class AddPolymorphismToComments < ActiveRecord::Migration
   def change
     add_column :comments, :commentable_id, :integer
     add_column :comments, :commentable_type, :string

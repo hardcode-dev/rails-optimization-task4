@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,7 +14,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ahoy_messages", force: :cascade do |t|
+  create_table "ahoy_messages", id: :serial, force: :cascade do |t|
     t.datetime "clicked_at"
     t.text "content"
     t.integer "feedback_message_id"
@@ -47,7 +45,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_api_secrets_on_user_id"
   end
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", id: :serial, force: :cascade do |t|
     t.string "abuse_removal_reason"
     t.boolean "allow_big_edits", default: true
     t.boolean "allow_small_edits", default: true
@@ -159,7 +157,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["title"], name: "index_badges_on_title", unique: true
   end
 
-  create_table "blocks", force: :cascade do |t|
+  create_table "blocks", id: :serial, force: :cascade do |t|
     t.text "body_html"
     t.text "body_markdown"
     t.datetime "created_at", null: false
@@ -180,7 +178,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.integer "user_id"
   end
 
-  create_table "broadcasts", force: :cascade do |t|
+  create_table "broadcasts", id: :serial, force: :cascade do |t|
     t.text "body_markdown"
     t.text "processed_html"
     t.boolean "sent", default: false
@@ -226,7 +224,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "collections", force: :cascade do |t|
+  create_table "collections", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "description"
     t.string "main_image"
@@ -241,7 +239,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", id: :serial, force: :cascade do |t|
     t.string "ancestry"
     t.text "body_html"
     t.text "body_markdown"
@@ -264,7 +262,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["ancestry"], name: "index_comments_on_ancestry"
   end
 
-  create_table "delayed_jobs", force: :cascade do |t|
+  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
     t.integer "attempts", default: 0, null: false
     t.datetime "created_at"
     t.datetime "failed_at"
@@ -329,22 +327,20 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["reporter_id"], name: "index_feedback_messages_on_reporter_id"
   end
 
-  create_table "follows", force: :cascade do |t|
+  create_table "follows", id: :serial, force: :cascade do |t|
     t.boolean "blocked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.bigint "followable_id", null: false
+    t.datetime "created_at"
+    t.integer "followable_id", null: false
     t.string "followable_type", null: false
-    t.bigint "follower_id", null: false
+    t.integer "follower_id", null: false
     t.string "follower_type", null: false
     t.float "points", default: 1.0
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
-    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
   end
 
-  create_table "github_issues", force: :cascade do |t|
+  create_table "github_issues", id: :serial, force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
     t.string "issue_serialized", default: "--- {}\n"
@@ -401,7 +397,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.integer "user_id"
   end
 
-  create_table "identities", force: :cascade do |t|
+  create_table "identities", id: :serial, force: :cascade do |t|
     t.text "auth_data_dump"
     t.datetime "created_at", null: false
     t.string "provider"
@@ -427,7 +423,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mentions", force: :cascade do |t|
+  create_table "mentions", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "mentionable_id"
     t.string "mentionable_type"
@@ -457,7 +453,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notes", force: :cascade do |t|
+  create_table "notes", id: :serial, force: :cascade do |t|
     t.integer "author_id"
     t.text "content"
     t.datetime "created_at", null: false
@@ -467,7 +463,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "notifications", id: :serial, force: :cascade do |t|
     t.string "action"
     t.datetime "created_at", null: false
     t.jsonb "json_data"
@@ -484,7 +480,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "organizations", force: :cascade do |t|
+  create_table "organizations", id: :serial, force: :cascade do |t|
     t.string "address"
     t.boolean "approved", default: false
     t.string "bg_color_hex"
@@ -537,7 +533,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_page_views_on_user_id"
   end
 
-  create_table "podcast_episodes", force: :cascade do |t|
+  create_table "podcast_episodes", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "comments_count", default: 0, null: false
     t.datetime "created_at", null: false
@@ -564,7 +560,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.string "website_url"
   end
 
-  create_table "podcasts", force: :cascade do |t|
+  create_table "podcasts", id: :serial, force: :cascade do |t|
     t.string "android_url"
     t.datetime "created_at", null: false
     t.text "description"
@@ -606,7 +602,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_rating_votes_on_user_id"
   end
 
-  create_table "reactions", force: :cascade do |t|
+  create_table "reactions", id: :serial, force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
     t.float "points", default: 1.0
@@ -621,15 +617,14 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.datetime "created_at", null: false
+  create_table "roles", id: :serial, force: :cascade do |t|
+    t.datetime "created_at"
     t.string "name"
-    t.bigint "resource_id"
+    t.integer "resource_id"
     t.string "resource_type"
-    t.datetime "updated_at", null: false
+    t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
-    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
   create_table "sail_settings", force: :cascade do |t|
@@ -666,13 +661,13 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.integer "user_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :serial, force: :cascade do |t|
     t.string "context", limit: 128
     t.datetime "created_at"
-    t.bigint "tag_id"
-    t.bigint "taggable_id"
+    t.integer "tag_id"
+    t.integer "taggable_id"
     t.string "taggable_type"
-    t.bigint "tagger_id"
+    t.integer "tagger_id"
     t.string "tagger_type"
     t.index ["context"], name: "index_taggings_on_context"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
@@ -680,14 +675,12 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
     t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
     t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
-    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", id: :serial, force: :cascade do |t|
     t.string "alias_for"
     t.string "bg_color_hex"
     t.string "buffer_profile_id_code"
@@ -713,7 +706,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "tweets", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "extended_entities_serialized", default: "--- {}\n"
     t.integer "favorite_count"
@@ -745,7 +738,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.boolean "user_is_verified"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.integer "articles_count", default: 0, null: false
     t.string "available_for"
     t.integer "badge_achievements_count", default: 0, null: false
@@ -804,7 +797,7 @@ ActiveRecord::Schema.define(version: 20190315151829) do
     t.datetime "last_article_at", default: "2017-01-01 05:00:00"
     t.datetime "last_comment_at", default: "2017-01-01 05:00:00"
     t.datetime "last_followed_at"
-    t.datetime "last_moderation_notification", default: "2016-12-31 21:00:00"
+    t.datetime "last_moderation_notification", default: "2017-01-01 05:00:00"
     t.datetime "last_notification_activity"
     t.datetime "last_sign_in_at"
     t.inet "last_sign_in_ip"
@@ -889,11 +882,9 @@ ActiveRecord::Schema.define(version: 20190315151829) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "role_id"
-    t.bigint "user_id"
-    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.integer "role_id"
+    t.integer "user_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "badge_achievements", "badges"

@@ -1,4 +1,4 @@
-class AddPatternImageToSponsors < ActiveRecord::Migration[5.1]
+class AddPatternImageToSponsors < ActiveRecord::Migration
   def change
     add_column :sponsors, :pattern_image, :string
     add_column :sponsors, :subheadline, :string

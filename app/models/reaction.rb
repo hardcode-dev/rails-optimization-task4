@@ -1,7 +1,7 @@
 class Reaction < ApplicationRecord
   CATEGORIES = %w[like readinglist unicorn thinking hands thumbsdown vomit].freeze
 
-  belongs_to :reactable, polymorphic: true
+  belongs_to :reactable, polymorphic: true, touch: true
   belongs_to :user
 
   counter_culture :reactable,

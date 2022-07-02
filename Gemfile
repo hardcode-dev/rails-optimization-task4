@@ -102,30 +102,40 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "scout_apm"
+gem "ddtrace"
 
 group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
   gem "brakeman", "~> 4.4", require: false
-  gem "bullet", "~> 5.9"
   gem "bundler-audit", "~> 0.6"
   gem "derailed_benchmarks", "~> 1.3"
   gem "guard", "~> 2.15", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
+end
+
+group :development, :manufacture do
+  gem "meta_request"
+  gem "rack-mini-profiler"
+  gem "flamegraph"
+  gem "stackprof"
+  gem "prometheus_exporter"
+  gem "memory_profiler"
+  gem "bullet", "~> 5.9"
   gem "web-console", "~> 3.7"
 end
 
 group :development, :test do
+  gem "factory_bot_rails", "~> 4.11"
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "jakeonrails/fix-db-schema-conflicts", branch: "master"
-  gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
-  gem "pry-byebug", "~> 3.7"
   gem "rspec-rails", "~> 3.8"
   gem "rspec-retry", "~> 0.6"
   gem "rubocop", "~> 0.63", require: false
@@ -135,11 +145,14 @@ group :development, :test do
   gem "vcr", "~> 4.0"
 end
 
+group :development, :test, :manufacture do
+  gem "pry-byebug", "~> 3.7"
+end
+
 group :test do
   gem "approvals", "~> 0.0"
   gem "chromedriver-helper", "~> 2.1"
   gem "database_cleaner", "~> 1.7"
-  gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
@@ -149,7 +162,6 @@ group :test do
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
-  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :authorize_rack_mini_profiler
+
   protect_from_forgery with: :exception, prepend: true
 
   include Pundit
@@ -77,5 +79,11 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super(payload)
     append_to_honeycomb(request, self.class.name)
+  end
+
+  private
+
+  def authorize_rack_mini_profiler
+    Rack::MiniProfiler.authorize_request if current_user&.any_admin?
   end
 end

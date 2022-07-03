@@ -649,6 +649,8 @@ GEM
       parallel
     parser (2.6.0.0)
       ast (~> 2.4.0)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
     pg (1.1.4)
     powerpack (0.1.2)
     pry (0.12.2)
@@ -880,6 +882,9 @@ GEM
       msgpack (~> 1.0)
     timecop (0.9.1)
     trollop (2.1.2)
+    tty-color (0.6.0)
+    tty-command (0.10.1)
+      pastel (~> 0.8)
     twilio-ruby (5.21.0)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
@@ -1070,6 +1075,7 @@ DEPENDENCIES
   test-prof (~> 0.7)
   timber (~> 2.6)
   timecop (~> 0.9)
+  tty-command
   twilio-ruby (~> 5.21)
   twitter (~> 6.2)
   uglifier (~> 4.1)

@@ -136,6 +136,7 @@ group :development, :test do
 end
 
 group :test do
+   gem "tty-command", require: false
   gem "approvals", "~> 0.0"
   gem "chromedriver-helper", "~> 2.1"
   gem "database_cleaner", "~> 1.7"

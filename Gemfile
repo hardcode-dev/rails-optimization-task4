@@ -118,6 +118,8 @@ group :development do
 end
 
 group :development, :test do
+  gem "tty-command", require: false
+  gem "influxer", "~> 1.2"
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -136,7 +138,6 @@ group :development, :test do
 end
 
 group :test do
-   gem "tty-command", require: false
   gem "approvals", "~> 0.0"
   gem "chromedriver-helper", "~> 2.1"
   gem "database_cleaner", "~> 1.7"

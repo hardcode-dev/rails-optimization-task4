@@ -208,6 +208,14 @@ class User < ApplicationRecord
     "users-#{id}"
   end
 
+  # redefine method from acts_as_follower because it raises "undefined method `create_or_find_by!'"
+  def follow(followable)
+    if self != followable
+      params = {followable_id: followable.id, followable_type: parent_class_name(followable)}
+      self.follows.find_or_create_by(params)
+    end
+  end
+
   def estimate_default_language!
     identity = identities.where(provider: "twitter").first
     if email.end_with?(".jp")

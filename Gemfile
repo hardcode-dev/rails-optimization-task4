@@ -102,6 +102,8 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "influxdb-client"
+gem "influxdb-client-apis"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -119,7 +121,6 @@ end
 
 group :development, :test do
   gem "tty-command", require: false
-  gem "influxer", "~> 1.2"
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false

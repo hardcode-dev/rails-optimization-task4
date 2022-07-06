@@ -39,6 +39,11 @@ variable :TWITTER_ACCESS_TOKEN_SECRET, :String, default: "Optional"
 variable :TWITTER_KEY, :String, default: "Optional"
 variable :TWITTER_SECRET, :String, default: "Optional"
 
+variable :INFLUXDB_TOKEN, :String, default: "Optional"
+variable :INFLUXDB_ORG, :String, default: "Optional"
+variable :INFLUXDB_BUCKET, :String, default: "Optional"
+variable :INFLUXDB_URL, :String, default: "Optional"
+
 ################################################
 ######### Optional 3rd Party Services ##########
 ################################################

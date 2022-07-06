@@ -7,7 +7,7 @@ namespace :devto do
     user = git_cmd.run('git config user.name').out.chomp!
     rspec_cmd = TTY::Command.new(printer: :pretty)
     seconds = Benchmark.realtime do
-      rspec_cmd.run({'RAILS_ENV' => 'TEST'}, 'rspec')
+      rspec_cmd.run({'RAILS_ENV' => 'TEST'}, "rspec --exclude-pattern '**/features/**/*_spec.rb'")
     end
     puts "Finished in #{seconds}"
 

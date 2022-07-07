@@ -13,6 +13,10 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+group :production, :development do
+  gem "honeycomb-rails"
+end
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -50,7 +54,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"
@@ -102,6 +105,8 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "influxdb-client"
+gem "influxdb-client-apis"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -118,6 +123,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "tty-command", require: false
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -151,7 +157,7 @@ group :test do
   gem "sinatra", "~> 2.0"
   gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
-  gem "test-prof", "~> 0.7"
+  gem "test-prof"
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"

@@ -12,8 +12,8 @@ FactoryBot.define do
     name               { Faker::Name.name }
     email              { generate :email }
     username           { generate :username }
-    profile_image      { image }
     twitter_username   { generate :twitter_username }
+    profile_image      { nil }
     github_username    { generate :github_username }
     summary            { Faker::Lorem.paragraph[0..rand(190)] }
     website_url        { Faker::Internet.url }
@@ -21,6 +21,10 @@ FactoryBot.define do
     saw_onboarding { true }
     signup_cta_variant { "navbar_basic" }
     email_digest_periodic { false }
+
+    trait :with_profile_image do
+      profile_image { image }
+    end
 
     trait :super_admin do
       after(:build) { |user| user.add_role(:super_admin) }
@@ -61,12 +65,10 @@ FactoryBot.define do
       end
     end
 
-    after(:create) do |user|
-      create(:identity, user_id: user.id)
-    end
-
-    trait :two_identities do
-      after(:create) { |user| create(:identity, user_id: user.id, provider: "twitter") }
+    trait :with_identity do
+      after(:create) do |user|
+        create(:identity, user_id: user.id)
+      end
     end
 
     trait :with_article do

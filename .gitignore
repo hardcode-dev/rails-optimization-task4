@@ -53,3 +53,5 @@ package-lock.json
 
 #sitemap
 /public/sitemap.xml.gz
+rspec_profiler_result.txt
+dissect_report.txt

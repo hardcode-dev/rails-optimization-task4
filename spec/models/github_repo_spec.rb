@@ -32,6 +32,7 @@ RSpec.describe GithubRepo, type: :model do
   end
 
   describe "::update_to_latest" do
+    let(:user) { create(:user, :with_identity) }
     let(:my_ocktokit_client) { instance_double(Octokit::Client) }
     let(:url_of_repos_without_github_id) { Faker::Internet.url }
     let(:repo_without_github_id) do

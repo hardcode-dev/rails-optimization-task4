@@ -880,7 +880,7 @@ GEM
       dante (>= 0.2.0)
       multi_json (~> 1.0)
       stripe (>= 2.0.3)
-    test-prof (0.12.2)
+    test-prof (1.0.9)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -1082,7 +1082,7 @@ DEPENDENCIES
   storext (~> 2.2)
   stripe (~> 4.8)
   stripe-ruby-mock (~> 2.5)
-  test-prof (~> 0.7)
+  test-prof
   timber (~> 2.6)
   timecop (~> 0.9)
   tty-command

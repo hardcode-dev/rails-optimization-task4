@@ -157,7 +157,7 @@ group :test do
   gem "sinatra", "~> 2.0"
   gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
-  gem "test-prof", "~> 0.7"
+  gem "test-prof"
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"

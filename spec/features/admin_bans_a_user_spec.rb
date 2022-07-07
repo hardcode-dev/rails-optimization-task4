@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Admin bans user" do
+describe "Admin bans user", type: :feature do
   let(:admin)  { create(:user, :super_admin) }
   let(:user)   { create(:user) }
 

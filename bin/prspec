@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+env = {'RAILS_ENV' => 'test'}
+cmd = 'bundle exec rake devto:test'
+system(env, cmd)

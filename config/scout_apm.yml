@@ -1,0 +1,16 @@
+common: &defaults
+  key: <%= ENV['SCOUT_KEY'] %>
+  monitor: true
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  monitor: false
+
+staging:
+  <<: *defaults

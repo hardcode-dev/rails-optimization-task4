@@ -50,7 +50,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"
@@ -106,6 +105,10 @@ gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
 
+group :development, :local_production, :production do
+  gem "honeycomb-rails"
+end
+
 group :development, :local_production do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
@@ -127,6 +130,7 @@ group :development, :test do
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "jakeonrails/fix-db-schema-conflicts", branch: "master"
+  gem "influxer", "~> 1.2"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"
@@ -136,7 +140,9 @@ group :development, :test do
   gem "rubocop-rspec", "~> 1.31"
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
+  gem "tty"
   gem "vcr", "~> 4.0"
+  gem "influxdb-client"
 end
 
 group :test do

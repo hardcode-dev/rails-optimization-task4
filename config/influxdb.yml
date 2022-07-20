@@ -1,0 +1,6 @@
+development:
+  username: root
+  password: root
+local_production:
+  username: root
+  password: root

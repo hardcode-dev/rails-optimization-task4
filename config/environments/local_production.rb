@@ -46,7 +46,7 @@ Rails.application.configure do
     domain: "localhost:3000"
   }
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
-  config.log_level = :debug
+  config.log_level = :fatal
   config.log_tags = [:request_id]
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end

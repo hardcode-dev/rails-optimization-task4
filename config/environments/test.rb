@@ -50,6 +50,6 @@ Rails.application.configure do
 
   # Install the Timber.io logger, but do not send logs.
   logger = Timber::Logger.new(nil)
-  logger.level = config.log_level
+  logger.level = :fatal
   config.logger = ActiveSupport::TaggedLogging.new(logger)
 end

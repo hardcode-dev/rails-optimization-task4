@@ -118,6 +118,7 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
+  gem "meta_request"
 end
 
 group :development, :test do

@@ -102,6 +102,9 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+gem "newrelic_rpm"
+gem "prometheus_exporter"
+gem "rack-mini-profiler"
 
 group :development do
   gem "better_errors", "~> 2.5"
@@ -115,7 +118,6 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
-  gem "newrelic_rpm"
 end
 
 group :development, :test do

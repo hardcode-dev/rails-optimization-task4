@@ -1,0 +1,6 @@
+# siege -c 10 -t10s -f siege_conf.txt
+
+http://localhost:3000/
+http://localhost:3000/t/discuss
+http://localhost:3000/hayden_schaefer/-this-side-of-paradise-2pj8
+http://localhost:3000/swaniawski_margarito/-if-i-forget-thee-jerusalem-4na9

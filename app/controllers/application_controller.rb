@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
 
   before_action do
-    Rack::MiniProfiler.authorize_request
+    Rack::MiniProfiler.authorize_request if cookies[:mini_profiler] == ApplicationConfig["MINI_PROFILER"]
   end
 
   include Pundit

@@ -72,7 +72,10 @@ Transfer rate: 1245.09 [Kbytes/sec] received
    Controller/stories/index: ~120 ms
 
 `Базовая метрика`:
-Time taken for tests: 11.005 seconds
+Time taken for tests: 11.005 seconds (- 9 sec)
+
+Данные new relic - в png:
+замерялись на `siege -c 10 -t180s http://localhost:3000` + 1 мин. фона
 
 Не сказать что большой прогресс, но ОК.
 В целом хорошо зарекомендовали newlelic, RMP и ab. Сборка кривоватая - не все работает, особенно на M1, но инструменты изучить позволяет

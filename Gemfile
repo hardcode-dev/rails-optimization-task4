@@ -113,6 +113,11 @@ group :development, :local_production do
   gem "rack-mini-profiler", require: false
 end
 
+group :development, :local_production, :test do
+  gem "memory_profiler", "~> 0.9"
+  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
+end
+
 group :development do
   gem "better_errors", "~> 2.5"
   gem "binding_of_caller", "~> 0.8"
@@ -133,7 +138,6 @@ group :development, :test do
   gem "erb_lint", "~> 0.0", require: false
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
   gem "fix-db-schema-conflicts", github: "jakeonrails/fix-db-schema-conflicts", branch: "master"
-  gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"
   gem "pry-byebug", "~> 3.7"
   gem "rspec-rails", "~> 3.8"
@@ -159,7 +163,6 @@ group :test do
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
-  gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
   gem "test-prof", "~> 0.7"
   gem "timecop", "~> 0.9"

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Instrumentation
 
   before_action do
-    Rack::MiniProfiler.authorize_request
+    Rack::MiniProfiler.authorize_request if Rails.env.local_production?
   end
 
   def require_http_auth

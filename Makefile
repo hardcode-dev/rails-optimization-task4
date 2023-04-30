@@ -1,4 +1,4 @@
-.PHONY: run
+.PHONY: test
 
 run:
 	docker-compose build && docker-compose run --rm web rails db:setup
@@ -24,3 +24,6 @@ lprod:
 ab: siege-short
 	sleep 5
 	ab -n 100 http://127.0.0.1:3000/
+
+test:
+  rake test:run

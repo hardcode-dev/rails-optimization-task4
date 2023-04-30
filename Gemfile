@@ -16,7 +16,7 @@ end
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
-gem "acts_as_follower", github: "forem/acts_as_follower", branch: "master"
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
@@ -107,6 +107,8 @@ gem "webpush", "~> 0.3"
 gem "newrelic_rpm"
 gem "scout_apm"
 
+gem "influxer", "~> 1.2"
+
 group :development, :local_production do
   gem "meta_request"
   gem "prometheus_exporter"
@@ -146,6 +148,7 @@ group :development, :test do
   gem "rubocop-rspec", "~> 1.31"
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
+  gem "tty-command"
   gem "vcr", "~> 4.0"
 end
 

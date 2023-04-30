@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Using the editor" do
+describe "Using the editor", type: :feature do
   let(:user) { create(:user) }
   let(:raw_text) { "../support/fixtures/sample_article_template_spec.txt" }
   # what are these

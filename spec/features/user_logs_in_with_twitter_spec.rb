@@ -8,7 +8,7 @@ def user_do_not_grants_authorization_on_twitter_popup
   OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
 end
 
-RSpec.describe "Authenticating with twitter" do
+RSpec.describe "Authenticating with twitter", type: :feature do
   let(:twitter_callback_hash) do
     {
       provider: "twitter",

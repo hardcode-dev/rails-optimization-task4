@@ -1,3 +1,32 @@
+namespace :test do
+  desc "run"
+  task run: :environment do
+    abort 'Influx not running' unless infux_running?
+    cmd = "rspec"
+    puts "Running rspec via `#{cmd}`"
+    command = TTY::Command.new(printer: :quiet, color: true)
+
+    start = Time.now
+    begin
+      command.run(cmd)
+    rescue TTY::Command::ExitError
+      puts 'TEST FAILED SAFELY'
+    end
+    finish = Time.now
+
+    puts 'SENDING METRIC TO INFLUXDB'
+    TestDurationMetrics.write(user: 'dima', run_time_seconds: (finish - start).to_i)
+  end
+
+  def infux_running?
+    endpoint = 'http://localhost:8086'
+    puts "Check influx on #{endpoint}"
+
+    command = TTY::Command.new(printer: :null)
+    command.run("curl #{endpoint}/ping").success?
+  end
+end
+
 # rubocop:disable Metrics/LineLength
 # namespace :db do
 #

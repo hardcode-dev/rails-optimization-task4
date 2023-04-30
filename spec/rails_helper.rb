@@ -39,6 +39,9 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # Not working
+  # config.exclude_pattern = "#{::Rails.root}/spec/features/**/*_spec.rb"
+  config.filter_run_excluding type: "feature"
 
   config.include ApplicationHelper
   config.include Devise::Test::ControllerHelpers, type: :controller

@@ -11,6 +11,13 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  puts "== STARTING UP =="
-  system! "foreman start -f Procfile.dev"
+  env = ENV.fetch('RAILS_ENV', 'development')
+  puts "== #{env}: STARTING UP =="
+
+  if env == 'local_production'
+    system! 'bundle exec rails assets:precompile'
+    system! 'foreman start -f Procfile.lprod'
+  else
+    system! 'foreman start -f Procfile.dev'
+  end
 end

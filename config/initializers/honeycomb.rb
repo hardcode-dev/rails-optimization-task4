@@ -1,3 +1,5 @@
+return if Rails.env.test?
+
 require "libhoney"
 
 key = ApplicationConfig["HONEYCOMB_API_KEY"]

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Reading list" do
+describe "Reading list", type: :feature do
   let!(:user) { create(:user) }
 
   before do

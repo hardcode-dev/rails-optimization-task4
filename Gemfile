@@ -50,7 +50,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"
@@ -118,6 +117,10 @@ end
 group :development, :local_production, :test do
   gem "memory_profiler", "~> 0.9"
   gem "stackprof", "~> 0.2", require: false, platforms: :ruby
+end
+
+group :production, :development do
+  gem "honeycomb-rails"
 end
 
 group :development do

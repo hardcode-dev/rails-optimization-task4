@@ -2,7 +2,8 @@ namespace :test do
   desc "run"
   task run: :environment do
     abort 'Influx not running' unless infux_running?
-    cmd = "rspec"
+    # cmd = "rspec"
+    cmd = "rake parallel:spec[3]"
     puts "Running rspec via `#{cmd}`"
     command = TTY::Command.new(printer: :quiet, color: true)
 

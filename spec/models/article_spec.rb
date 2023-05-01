@@ -8,7 +8,7 @@ RSpec.describe Article, type: :model do
     article
   end
 
-  let(:user) { create(:user) }
+  let_it_be(:user) { create(:user) }
   let(:article) { create(:article, user_id: user.id) }
 
   it { is_expected.to validate_uniqueness_of(:canonical_url).allow_blank }

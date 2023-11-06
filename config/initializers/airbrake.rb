@@ -7,6 +7,7 @@
 #
 # Configuration details:
 # https://github.com/airbrake/airbrake-ruby#configuration
+
 Airbrake.configure do |c|
   # You must set both project_id & project_key. To find your project_id and
   # project_key navigate to your project's General Settings and copy the values
@@ -41,7 +42,7 @@ Airbrake.configure do |c|
   # environments.
   # NOTE: This option *does not* work if you don't set the 'environment' option.
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
-  c.ignore_environments = %w[test development]
+  c.ignore_environments = %w[test development local_production]
 
   # A list of parameters that should be filtered out of what is sent to
   # Airbrake. By default, all "password" attributes will have their contents

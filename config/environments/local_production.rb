@@ -86,11 +86,6 @@ Rails.application.configure do
   logger = Timber::Logger.new(log_device)
   logger.level = config.log_level
   config.logger = ActiveSupport::TaggedLogging.new(logger)
-
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.console = true
-  end
 end
 
 # rubocop:enable Metrics/BlockLength

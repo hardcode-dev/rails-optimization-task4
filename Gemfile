@@ -117,7 +117,7 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :test do
+group :development, :local_production, :test do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false

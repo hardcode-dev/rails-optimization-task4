@@ -65,6 +65,6 @@ staging:
 production:
   <<: *default_settings
 
-local_production:
+lp:
   <<: *default_settings
   app_name: 'Dev.to (local) (LocalProduction)'

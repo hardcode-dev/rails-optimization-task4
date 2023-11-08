@@ -14,7 +14,7 @@ chdir APP_ROOT do
   env = ENV.fetch('RAILS_ENV', 'development')
   puts "== STARTING UP =="
 
-  if env == 'local_production'
+  if env == 'lp'
     system! "bundle exec rake assets:precompile"
     system! "foreman start -f Procfile.lp"
   else

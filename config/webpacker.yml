@@ -55,7 +55,7 @@ production:
   # Cache manifest.json for performance
   cache_manifest: true
 
-local_production:
+lp:
   <<: *default
 
   dev_server:

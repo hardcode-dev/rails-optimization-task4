@@ -159,3 +159,4 @@ end
 # rubocop:enable LineLength
 
 gem 'newrelic_rpm'
+gem 'prometheus_exporter'

@@ -6,11 +6,14 @@
 
 ### AB
 
-before
-Time per request: 212.047 [ms](mean)
+#### before
+
+Time per request: 212.047 ms
+
 https://gist.github.com/peresvetjke/22b0076f71bb49000aa3c3f082889d85
 
-### after
+#### after
 
-Time per request: 114.685 [ms](mean)
+Time per request: 114.685 ms
+
 https://gist.github.com/peresvetjke/5b0a328f332dda0c43c7d8466f927bde

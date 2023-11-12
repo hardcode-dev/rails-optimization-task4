@@ -133,6 +133,7 @@ group :development, :lp, :test do
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem 'meta_request'
 end
 
 group :test do
@@ -160,3 +161,4 @@ end
 
 gem 'newrelic_rpm'
 gem 'prometheus_exporter'
+gem 'rack-mini-profiler'

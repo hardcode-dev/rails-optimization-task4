@@ -161,4 +161,4 @@ end
 
 gem 'newrelic_rpm'
 gem 'prometheus_exporter'
-gem 'rack-mini-profiler'
+gem 'rack-mini-profiler', require: false

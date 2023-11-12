@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/BlockLength
 #
 def yarn_integrity_enabled?
-  ENV.fetch("YARN_INTEGRITY_ENABLED", "true") == "true"
+  ENV.fetch("YARN_INTEGRITY_ENABLED", "false") == "true"
 end
 
 Rails.application.configure do
@@ -81,11 +81,11 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Install the Timber.io logger
-  # send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "false" # <---- set to false to stop sending dev logs to Timber.io
-  # log_device = send_logs_to_timber == "true" ? Timber::LogDevices::HTTP.new(ENV["TIMBER"]) : STDOUT
-  # logger = Timber::Logger.new(log_device)
-  # logger.level = config.log_level
-  # config.logger = ActiveSupport::TaggedLogging.new(logger)
+  send_logs_to_timber = ENV["SEND_LOGS_TO_TIMBER"] || "false" # <---- set to false to stop sending dev logs to Timber.io
+  log_device = send_logs_to_timber == "true" ? Timber::LogDevices::HTTP.new(ENV["TIMBER"]) : STDOUT
+  logger = Timber::Logger.new(log_device)
+  logger.level = config.log_level
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
 end
 
 # rubocop:enable Metrics/BlockLength

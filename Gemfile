@@ -20,7 +20,6 @@ gem "acts_as_follower", github: "forem/acts_as_follower", branch: "master"
 gem "addressable", "~> 2.5", ">= 2.5.2"
 gem "administrate", "~> 0.11"
 gem "ahoy_email", "~> 0.5"
-gem "airbrake", "~> 8.1"
 gem "algoliasearch-rails", "~> 1.21"
 gem "algorithmia", "~> 1.0"
 gem "ancestry", "~> 3.0"
@@ -37,6 +36,7 @@ gem "dalli", "~> 2.7"
 gem "delayed_job_active_record", "~> 4.1"
 gem "delayed_job_web", "~> 1.4"
 gem "devise", "~> 4.6"
+gem "dotenv-rails"
 gem "draper", "~> 3.0"
 gem "email_validator", "~> 1.6"
 gem "emoji_regex", "~> 1.0"
@@ -59,12 +59,14 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem "newrelic_rpm"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
+gem "prometheus_exporter"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -72,6 +74,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler", require: false
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -115,6 +118,10 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
+end
+
+group :development, :local_production do
+  gem "meta_request"
 end
 
 group :development, :test do

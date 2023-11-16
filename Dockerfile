@@ -7,11 +7,11 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 
 # Install dependencies and perform clean-up
 RUN apt-get update -qq && apt-get install -y \
-   build-essential \
-   nodejs \
-   yarn \
- && apt-get -q clean \
- && rm -rf /var/lib/apt/lists
+  build-essential \
+  nodejs \
+  yarn \
+  && apt-get -q clean \
+  && rm -rf /var/lib/apt/lists
 
 WORKDIR /usr/src/app
 ENV RAILS_ENV development

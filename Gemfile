@@ -1,6 +1,6 @@
 # rubocop:disable LineLength
 source "https://rubygems.org"
-ruby "2.6.3"
+ruby "2.7.7"
 
 # Enforce git to transmitted via https.
 # workaround until bundler 2.0 is released.
@@ -59,12 +59,14 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
+gem 'newrelic_rpm', "~> 9.6"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.3"
 gem "omniauth-twitter", "~> 1.4"
 gem "pg", "~> 1.1"
+gem "prometheus_exporter", "~> 2.0"
 gem "pry", "~> 0.12"
 gem "pry-rails", "~> 0.3"
 gem "puma", "~> 3.12"
@@ -72,6 +74,7 @@ gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
 gem "rack-host-redirect", "~> 1.3"
+gem "rack-mini-profiler", "~> 3.1", require: false
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
 gem "rails-assets-airbrake-js-client", "~> 1.5", source: "https://rails-assets.org"
@@ -89,7 +92,7 @@ gem "sdoc", "~> 1.0", group: :doc
 gem "serviceworker-rails", "~> 0.5"
 gem "share_meow_client", "~> 0.1"
 gem "sitemap_generator", "~> 6.0"
-gem "skylight", "~> 3.1"
+gem "skylight", "~> 4.3"
 gem "slack-notifier", "~> 2.3"
 gem "sprockets", "~> 3.7"
 gem "staccato", "~> 0.5"
@@ -102,6 +105,10 @@ gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
 gem "webpacker", "~> 3.5"
 gem "webpush", "~> 0.3"
+
+group :localproduction, :development do
+  gem 'meta_request', "~> 0.7"
+end
 
 group :development do
   gem "better_errors", "~> 2.5"

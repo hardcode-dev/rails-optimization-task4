@@ -809,7 +809,7 @@ common: &default_settings # Required license key associated with your New Relic 
 # If your application has other named environments, configure them here.
 development:
   <<: *default_settings
-  app_name: <%= app_name %> (Development)
+  app_name: DEV.to fork dev
 
 test:
   <<: *default_settings
@@ -818,7 +818,7 @@ test:
 
 staging:
   <<: *default_settings
-  app_name: <%= app_name %> (Staging)
+  app_name: DEV.to fork staging
 
 production:
   <<: *default_settings

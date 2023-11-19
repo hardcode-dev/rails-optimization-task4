@@ -1,0 +1,42 @@
+version: '3'
+services:
+  dockerhost:
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    mem_limit: 8M
+    restart: on-failure
+  prometheus:
+    depends_on: [ dockerhost ]
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=48h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    ports:
+      - '9090:9090' # localhost:9090
+    labels:
+      org.label-schema.group: "monitoring"
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    depends_on:
+      - prometheus
+    ports:
+      - "3030:3000" # localhost:3030 dashboard, prometheus:9090 data source
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    labels:
+      org.label-schema.group: "monitoring"
+volumes:
+  prometheus_data: {}
+  grafana_data: {}

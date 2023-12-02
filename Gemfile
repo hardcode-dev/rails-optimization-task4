@@ -139,6 +139,7 @@ group :development, :test do
   gem "rubocop-rspec", "~> 1.31"
   gem "spring", "~> 2.0"
   gem "spring-commands-rspec", "~> 1.0"
+  gem "tty-command", "~> 0.10"
   gem "vcr", "~> 4.0"
 end
 
@@ -148,6 +149,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "factory_bot_rails", "~> 4.11"
   gem "fake_stripe", "~> 0.2"
+  gem "influxer", "~> 1.4"
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"

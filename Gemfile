@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 group :production do
+  gem "honeycomb-rails"
   gem "nakayoshi_fork"
 end
 
@@ -50,7 +51,6 @@ gem "front_matter_parser", "~> 0.2"
 gem "gemoji", "~> 3.0.0"
 gem "gibbon", "~> 2.2"
 gem "google-api-client", "~> 0.27"
-gem "honeycomb-rails"
 gem "html_truncator", "~> 0.4"
 gem "httparty", "~> 0.16"
 gem "inline_svg", "~> 1.3"
@@ -59,7 +59,6 @@ gem "jquery-rails", "~> 4.3"
 gem "kaminari", "~> 1.1"
 gem "libhoney", "~> 1.11"
 gem "liquid", "~> 4.0"
-gem 'newrelic_rpm', "~> 9.6"
 gem "nokogiri", "~> 1.10"
 gem "octokit", "~> 4.13"
 gem "omniauth", "~> 1.9"
@@ -108,6 +107,7 @@ gem "webpush", "~> 0.3"
 
 group :localproduction, :development do
   gem 'meta_request', "~> 0.7"
+  gem 'newrelic_rpm', "~> 9.6"
 end
 
 group :development do
@@ -154,14 +154,14 @@ group :test do
   gem "launchy", "~> 2.4"
   gem "pundit-matchers", "~> 1.6"
   gem "rails-controller-testing", "~> 1.0"
-  gem "ruby-prof", "~> 0.17", require: false
+  gem "ruby-prof", "~> 1.6", require: false
   gem "selenium-webdriver", "~> 3.141"
   gem "shoulda-matchers", "4.0.0.rc1", require: false
   gem "simplecov", "~> 0.16", require: false
   gem "sinatra", "~> 2.0"
   gem "stackprof", "~> 0.2", require: false, platforms: :ruby
   gem "stripe-ruby-mock", "~> 2.5", require: "stripe_mock"
-  gem "test-prof", "~> 0.7"
+  gem "test-prof", "~> 1.3"
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"

@@ -53,6 +53,6 @@ Rails.application.configure do
   logger = Timber::Logger.new(nil)
   logger.level = config.log_level
   # config.logger = ActiveSupport::TaggedLogging.new(logger)
-  config.logger = Logger.new(nil)
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(nil))
   config.log_level = :fatal
 end

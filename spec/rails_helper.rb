@@ -12,6 +12,7 @@ require "pundit/matchers"
 require "pundit/rspec"
 require "webmock/rspec"
 require "test_prof/recipes/rspec/before_all"
+require "test_prof/recipes/rspec/sample"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -36,6 +37,10 @@ ActiveRecord::Migration.maintain_test_schema!
 
 # Disable internet connection with Webmock
 WebMock.disable_net_connect!(allow_localhost: true)
+
+TestProf::StackProf.configure do |config|
+  config.format = 'json'
+end
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

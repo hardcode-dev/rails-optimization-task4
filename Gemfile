@@ -141,6 +141,7 @@ group :development, :test do
   gem "spring-commands-rspec", "~> 1.0"
   gem "tty-command", "~> 0.10"
   gem "vcr", "~> 4.0"
+  gem "warning", "~> 1.3"
 end
 
 group :test do

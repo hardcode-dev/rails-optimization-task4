@@ -83,6 +83,9 @@ RSpec.configure do |config|
 
     stub_request(:any, /api.mailchimp.com/).
       to_return(status: 200, body: "", headers: {})
+
+    stub_request(:post, /www.google-analytics.com/).
+      to_return(status: 200, body: "", headers: {})
   end
 
   OmniAuth.config.test_mode = true

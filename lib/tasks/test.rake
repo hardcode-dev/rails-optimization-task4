@@ -3,7 +3,8 @@ namespace :test do
   task run: :environment do
     abort 'InfluxDB not running!' unless influx_running?
 
-    cmd = 'rspec'
+    # cmd = 'rspec'
+    cmd = "RUBYOPT='-W0 -W:no-experimental' bundle exec rake parallel:spec[3,'spec/(?!features)']"
     puts "Running rspec via `#{cmd}`"
     command = TTY::Command.new(printer: :quiet, color: true)
 

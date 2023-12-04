@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "NotificationsIndex", type: :request do
-  let(:dev_account) { create(:user) }
-  let(:user) { create(:user) }
+  let_it_be(:dev_account) { create(:user) }
+  let_it_be(:user) { create(:user) }
 
   before do
     allow(User).to receive(:dev_account).and_return(dev_account)
@@ -71,9 +71,9 @@ RSpec.describe "NotificationsIndex", type: :request do
     end
 
     context "when a user has new reaction notifications" do
-      let(:article1)                   { create(:article, user_id: user.id) }
-      let(:article2)                   { create(:article, user_id: user.id) }
-      let(:special_characters_article) { create(:article, user_id: user.id, title: "What's Become of Waring") }
+      let_it_be(:article1)                   { create(:article, user_id: user.id) }
+      let_it_be(:article2)                   { create(:article, user_id: user.id) }
+      let_it_be(:special_characters_article) { create(:article, user_id: user.id, title: "What's Become of Waring") }
 
       before { sign_in user }
 
@@ -141,29 +141,32 @@ RSpec.describe "NotificationsIndex", type: :request do
     end
 
     context "when a user has a new comment notification" do
-      let(:user2)    { create(:user) }
-      let(:article)  { create(:article, user_id: user.id) }
-      let(:comment)  { create(:comment, user_id: user2.id, commentable_id: article.id, commentable_type: "Article") }
+      let_it_be(:user2)    { create(:user) }
+      let_it_be(:article)  { create(:article, user_id: user.id) }
+      let_it_be(:comment)  { create(:comment, user_id: user2.id, commentable_id: article.id, commentable_type: "Article") }
 
       before do
         sign_in user
         Notification.send_new_comment_notifications_without_delay(comment)
-        get "/notifications"
       end
 
       it "renders the correct message" do
+        get "/notifications"
         expect(response.body).to include "commented on"
       end
 
       it "does not render the moderation message" do
+        get "/notifications"
         expect(response.body).not_to include "As a trusted member"
       end
 
       it "renders the article's path" do
+        get "/notifications"
         expect(response.body).to include article.path
       end
 
       it "renders the comment's processed HTML" do
+        get "/notifications"
         expect(response.body).to include comment.processed_html
       end
 
@@ -174,20 +177,24 @@ RSpec.describe "NotificationsIndex", type: :request do
       end
 
       it "does not render the reaction as reacted if it was not reacted on" do
+        get "/notifications"
         expect(response.body).not_to include "reaction-button reacted"
       end
     end
 
     context "when a user has a new moderation notification" do
-      let(:user2)    { create(:user) }
-      let(:article)  { create(:article, user_id: user.id) }
-      let(:comment)  { create(:comment, user_id: user2.id, commentable_id: article.id, commentable_type: "Article") }
+      let_it_be(:user2)    { create(:user) }
+      let_it_be(:article)  { create(:article, user_id: user.id) }
+      let_it_be(:comment)  { create(:comment, user_id: user2.id, commentable_id: article.id, commentable_type: "Article") }
 
       before do
-        user.add_role :trusted
         sign_in user
         Notification.send_moderation_notification_without_delay(comment)
         get "/notifications"
+      end
+
+      before_all do
+        user.add_role :trusted
       end
 
       it "renders the proper message" do
@@ -204,23 +211,25 @@ RSpec.describe "NotificationsIndex", type: :request do
     end
 
     context "when a user has a new welcome notification" do
+      let_it_be(:broadcast) { create(:broadcast, :onboarding) }
+
       before do
         sign_in user
+        Notification.send_welcome_notification_without_delay(user.id)
+        get "/notifications"
       end
 
       it "renders the welcome notification" do
-        broadcast = create(:broadcast, :onboarding)
-        Notification.send_welcome_notification_without_delay(user.id)
-        get "/notifications"
         expect(response.body).to include broadcast.processed_html
       end
     end
 
     context "when a user has a new badge notification" do
+      let_it_be(:badge) { create(:badge) }
+      let_it_be(:badge_achievement) { create(:badge_achievement, user: user, badge: badge) }
+
       before do
         sign_in user
-        badge = create(:badge)
-        badge_achievement = create(:badge_achievement, user: user, badge: badge)
         Notification.send_new_badge_notification_without_delay(badge_achievement)
         get "/notifications"
       end
@@ -243,9 +252,9 @@ RSpec.describe "NotificationsIndex", type: :request do
     end
 
     context "when a user has a new mention notification" do
-      let(:user2)    { create(:user) }
-      let(:article)  { create(:article, user_id: user.id) }
-      let(:comment) do
+      let_it_be(:user2)    { create(:user) }
+      let_it_be(:article)  { create(:article, user_id: user.id) }
+      let_it_be(:comment) do
         create(
           :comment,
           user_id: user2.id,
@@ -256,11 +265,13 @@ RSpec.describe "NotificationsIndex", type: :request do
       end
 
       before do
-        comment
-        Mention.create_all_without_delay(comment)
-        Notification.send_mention_notification_without_delay(Mention.first)
         sign_in user
+        Notification.send_mention_notification_without_delay(Mention.first)
         get "/notifications"
+      end
+
+      before_all do
+        Mention.create_all_without_delay(comment)
       end
 
       it "renders the proper message" do
@@ -273,14 +284,17 @@ RSpec.describe "NotificationsIndex", type: :request do
     end
 
     context "when a user has a new article notification" do
-      let(:user2)    { create(:user) }
-      let(:article)  { create(:article, user_id: user.id) }
+      let_it_be(:user2)    { create(:user) }
+      let_it_be(:article)  { create(:article, user_id: user.id) }
 
       before do
-        user2.follow(user)
-        Notification.send_to_followers_without_delay(article, "Published")
         sign_in user2
+        Notification.send_to_followers_without_delay(article, "Published")
         get "/notifications"
+      end
+
+      before_all do
+        user2.follow(user)
       end
 
       it "renders the proper message" do

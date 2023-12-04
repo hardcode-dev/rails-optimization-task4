@@ -5,8 +5,8 @@ module Exporter
     attr_reader :user
 
     EXPORTERS = [
-      Articles,
-      Comments,
+      Exporter::Articles,
+      Exporter::Comments,
     ].freeze
 
     def initialize(user)

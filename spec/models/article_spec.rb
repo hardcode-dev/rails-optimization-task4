@@ -8,7 +8,7 @@ RSpec.describe Article, type: :model do
     article
   end
 
-  let(:user) { create(:user) }
+  let_it_be(:user) { create(:user) }
   let(:article) { create(:article, user_id: user.id) }
 
   it { is_expected.to validate_uniqueness_of(:canonical_url).allow_blank }
@@ -40,7 +40,7 @@ RSpec.describe Article, type: :model do
   end
 
   it "reject future dates" do
-    expect(build(:article, with_date: true, date: "01/01/2020").valid?).to be(false)
+    expect(build(:article, with_date: true, date: DateTime.now + 1.day).valid?).to be(false)
   end
 
   it "has proper username" do
@@ -107,7 +107,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe "#slug" do
-    let(:title) { "hey This' is$ a SLUG" }
+    let_it_be(:title) { "hey This' is$ a SLUG" }
     let(:article0) { build(:article, title: title, published: false) }
     let(:article1) { build(:article, title: title, published: false) }
 
@@ -142,8 +142,8 @@ RSpec.describe Article, type: :model do
 
   context "when provided with body_markdown" do
     let(:test_article) { build(:article, title: title) }
-    let(:title) { "Talk About It, Justify It" }
-    let(:slug) { "talk-about-it-justify-it" }
+    let_it_be(:title) { "Talk About It, Justify It" }
+    let_it_be(:slug) { "talk-about-it-justify-it" }
 
     before { test_article.validate }
 
@@ -175,7 +175,7 @@ RSpec.describe Article, type: :model do
     end
 
     describe "#canonical_url" do
-      let(:article_with_canon_url) { build(:article, with_canonical_url: true) }
+      let_it_be(:article_with_canon_url) { build(:article, with_canonical_url: true) }
 
       before do
         article_with_canon_url.validate
@@ -431,7 +431,7 @@ RSpec.describe Article, type: :model do
     end
 
     context "when unpublished" do
-      let(:article) { create(:article, published: false) }
+      let_it_be(:article) { create(:article, published: false) }
 
       it "does not update the hotness score" do
         article.save

@@ -43,7 +43,8 @@ Rails.application.configure do
   config.active_support.test_order = :random
 
   # Print deprecation notices to the stderr.
-  config.active_support.deprecation = :stderr
+  config.active_support.deprecation = :log
+  $VERBOSE = nil
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -51,5 +52,7 @@ Rails.application.configure do
   # Install the Timber.io logger, but do not send logs.
   logger = Timber::Logger.new(nil)
   logger.level = config.log_level
-  config.logger = ActiveSupport::TaggedLogging.new(logger)
+  # config.logger = ActiveSupport::TaggedLogging.new(logger)
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(nil))
+  config.log_level = :fatal
 end

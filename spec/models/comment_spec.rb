@@ -1,14 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Comment, type: :model do
-  let(:user)                  { create(:user, created_at: 3.weeks.ago) }
-  let(:user2)                 { create(:user) }
-  let(:article)               { create(:article, user_id: user.id, published: true) }
-  let(:article_with_video)    { create(:article, :video, user_id: user.id, published: true) }
-  let(:comment)               { create(:comment, user_id: user2.id, commentable_id: article.id) }
-  let(:video_comment)         { create(:comment, user_id: user2.id, commentable_id: article_with_video.id) }
-  let(:comment_2)             { create(:comment, user_id: user2.id, commentable_id: article.id) }
-  let(:child_comment) do
+  let_it_be(:user)                  { create(:user, created_at: 3.weeks.ago) }
+  let_it_be(:user2)                 { create(:user) }
+  let_it_be(:article)               { create(:article, user_id: user.id, published: true) }
+  let_it_be(:article_with_video)    { create(:article, :video, user_id: user.id, published: true) }
+  let_it_be(:comment)               { create(:comment, user_id: user2.id, commentable_id: article.id) }
+  let_it_be(:video_comment)         { create(:comment, user_id: user2.id, commentable_id: article_with_video.id) }
+  let_it_be(:comment_2)             { create(:comment, user_id: user2.id, commentable_id: article.id) }
+  let_it_be(:child_comment) do
     build(:comment, user_id: user.id, commentable_id: article.id, parent_id: comment.id)
   end
 

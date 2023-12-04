@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe Notification, type: :model do
   let(:user)            { create(:user) }
   let(:user2)           { create(:user) }
-  let(:user3)           { create(:user) }
-  let(:organization)    { create(:organization) }
+  let_it_be(:user3)           { create(:user) }
+  let_it_be(:organization)    { create(:organization) }
   let(:article)         { create(:article, user_id: user.id, page_views_count: 4000, positive_reactions_count: 70) }
   let(:follow_instance) { user.follow(user2) }
 
@@ -86,19 +86,19 @@ RSpec.describe Notification, type: :model do
       end
 
       it "does not send a notification to the author of the article if the commenter is the author" do
-        comment = create(:comment, user: user, commentable: article)
+        comment = build_stubbed(:comment, user: user, commentable: article)
         Notification.send_new_comment_notifications_without_delay(comment)
         expect(user.notifications.count).to eq 0
       end
 
       it "does not send a notification to the author of the comment" do
-        comment = create(:comment, user: user2, commentable: article)
+        comment = build_stubbed(:comment, user: user2, commentable: article)
         Notification.send_new_comment_notifications_without_delay(comment)
         expect(user2.notifications.count).to eq 0
       end
 
       it "sends a notification to the organization" do
-        org = create(:organization)
+        org = build_stubbed(:organization)
         user.update(organization: org)
         article.update(organization: org)
         comment = create(:comment, user: user2, commentable: article)
@@ -110,7 +110,7 @@ RSpec.describe Notification, type: :model do
     context "when the author of the article is not subscribed" do
       it "does not send a notification to the author of the article" do
         article.update(receive_notifications: false)
-        comment = create(:comment, user: user2, commentable: article)
+        comment = build_stubbed(:comment, user: user2, commentable: article)
         Notification.send_new_comment_notifications_without_delay(comment)
         expect(user.notifications.count).to eq 0
       end
@@ -120,7 +120,7 @@ RSpec.describe Notification, type: :model do
       it "does not send a notification to the author of the comment" do
         parent_comment = create(:comment, user: user2, commentable: article)
         parent_comment.update(receive_notifications: false)
-        child_comment = create(:comment, user: user, commentable: article, ancestry: parent_comment.id.to_s)
+        child_comment = build_stubbed(:comment, user: user, commentable: article, ancestry: parent_comment.id.to_s)
         Notification.send_new_comment_notifications_without_delay(child_comment)
         expect(user2.notifications.count).to eq 0
       end
@@ -147,14 +147,14 @@ RSpec.describe Notification, type: :model do
       it "does not send a notification to the author of a comment" do
         comment = create(:comment, user: user2, commentable: article)
         comment.update(receive_notifications: false)
-        reaction = create(:reaction, reactable: comment, user: user)
+        reaction = build_stubbed(:reaction, reactable: comment, user: user)
         Notification.send_reaction_notification_without_delay(reaction, reaction.reactable.user)
         expect(user2.notifications.count).to eq 0
       end
 
       it "does not send a notification to the author of an article" do
         article.update(receive_notifications: false)
-        reaction = create(:reaction, reactable: article, user: user2)
+        reaction = build_stubbed(:reaction, reactable: article, user: user2)
         Notification.send_reaction_notification_without_delay(reaction, reaction.reactable.user)
         expect(user.notifications.count).to eq 0
       end

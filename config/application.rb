@@ -30,6 +30,7 @@ module PracticalDeveloper
     config.autoload_paths += Dir["#{config.root}/app/black_box/"]
     config.autoload_paths += Dir["#{config.root}/app/sanitizers"]
     config.autoload_paths += Dir["#{config.root}/lib/"]
+    config.autoload_paths += Dir["#{config.root}/app/metrics"]
 
     config.active_record.observers = :article_observer, :reaction_observer, :comment_observer
     config.active_job.queue_adapter = :delayed_job
@@ -53,5 +54,7 @@ module PracticalDeveloper
       end
       ReservedWords.all = [ReservedWords::BASE_WORDS + top_routes].flatten.compact.uniq
     end
+
+    config.skylight.environments << 'localproduction' if Rails.env.localproduction?
   end
 end

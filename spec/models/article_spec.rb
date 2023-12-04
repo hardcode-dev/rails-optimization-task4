@@ -314,7 +314,7 @@ RSpec.describe Article, type: :model do
   end
 
   it "removes from search index" do
-    article = create(:article)
+    article = build_stubbed(:article)
     article.remove_algolia_index
   end
 
@@ -351,9 +351,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe "::filter_excluded_tags" do
-    before do
-      create(:article, tags: "hiring")
-    end
+    let_it_be(:article) { create(:article, tags: "hiring") }
 
     it "exlude #hiring when no argument is given" do
       expect(described_class.filter_excluded_tags.length).to be(0)
@@ -379,7 +377,7 @@ RSpec.describe Article, type: :model do
       expect(article.path).to eq("/#{article.username}/#{article.slug}")
     end
     it "assigns cached_user_name on save" do
-      article = create(:article, user_id: user.id)
+      article = build_stubbed(:article, user_id: user.id)
       expect(article.cached_user_name).to eq(article.cached_user_name)
     end
     it "assigns cached_user_username on save" do

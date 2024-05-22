@@ -1,3 +1,12 @@
+# Setup через docker, docker-compose и dip
+
+- gem install dip
+- cd .dockerdev
+- docker-compose build
+- dip provision
+- docker-compose up
+- open localhost:3000
+
 # Задание №4
 
 ## Цели выполнения задания

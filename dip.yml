@@ -8,7 +8,7 @@ environment:
 compose:
   files:
     - .dockerdev/compose.yml
-  project_name: example_demo
+  project_name: dev_to
 
 interaction:
   # This command spins up a Rails container with the required dependencies (such as databases),
@@ -30,6 +30,12 @@ interaction:
     description: Run Bundler commands
     service: rails
     command: bundle
+    compose_run_options: [ no-deps ]
+
+  setup:
+    description: Run bin/setup
+    service: rails
+    command: bin/setup
     compose_run_options: [ no-deps ]
 
   # A shortcut to run RSpec (which overrides the RAILS_ENV)
@@ -72,3 +78,4 @@ provision:
   - dip compose down --volumes
   - dip compose up -d postgres redis
   - dip bash -c bin/setup
+

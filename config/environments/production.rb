@@ -126,6 +126,10 @@ Rails.application.configure do
 
   config.middleware.use Rack::HostRedirect,
     "practicaldev.herokuapp.com" => "dev.to"
+
+
+  Rack::MiniProfiler.config.storage_options = { url: (ENV["MEMCACHIER_SERVERS"] || "").split(",")[0] }
+  Rack::MiniProfiler.config.storage = Rack::MiniProfiler::MemcacheStore
 end
 
 # rubocop:enable Metrics/BlockLength

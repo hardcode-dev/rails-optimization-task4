@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Instrumentation
 
+  before_action :authorize_rmp, if: :authorize_rmp?
+
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ApplicationConfig["APP_NAME"] && password == ApplicationConfig["APP_PASSWORD"]
@@ -77,5 +79,19 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super(payload)
     append_to_honeycomb(request, self.class.name)
+  end
+
+  def authorize_rmp
+    Rack::MiniProfiler.authorize_request
+  end
+
+  def authorize_rmp?
+    return true unless Rails.env.production?
+
+    if current_user
+      current_user.admin?
+    else
+      ENV['RMP_TOKEN'] == params[:rmp_token]
+    end
   end
 end

@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   include Pundit
   include Instrumentation
 
+  def profile_call
+    return true if params['profile'] == 'true'
+    false
+  end
+
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|
       username == ApplicationConfig["APP_NAME"] && password == ApplicationConfig["APP_PASSWORD"]

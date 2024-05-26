@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module PracticalDeveloper
   class Application < Rails::Application
     config.load_defaults 5.1
+    # config.web_console.whitelisted_ips = '192.168.0.0/16'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

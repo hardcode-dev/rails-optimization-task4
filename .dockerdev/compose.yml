@@ -18,7 +18,7 @@ x-backend: &backend
   stdin_open: true
   tty: true
   volumes:
-    - ..:/app:cached
+    - ..:/app
     - bundle:/usr/local/bundle
     - rails_cache:/app/tmp/cache
     - node_modules:/app/node_modules
@@ -30,9 +30,6 @@ x-backend: &backend
   environment: &backend_environment
     <<: *env
     YARN_INTEGRITY_ENABLED: "false"
-    ALGOLIASEARCH_APPLICATION_ID: PASTE
-    ALGOLIASEARCH_API_KEY: YOUR
-    ALGOLIASEARCH_SEARCH_ONLY_KEY: HERE
     REDIS_URL: redis://redis:6379/
     DATABASE_URL: postgres://postgres:postgres@postgres:5432
     WEBPACKER_DEV_SERVER_HOST: webpacker
@@ -113,7 +110,20 @@ services:
       <<: *env
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       YARN_CACHE_FOLDER: /app/node_modules/.yarn-cache
-
+  agent:
+    container_name: newrelic-infra
+    build:
+      context: .
+      dockerfile: newrelic-infra.dockerfile
+    cap_add:
+      - SYS_PTRACE
+    network_mode: host
+    pid: host
+    privileged: true
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
 volumes:
   bundle:
   node_modules:

@@ -7,7 +7,7 @@ environment:
 
 compose:
   files:
-    - .dockerdev/compose.yml
+    - .dev_to/compose.yml
   project_name: dev_to
 
 interaction:

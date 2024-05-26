@@ -1,3 +1,20 @@
+# Setup через docker, docker-compose и dip
+
+- gem install dip (maybe change .ruby-version file with your ruby ver)
+- cd .dockerdev
+- docker-compose build
+- For algolia not to brake setup, paste your keys into ALGOLIASEARCH ENVs in .dockerdev/compose.yml
+- dip provision
+- docker-compose up
+- open localhost:3000 in your browser
+
+After setup you can
+- dip bundle - to bundle install after adding gems
+- dip setup - to rerun bin/setup
+- dip bash - to do any other commands or just to peek around
+
+
+
 # Задание №4
 
 ## Цели выполнения задания

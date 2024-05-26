@@ -53,6 +53,10 @@ development:
   <<: *default_settings
   app_name: 'dev_to_copy (Development)'
 
+local_production:
+  <<: *default_settings
+  app_name: 'dev_to_copy (Local production)'
+
 test:
   <<: *default_settings
   # It doesn't make sense to report to New Relic from automated test runs.

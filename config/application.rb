@@ -22,6 +22,9 @@ module PracticalDeveloper
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.skylight.environments << "development"
+    config.skylight.environments << "local_production"
+
     config.autoload_paths += Dir["#{config.root}/app/labor/"]
     config.autoload_paths += Dir["#{config.root}/app/decorators/"]
     config.autoload_paths += Dir["#{config.root}/app/services/"]

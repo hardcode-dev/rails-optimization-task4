@@ -45,6 +45,7 @@ x-backend: &backend
     PSQL_HISTFILE: /usr/local/hist/.psql_history
     IRB_HISTFILE: /usr/local/hist/.irb_history
     EDITOR: vi
+    SKYLIGHT_AUTHENTICATION: $SKYLIGHT_AUTHENTICATION
   depends_on: &backend_depends_on
     postgres:
       condition: service_healthy

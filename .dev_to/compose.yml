@@ -114,6 +114,25 @@ services:
       WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
       YARN_CACHE_FOLDER: /app/node_modules/.yarn-cache
 
+  agent:
+    container_name: newrelic-infra
+    build:
+      context: .
+      dockerfile: newrelic-infra.dockerfile
+    cap_add:
+      - SYS_PTRACE
+    network_mode: host
+    pid: host
+    privileged: true
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
+    environment:
+      <<: *env
+      # NEW_RELIC_API_KEY: ${NEW_RELIC_API_KEY}
+      NRIA_LICENSE_KEY: ${NEW_RELIC_API_KEY}
+
 volumes:
   bundle:
   node_modules:

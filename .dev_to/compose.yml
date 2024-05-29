@@ -33,6 +33,7 @@ x-backend: &backend
     ALGOLIASEARCH_APPLICATION_ID: ${ALGOLIASEARCH_APPLICATION_ID}
     ALGOLIASEARCH_API_KEY: ${ALGOLIASEARCH_API_KEY}
     ALGOLIASEARCH_SEARCH_ONLY_KEY: ${ALGOLIASEARCH_SEARCH_ONLY_KEY}
+    NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY}
     REDIS_URL: redis://redis:6379/
     DATABASE_URL: postgres://postgres:postgres@postgres:5432
     WEBPACKER_DEV_SERVER_HOST: webpacker
@@ -130,8 +131,7 @@ services:
     restart: unless-stopped
     environment:
       <<: *env
-      # NEW_RELIC_API_KEY: ${NEW_RELIC_API_KEY}
-      NRIA_LICENSE_KEY: ${NEW_RELIC_API_KEY}
+      NRIA_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY}
 
 volumes:
   bundle:

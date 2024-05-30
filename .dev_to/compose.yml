@@ -46,6 +46,7 @@ x-backend: &backend
     IRB_HISTFILE: /usr/local/hist/.irb_history
     EDITOR: vi
     SKYLIGHT_AUTHENTICATION: $SKYLIGHT_AUTHENTICATION
+    PROMETHEUS_EXPORTER_HOST: exporter
   depends_on: &backend_depends_on
     postgres:
       condition: service_healthy
@@ -71,6 +72,12 @@ services:
   # sidekiq:
   #   <<: *backend
   #   command: bundle exec sidekiq -C config/sidekiq.yml
+
+  exporter:
+    <<: *backend
+    command: bundle exec prometheus_exporter -b 0.0.0.0 -a prometheus/custom_collector.rb
+    ports:
+      - "9394:9394"
 
   postgres:
     image: postgres:14
@@ -99,6 +106,24 @@ services:
       timeout: 3s
       retries: 30
 
+  prometheus:
+    image: dockerhub.timeweb.cloud/prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prom_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'
+  grafana:
+    image: dockerhub.timeweb.cloud/grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    depends_on:
+      - prometheus
+    ports:
+      - "3030:3000"
+
   webpacker:
     <<: *app
     command: bundle exec ./bin/webpack-dev-server
@@ -124,3 +149,4 @@ volumes:
   redis:
   packs:
   packs-test:
+  prom_data:

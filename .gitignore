@@ -30,6 +30,7 @@ coverage
 
 # Ignore node_modules
 node_modules/
+false/
 
 # Generated js bundles
 /app/assets/javascripts/generated/*
@@ -39,6 +40,7 @@ latest.dump
 
 # Ignore application configuration
 /config/application.yml
+config/new_relic.yml
 /public/packs
 /public/packs-test
 /node_modules

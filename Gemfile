@@ -89,7 +89,7 @@ gem "sdoc", "~> 1.0", group: :doc
 gem "serviceworker-rails", "~> 0.5"
 gem "share_meow_client", "~> 0.1"
 gem "sitemap_generator", "~> 6.0"
-gem "skylight", "~> 3.1"
+gem "skylight"
 gem "slack-notifier", "~> 2.3"
 gem "sprockets", "~> 3.7"
 gem "staccato", "~> 0.5"
@@ -117,7 +117,7 @@ group :development do
   gem "web-console", "~> 3.7"
 end
 
-group :development, :test do
+group :development, :lp, :test do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
@@ -133,6 +133,7 @@ group :development, :test do
   # gem "spring", "~> 2.0"
   # gem "spring-commands-rspec", "~> 1.0"
   gem "vcr", "~> 4.0"
+  gem 'meta_request'
 end
 
 group :test do
@@ -157,3 +158,7 @@ group :test do
   gem "zonebie", "~> 0.6.1"
 end
 # rubocop:enable LineLength
+
+gem 'newrelic_rpm'
+gem 'prometheus_exporter'
+gem 'rack-mini-profiler', require: false

@@ -197,7 +197,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.2.3)
     connection_pool (2.2.2)
     counter_culture (2.1.2)
       activerecord (>= 3.0.0)
@@ -523,7 +523,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.6.0)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
@@ -585,7 +585,7 @@ GEM
     mime-types-data (3.2018.0812)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.23.1)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.2.4)
@@ -638,6 +638,8 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     powerpack (0.1.2)
+    prometheus_exporter (2.1.0)
+      webrick
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -664,6 +666,8 @@ GEM
     rack (2.0.6)
     rack-host-redirect (1.3.0)
       rack
+    rack-mini-profiler (3.1.1)
+      rack (>= 1.2.0)
     rack-protection (2.0.4)
       rack
     rack-proxy (0.6.5)
@@ -830,9 +834,9 @@ GEM
       tilt (~> 2.0)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
-    skylight (3.1.4)
-      skylight-core (= 3.1.4)
-    skylight-core (3.1.4)
+    skylight (4.3.2)
+      skylight-core (= 4.3.2)
+    skylight-core (4.3.2)
       activesupport (>= 4.2.0)
     slack-notifier (2.3.2)
     smart_properties (1.13.1)
@@ -878,7 +882,7 @@ GEM
       multipart-post (~> 2.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.11)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.1.20)
@@ -915,6 +919,7 @@ GEM
     webpush (0.3.2)
       hkdf (~> 0.2)
       jwt
+    webrick (1.8.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -1003,6 +1008,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.4)
   parallel_tests (~> 2.27)
   pg (~> 1.1)
+  prometheus_exporter
   pry (~> 0.12)
   pry-byebug (~> 3.7)
   pry-rails (~> 0.3)
@@ -1012,6 +1018,7 @@ DEPENDENCIES
   pusher (~> 1.3)
   pusher-push-notifications (~> 1.0)
   rack-host-redirect (~> 1.3)
+  rack-mini-profiler
   rack-timeout (~> 0.5)
   rails (~> 5.1.6)
   rails-assets-airbrake-js-client (~> 1.5)!
@@ -1040,7 +1047,7 @@ DEPENDENCIES
   simplecov (~> 0.16)
   sinatra (~> 2.0)
   sitemap_generator (~> 6.0)
-  skylight (~> 3.1)
+  skylight
   slack-notifier (~> 2.3)
   sprockets (~> 3.7)
   staccato (~> 0.5)

@@ -68,6 +68,8 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.public_file_server.enabled = true
+
   config.action_mailer.perform_caching = false
 
   config.app_domain = "localhost:3000"

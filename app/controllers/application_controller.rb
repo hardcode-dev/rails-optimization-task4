@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, prepend: true
+  # before_action :miniprofiler
 
   include Pundit
   include Instrumentation
+
+  # def miniprofiler
+  #   Rack::MiniProfiler.authorize_request # if user.admin?
+  # end
 
   def require_http_auth
     authenticate_or_request_with_http_basic do |username, password|

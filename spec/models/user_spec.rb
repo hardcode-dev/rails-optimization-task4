@@ -2,13 +2,13 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let(:user)            { create(:user) }
-  let(:returning_user)  { create(:user, signup_cta_variant: nil) }
-  let(:second_user)     { create(:user) }
-  let(:article)         { create(:article, user_id: user.id) }
-  let(:tag)             { create(:tag) }
-  let(:org)             { create(:organization) }
-  let (:second_org)     { create(:organization) }
+  let_it_be(:user, reload: true)  { create(:user) }
+  let_it_be(:returning_user)      { create(:user, signup_cta_variant: nil) }
+  let_it_be(:second_user)         { create(:user) }
+  let_it_be(:article)             { create(:article, user_id: user.id) }
+  let_it_be(:tag)                 { create(:tag) }
+  let_it_be(:org)                 { create(:organization) }
+  let_it_be(:second_org)          { create(:organization) }
 
   before { mock_auth_hash }
 
@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:username) }
     it { is_expected.to validate_length_of(:username).is_at_most(30).is_at_least(2) }
     it { is_expected.to validate_length_of(:name).is_at_most(100) }
-    it { is_expected.to validate_inclusion_of(:inbox_type).in_array(["open", "private"]) }
+    it { is_expected.to validate_inclusion_of(:inbox_type).in_array(%w[open private]) }
   end
 
   # the followings are failing

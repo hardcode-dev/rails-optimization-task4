@@ -155,5 +155,6 @@ group :test do
   gem "timecop", "~> 0.9"
   gem "webmock", "~> 3.5"
   gem "zonebie", "~> 0.6.1"
+  gem 'influxer', '~> 1.2'
 end
 # rubocop:enable LineLength

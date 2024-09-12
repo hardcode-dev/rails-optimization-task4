@@ -6,11 +6,11 @@ RSpec.describe TagAdjustment, type: :model do
     admin_user.add_role(:admin)
   end
 
-  let(:article) { create(:article) }
-  let(:tag) { create(:tag) }
-  let(:admin_user) { create(:user) }
-  let(:mod_user) { create(:user) }
-  let(:regular_user) { create(:user) }
+  let_it_be(:article) { create(:article) }
+  let_it_be(:tag) { create(:tag) }
+  let_it_be(:admin_user, reload: true) { create(:user) }
+  let_it_be(:mod_user, reload: true) { create(:user) }
+  let_it_be(:regular_user) { create(:user) }
 
   it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_presence_of(:article_id) }

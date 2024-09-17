@@ -71,6 +71,7 @@ gem "puma", "~> 3.12"
 gem "pundit", "~> 2.0"
 gem "pusher", "~> 1.3"
 gem "pusher-push-notifications", "~> 1.0"
+gem 'prometheus_exporter', '~> 0.5.3'
 gem "rack-host-redirect", "~> 1.3"
 gem "rack-timeout", "~> 0.5"
 gem "rails", "~> 5.1.6"
@@ -115,6 +116,7 @@ group :development do
   gem "guard-rspec", "~> 4.7", require: false
   gem "rb-fsevent", "~> 0.10", require: false
   gem "web-console", "~> 3.7"
+  gem 'rack-mini-profiler', '~> 2.0', '>= 2.0.4'
 end
 
 group :development, :test do

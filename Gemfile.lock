@@ -254,6 +254,7 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
+    dry-initializer (3.0.3)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -599,6 +600,7 @@ GEM
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
     netrc (0.11.0)
+    newrelic_rpm (6.9.0.363)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
@@ -638,6 +640,7 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     powerpack (0.1.2)
+    prometheus-client (1.0.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -664,6 +667,8 @@ GEM
     rack (2.0.6)
     rack-host-redirect (1.3.0)
       rack
+    rack-mini-profiler (2.0.1)
+      rack (>= 1.2.0)
     rack-protection (2.0.4)
       rack
     rack-proxy (0.6.5)
@@ -921,6 +926,15 @@ GEM
     xml-simple (1.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yabeda (0.5.0)
+      concurrent-ruby
+      dry-initializer
+    yabeda-prometheus (0.5.0)
+      prometheus-client (~> 1.0)
+      yabeda (~> 0.5)
+    yabeda-rails (0.4.0)
+      rails
+      yabeda (~> 0.4)
     yajl-ruby (1.4.1)
     zonebie (0.6.1)
 
@@ -996,6 +1010,7 @@ DEPENDENCIES
   liquid (~> 4.0)
   memory_profiler (~> 0.9)
   nakayoshi_fork
+  newrelic_rpm (~> 6.9)
   nokogiri (~> 1.10)
   octokit (~> 4.13)
   omniauth (~> 1.9)
@@ -1012,6 +1027,7 @@ DEPENDENCIES
   pusher (~> 1.3)
   pusher-push-notifications (~> 1.0)
   rack-host-redirect (~> 1.3)
+  rack-mini-profiler (~> 2.0)
   rack-timeout (~> 0.5)
   rails (~> 5.1.6)
   rails-assets-airbrake-js-client (~> 1.5)!
@@ -1060,6 +1076,8 @@ DEPENDENCIES
   webmock (~> 3.5)
   webpacker (~> 3.5)
   webpush (~> 0.3)
+  yabeda-prometheus (~> 0.5)
+  yabeda-rails (~> 0.4)
   zonebie (~> 0.6.1)
 
 RUBY VERSION

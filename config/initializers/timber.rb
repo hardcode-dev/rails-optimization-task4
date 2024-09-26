@@ -11,7 +11,7 @@
 # -------------------------------------------------------------------
 
 config = Timber::Config.instance
-config.integrations.action_view.silence = true
+# config.integrations.action_view.silence = true
 config.integrations.active_record.silence = !Rails.env.development?
 config.integrations.rack.http_events.collapse_into_single_event = true
 

@@ -50,15 +50,15 @@
     </div>
   <% end %>
 <% else %>
-  <% @stories.each_with_index do |story, i| %>
-    <% next if story.id == @featured_story.id %>
-    <% if !user_signed_in? && i == 4 %>
-      <%= render "stories/sign_in_invitation" %>
-    <% end %>
-    <%= render "articles/single_story", story: story %>
-  <% end %>
+  <div id="sign_in_invitation" style="display: none;"><%= render "stories/sign_in_invitation" %></div>
+  <%= render partial: "articles/single_story", collection: @stories, as: :story %>
 <% end %>
 <% if @stories.size > 1 %>
   <div class="placeholder-div"></div>
 <% end %>
 <div class="single-article-small-pic" id="article-index-hidden-div" style="display:none"></div>
+<script>
+  var sign_in_invitation = document.getElementById('sign_in_invitation');
+  var thirdEl = document.querySelector('#substories .single-article:nth-child(5)')
+  thirdEl.insertAdjacentHTML('afterend', sign_in_invitation.innerHTML);
+</script>

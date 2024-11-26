@@ -1,0 +1,3 @@
+http://localhost:3000
+http://localhost:3000/t/go
+http://localhost:3000/wiza_mary_sr/-lilies-of-the-field-11of

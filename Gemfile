@@ -1,6 +1,6 @@
 # rubocop:disable LineLength
 source "https://rubygems.org"
-ruby "2.6.10"
+ruby "2.7.8"
 
 # Enforce git to transmitted via https.
 # workaround until bundler 2.0 is released.
@@ -13,6 +13,9 @@ group :production do
   gem "nakayoshi_fork"
 end
 
+gem "psych", "< 4"
+gem "skylight"
+
 gem "actionpack-action_caching", "~> 1.2"
 gem "active_record_union", "~> 1.3"
 gem "acts-as-taggable-on", "~> 5.0"
@@ -24,7 +27,7 @@ gem "airbrake", "~> 8.1"
 gem "algoliasearch-rails", "~> 1.21"
 gem "algorithmia", "~> 1.0"
 gem "ancestry", "~> 3.0"
-gem "autoprefixer-rails", "~> 9.4"
+gem "autoprefixer-rails", "~> 10.0"
 gem "aws-sdk-lambda", "~> 1.16" # Just Lambda. For more, install aws-sdk gem
 gem "bourbon", "~> 5.1"
 gem "buffer", "~> 0.1"
@@ -79,7 +82,7 @@ gem "rails-observers", "~> 0.1"
 gem "recaptcha", "~> 4.13", require: "recaptcha/rails"
 gem "redcarpet", "~> 3.4"
 gem "reverse_markdown", "~> 1.1"
-gem "rolify", "~> 5.2"
+gem "rolify", "= 5.2"
 gem "rouge", "~> 3.3"
 gem "rubyzip", "~> 1.2", ">= 1.2.2"
 gem "s3_direct_upload", "~> 0.1"
@@ -89,7 +92,6 @@ gem "sdoc", "~> 1.0", group: :doc
 gem "serviceworker-rails", "~> 0.5"
 gem "share_meow_client", "~> 0.1"
 gem "sitemap_generator", "~> 6.0"
-gem "skylight", "~> 3.1"
 gem "slack-notifier", "~> 2.3"
 gem "sprockets", "~> 3.7"
 gem "staccato", "~> 0.5"
@@ -100,7 +102,7 @@ gem "twilio-ruby", "~> 5.21"
 gem "twitter", "~> 6.2"
 gem "uglifier", "~> 4.1"
 gem "validate_url", "~> 1.0"
-gem "webpacker", "~> 3.5"
+gem "webpacker", "~> 3.6"
 gem "webpush", "~> 0.3"
 
 group :development do
@@ -121,7 +123,7 @@ group :development, :test do
   gem "capybara", "~> 3.13"
   gem "derailed", "~> 0.1"
   gem "erb_lint", "~> 0.0", require: false
-  gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
+  gem "faker", git: "https://github.com/stympy/faker.git", tag: "v1.9.1"
   gem "fix-db-schema-conflicts"
   gem "memory_profiler", "~> 0.9"
   gem "parallel_tests", "~> 2.27"

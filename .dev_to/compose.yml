@@ -2,9 +2,9 @@ x-app: &app
   build:
     context: .
     args:
-      RUBY_VERSION: '2.6.10'
-      PG_MAJOR: '15'
-      NODE_MAJOR: '10'
+      RUBY_VERSION: '2.7.8'
+      PG_MAJOR: '17'
+      NODE_MAJOR: '12'
   image: optimize-dev-to:1.0.0
   environment: &env
     NODE_ENV: ${NODE_ENV:-development}
